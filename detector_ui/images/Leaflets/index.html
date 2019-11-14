@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--<title>微晒众享,分享，晒晒，美食，微晒官网，北京美食，小资......</title>-->
+    <title>晒单是一个人的狂欢，狂欢是一群人为你埋单</title>
+
+
+    <link href="css/swipebox.css" rel="stylesheet" type="text/css">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<style>
+    *{
+        margin:0 auto;
+        padding:0;
+        font-family:"黑简体";
+    }
+    ul{
+        list-style-type:none;
+    }
+
+    #content-container h3{
+        font-size:16px;
+        color:#505050;
+        margin:15px 0px 15px 13px;
+    }
+    #barcode img{
+        display:block;
+    }
+    #barcode #bloom{
+        margin:28px auto 9px;
+    }
+    #barcode h3{
+        font-size:15px;
+        color:#505050;
+        text-align:center;
+    }
+    #download{
+        overflow: auto;zoom:1;
+        margin-top:30px;
+        background-color: #6a5a4f;
+    }
+    #download ul li{
+        float:left;
+    }
+    #download ul #button{
+        float:right;
+        margin:19px 13px 19px 0px;
+    }
+    #download ul #text{
+        font-size:14px;
+        color:#ffffff;
+        line-height:24px;
+        margin-top:9px;
+    }
+    #download ul p{
+        font-size:12px;
+    }
+    #p{
+        position: absolute;
+        z-index: 100;
+        top:8%;
+        left:78%;
+        font-size:0.875rem;
+        color:white;
+        line-height:1.6rem;
+    }
+    #img{
+        position: absolute;
+        z-index: 100;
+        top:6%;
+        left:95%;
+        animation: arrow 1s linear infinite;
+        -webkit-animation: arrow 1s linear infinite;
+        -moz-animation: arrow 1s linear infinite;
+        -ms-animation: arrow 1s linear infinite;
+        -o-animation: arrow 1s linear infinite;
+    }
+    @keyframes arrow {
+        from{
+            top: 6%;
+            opacity: 1;
+        }
+        to{
+            top: 2%;
+            opacity: 0;
+        }
+    }
+    /*.adv{*/
+        /*display:none;*/
+    /*}*/
+    /*#adv {*/
+        /*position : absolute;*/
+        /*top : 1.76%;*/
+        /*left : 25%;*/
+        /*display: none;*/
+    /*}*/
+    /*#btn{*/
+        /*position : absolute;*/
+        /*top :28.9%;*/
+        /*left :41.75%;*/
+        /*z-index:100;*/
+    /*}*/
+</style>
+<body>
+<!-- <div class="adv">-->
+<!--     <img src="img/icon.png" alt="">-->
+<!-- </div>-->
+<div id="div" style="position: absolute;z-index: 1000;display: none;">
+    <img id="img" src="img/arrow.png" alt="this is arrow" width="14" height="14"/>
+    <p id="p">点击右上角</br>分享该视频</p>
+    <a href="index.html"><img src="img/zhe1.jpg" alt="" style="width:100%;height:100%;filter:alpha(opacity=60); -moz-opacity:0.6; opacity:0.6;"></a>
+</div>
+<div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
+<img src="img/icon.png" width='700'>
+</div>
+
+<div class="container">
+    <div id="video-container" style="position:relative;">
+        <!--<img src="img/play.png" id="btn" alt="" style="width:61px;height:61px;">-->
+        <video id="mmedia"  src="img/song_x.mp4" poster="img/img.jpg" controls
+               width="100%";height="211px"></video>
+    </div>
+    <div id="content-container">
+        <h3>团队介绍</h3>
+        <div class="gallery square-thumb">
+            <ul class="gallery square-thumb">
+                <li>
+                    <a class="swipebox" href="img/1.png">
+                        <img src="img/01.jpg" alt="img"/></a>
+                </li>
+                <li>
+                    <a class="swipebox" href="img/2.png">
+                        <img src="img/02.jpg" alt="img" /></a>
+                </li>
+                <li>
+                    <a class="swipebox" href="img/3.png">
+                        <img src="img/03.jpg" alt="img" /></a>
+                </li>
+                <li>
+                    <a class="swipebox" href="img/4.png">
+                        <img src="img/04.jpg" alt="img" /></a>
+                </li>
+                <li>
+                    <a class="swipebox" href="img/5.png">
+                        <img src="img/05.jpg" alt="img" /></a>
+                </li>
+                <li>
+                    <a class="swipebox" href="img/6.png">
+                        <img src="img/06.jpg" alt="img" /></a>
+                </li>
+                <li>
+                    <a class="swipebox" href="img/7.png">
+                        <img src="img/07.jpg" alt="img" /></a>
+                </li>
+                <li>
+                    <a class="swipebox" href="img/8.png">
+                        <img src="img/08.jpg" alt="img" /></a>
+                </li>
+                <li>
+                    <a class="swipebox" href="img/9.png">
+                        <img src="img/09.png" alt="img" /></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="barcode">
+        <img id="bloom" src="img/flower.png" alt="" style="width:21.334%;height:4.46%;">
+        <img id="barcode-2D" src="img/code.png" alt="" style="width:38.666666%;height:38.666666%;
+        margin-bottom:9px;">
+        <h3>长按二维码关注[微晒]微信公众号</h3>
+    </div>
+    <div id="download" style="height:68px;width:100%;">
+        <ul>
+            <li><img src="img/0.png" alt="" style="width:50px;height:50px;margin:9px 10px 9px 13px;
+"></li>
+            <li id="text">
+                微晒
+                <p>安装微晒，一起来晒</p>
+            </li>
+            <li id="button"><a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.share.frame"><img src="img/install.png" alt="" style="width:70px;height:30px;"></a></li>
+        </ul>
+    </div>
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    window.onload=function(){
+        var mmedia = document.getElementById("mmedia");
+        mmedia.addEventListener("play",function(){
+            // 当前视频处在播放状态
+            $("#div").hide();
+    //        btn.style.display ="none";
+        });
+        mmedia.addEventListener("pause",function(){
+            // 当前视频处在暂停状态
+            $("#div").show();
+           // btn.style.display = "block";
+            $("#download").css("position","fixed");
+            $("#download").css("bottom","0");
+            $("#download").css("z-index","1000");
+            $("body").css("overflow","hidden");
+        });
+
+    }
+//    btn.onclick = function(){
+//        if(mmedia.paused){//视频是否暂停
+//            mmedia.play();
+////			btn.value = "暂停";
+//            btn.style.display ="none";
+//        }else{
+//            mmedia.pause();
+////			btn.value = "播放";
+//            btn.style.display = "block";
+//        }
+//    }
+</script>
+</body>
+</html>

@@ -1,0 +1,471 @@
+/**
+ * Created by Fernando on 2016/7/7.
+ */
+
+var p_size =10;//全局每页条数
+
+var node = "A";//节点名
+
+var contractorMap={'01':'中孚', '02':'蓝盾', '03':'天融信', '04':'鼎普', '05':'网安', '06':'信工所'};
+
+
+$("#p_size").text(p_size)
+
+function HTMLEncode(html) {
+    var temp = document.createElement("div");
+    (temp.textContent != null) ? (temp.textContent = html) : (temp.innerText = html);
+    var output = temp.innerHTML;
+    temp = null;
+    return output;
+}
+
+function HTMLDecode(text) {
+    var temp = document.createElement("div");
+    temp.innerHTML = text;
+    var output = temp.innerText || temp.textContent;
+    temp = null;
+    return output;
+}
+
+
+
+function post(URL, PARAMS) {
+    var temp = document.createElement("form");
+    temp.action = URL;
+    temp.method = "post";
+    temp.style.display = "none";
+    temp.target="_self";
+    //temp_form.target = "_self";
+    for (var x in PARAMS) {
+        var opt = document.createElement("textarea");
+        opt.name = x;
+        opt.value = PARAMS[x];
+        // alert(opt.name)
+        temp.appendChild(opt);
+    }
+    document.body.appendChild(temp);
+    temp.submit();
+    return temp;
+}
+
+
+function post_blank(URL, PARAMS) {
+    var temp = document.createElement("form");      
+    temp.action = URL;      
+    temp.method = "post";      
+    temp.style.display = "none";
+    temp.target="_blank";
+    //temp_form.target = "_self";
+    for (var x in PARAMS) {      
+        var opt = document.createElement("textarea");      
+        opt.name = x;      
+        opt.value = PARAMS[x];      
+        // alert(opt.name)      
+        temp.appendChild(opt);      
+    }      
+    document.body.appendChild(temp);      
+    temp.submit();      
+    return temp;      
+}      
+     
+//调用方法 如      
+//post('pages/statisticsJsp/excel.action', {html :prnhtml,cm1:'sdsddsd',cm2:'haha'});
+
+
+
+
+
+/*    function mm(a)
+ {
+ return /(\x0f[^\x0f]+)\x0f[\s\S]*\1/.test("\x0f"+ a.join("\x0f\x0f") +"\x0f");
+ }*/
+
+function unique(arr){
+// 遍历arr，把元素分别放入tmp数组(不存在才放)
+    var tmp = new Array();
+    for(var i in arr){
+//该元素在tmp内部不存在才允许追加
+        if(tmp.indexOf(arr[i])==-1){
+            tmp.push(arr[i]);
+        }
+    }
+    return tmp;
+}
+
+/*
+
+$("#refresh").click(function(){
+    var currentPage = $('#pagination .active a').text()
+    LoadPage(currentPage,globalSearchParam)
+})
+*/
+
+function refresh(){
+    var currentPage = $('#pagination .active a').text()
+    LoadPage(currentPage,globalSearchParam)
+}
+
+$("#refresh").click(function(){
+    refresh()
+})
+
+
+
+
+$("#gotopn").click(function() {
+    var currentPage = $("input#pn").val();
+    $("input#pn").val("")
+    var totalcount = $("#totalcount").text()
+
+    //alert(totalcount)
+    ///判断currentPage是不是数字
+    function isNum(num){
+        var reNum=/^\d*$/;
+        return(reNum.test(num));
+    }
+    if (currentPage=="")
+    {
+        alert("页码不能为空");
+        return;
+    }
+    if(!isNum(currentPage)){
+        alert("输入错误")
+        return;
+    }
+
+    ///判断currentPage是不是>=1  <=totalcount/p_size  不是alert
+    if(!(currentPage >= 1 && currentPage <= Math.ceil(totalcount/p_size )))
+    {
+        alert("页码不存在");
+        return ;
+    }
+    LoadPage(currentPage,globalSearchParam)
+
+
+    //alert(currentPage)
+
+})
+
+//暂时不用了
+function scroll(upJQuery) {
+
+
+    console.log("html():"+$(upJQuery).parent().next().text())
+
+    //console.log($(upJQuery).parent().next().text() == "上传中...")
+    //console.log($(upJQuery).parent().next().text() == "上传中......")
+
+
+    if ($(upJQuery).parent().next().text() == "上传中...") {
+
+        $(upJQuery).parent().next().html("上传中......")
+
+    }else if ($(upJQuery).parent().next().text() == "上传中......") {
+
+        $(upJQuery).parent().next().html("上传中...")
+
+    }else{
+
+
+    }
+
+
+
+}
+
+
+function bytesToSize(bytes) {
+    if (bytes === 0) return '0 B';
+    var k = 1000, // or 1024
+        sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+        i = Math.floor(Math.log(bytes) / Math.log(k));
+    return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
+}
+
+function uploadProgress(evt, upJQuery) {
+    var loaded = evt.loaded;                  //已经上传大小情况
+    var tot = evt.total;                      //附件总大小
+    var per = Math.floor(100*loaded/tot);     //已经上传的百分比
+    if(per == 100){
+        $(upJQuery).parent().next().html("上传结束，等待响应，将马上完成");
+    }else{
+        $(upJQuery).parent().next().html("上传中，大小："+bytesToSize(tot)+"，已完成："+ per +"%");
+    }
+
+
+    //$("#son").css("width" , per +"%");
+}
+
+
+function upload(upJQuery, upfile, param){
+    console.log("upJQuery:"+upJQuery)
+    console.log("upfile:"+upfile)
+    console.log("param:"+param)
+
+    $(upJQuery).on('click', function() {
+
+        if($(upfile).get(0).files[0]==undefined){
+            $(upJQuery).parent().next().html("请选择文件!")
+            return;
+        }
+
+        //var timer = setInterval('scroll(upJQuery);', 1000);
+
+        var fd = new FormData();
+        //fd.append("count", 1);
+        fd.append("upfile", $(upfile).get(0).files[0]);
+        console.log("$(upfile).get(0).files[0]:"+$(upfile).get(0).files[0])
+        $.ajax({
+            url: "ajax_action_upload.php?uu=file.upload",
+//                url: "test",
+//            url: "http://192.168.120.234/file/upload",
+
+            type: "POST",
+//            processData: false,
+//            contentType: "multipart/form-data",
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: fd,
+            //这里我们先拿到jQuery产生的 XMLHttpRequest对象，为其增加 progress 事件绑定，然后再返回交给ajax使用
+            xhr: function(){
+                var xhr = $.ajaxSettings.xhr();
+                if(uploadProgress && xhr.upload) {
+                    xhr.upload.addEventListener("progress" , function () { uploadProgress(event,upJQuery) }, false);
+                    return xhr;
+                }
+            },
+            success: function(d) {
+                //    var data = "{\"msg\":[{\"file_path\":\"/media/test/20161019103825_126367.php\"}],\"code\":200}";
+                console.log(d)
+                var ret = JSON.parse(d);
+
+                $(param).attr("value", ret.msg[0].file_path)
+
+                if(ret.code == 200){
+                    $(upJQuery).parent().next().html("上传成功!")
+                }else{
+                    $(upJQuery).parent().next().html("服务器错误!")
+                }
+
+                $(upJQuery).prop('disabled',"true");
+            },
+            beforeSend: function () {
+                $(upJQuery).parent().next().html("上传中...")
+            },
+            error: function () {
+                $(upJQuery).parent().next().html("")
+                alert("无法连接服务器");
+            },
+            complete: function () {
+                //console.log("clearInterval"+timer)
+                //clearInterval(timer);
+            }
+
+        });
+    });
+
+    $(upfile).change(function() {
+        $(upJQuery).removeAttr('disabled')
+        $(upJQuery).parent().next().html("")
+        $(param).attr("value","");
+    })
+}
+
+
+function firstSelect(id){
+    var module = $("#"+id).parent().parent()
+    var first_text = module.find("li:first").text()
+    var first_value = module.find("li:first").attr("value")
+    module.find("span:first").attr("value",first_value)
+    module.find("span:first").text(first_text);
+}
+
+
+function setSelect(id,v){
+    var module = $("#"+id).parent().parent()
+
+    var elem = module.find("li");
+
+    var first_text = module.find("li:first").text()
+    var first_value = module.find("li:first").attr("value")
+/*    console.log('v:'+v)
+    console.log('first_text:'+first_text)
+    console.log('first_value:'+first_value)*/
+
+    elem.each(function(){
+        //carray.push(parseInt($(this).attr("id")))
+        if($(this).attr("value")==v){
+            first_text = $(this).text()
+            first_value = $(this).attr("value")
+/*            console.log('first_text:'+first_text)
+            console.log('first_value:'+first_value)*/
+        }
+
+    })
+
+    module.find("span:first").attr("value",first_value)
+    module.find("span:first").text(first_text);
+}
+/*
+$("#searchButton").focus(function() {
+    $(this).parent().parent().find("input[type='text']").each(function(){
+        var value = $(this).val(); //这里的value就是每一个input的value值~
+
+        if(!value.match(/^[\u4E00-\u9FA5a-zA-Z0-9_]{0,}$/)){
+
+
+            var label = $(this).attr('placeholder')
+
+            var error_str =label+"存在非法字符\n";
+
+            alert(error_str)
+
+        }
+
+    });
+
+})*/
+
+
+
+
+///处理复选框全选
+function alterChkAll(){
+    var lines = $("#maintable tbody tr");
+    var uncheckboxs = lines.find("input:eq(0):checkbox:not(:checked)");
+
+    //console.log(uncheckboxs.size())
+    if(uncheckboxs.size() == 0){
+
+        $("#chk_all1,#chk_all2").prop("checked", true);
+    }else{
+
+        $("#chk_all1,#chk_all2").prop("checked", false);
+
+    }
+}
+
+
+$("#chk_all1,#chk_all2").click(function(){
+    if(this.checked){
+        $("table :checkbox").prop("checked", true);
+    }else{
+        $("table :checkbox").prop("checked", false);
+    }
+});
+
+///绑定复选框选择事件
+function rebindChkAll(){
+
+    $("#maintable tbody tr :checkbox").click(function(){
+
+        alterChkAll();
+
+    });
+
+    alterChkAll();
+}
+
+
+
+
+
+
+
+//第五种方法
+var idTmr;
+function  getExplorer() {
+    var explorer = window.navigator.userAgent ;
+    //ie
+    if (explorer.indexOf("MSIE") >= 0) {
+        return 'ie';
+    }
+    //firefox
+    else if (explorer.indexOf("Firefox") >= 0) {
+        return 'Firefox';
+    }
+    //Chrome
+    else if(explorer.indexOf("Chrome") >= 0){
+        return 'Chrome';
+    }
+    //Opera
+    else if(explorer.indexOf("Opera") >= 0){
+        return 'Opera';
+    }
+    //Safari
+    else if(explorer.indexOf("Safari") >= 0){
+        return 'Safari';
+    }
+}
+function method5(tableid) {
+    $("#export_div").hide();
+
+    $("#export_div").html($("#maintable").clone());
+
+    $("#export_div #maintable").attr('id','export_maintable');
+
+    $("#export_div #export_maintable tfoot").remove();
+
+    //$("#export_div #export_maintable tr th:eq(0)").remove();
+    $("#export_div #export_maintable tr :first-child").remove();
+    $("#export_div #export_maintable tr :last-child").remove();
+
+    $("#export_div #export_maintable tbody tr td").each(function(){
+        if($(this).text().match(/^[0-9]{0,}$/)){
+            $(this).text("["+$(this).text()+"]");
+        }
+
+    });
+
+    tableid = export_maintable;
+
+
+    if(getExplorer()=='ie')
+    {
+        alert('请使用Chrome浏览器');
+
+    }
+    else
+    {
+        tableToExcel(tableid)
+    }
+}
+function Cleanup() {
+    window.clearInterval(idTmr);
+    CollectGarbage();
+}
+var tableToExcel = (function() {
+    var uri = 'data:application/vnd.ms-excel;base64,',
+        template = '<html><head><meta charset="UTF-8"></head><body><table border="1">{table}</table></body></html>',
+        base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) },
+        format = function(s, c) {
+            return s.replace(/{(\w+)}/g,
+                function(m, p) { return c[p]; }) }
+    return function(table, name) {
+        if (!table.nodeType) table = document.getElementById(table)
+        var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
+        window.location.href = uri + base64(format(template, ctx))
+    }
+})()
+
+
+
+$("#addModal input").blur(function(){
+    var value = $(this).val(); //这里的value就是每一个input的value值~
+
+    //re= /select|update|delete|exec|count|script|'|"|=|;|>|<|%/i;
+    re= /select|update|delete|exec|count|script|>|<|%/i;
+    if ( re.test(value) ){
+
+        //error_str+=label+"存在非法字符\n";
+        alert("请您不要在参数中输入脚本字符和SQL关键字！");
+        $("#add-submit").attr("disabled", true);
+    }else{
+
+        $("#add-submit").removeAttr("disabled");
+
+    }
+
+});
+

@@ -1,0 +1,86 @@
+a {
+    cursor:pointer;
+}
+
+button.condition-btn {
+    border-radius: 0;
+    background: #E8E8E8;
+    color: #666;
+}
+
+button.condition-btn:hover {
+    background: #43BFE3;
+    color: #FFFFFF;
+}
+
+button.condition-btn.active {
+    background: #43BFE3;
+    color: #FFFFFF;
+}
+
+.btn-banner{
+    margin-left: 15px;
+    margin-bottom: 10px;
+    margin-right: 15px;
+}
+
+.btn-interval{
+    margin-left: 10px
+}
+
+.btn-interval2{
+    margin-left: 14px
+}
+
+.dropdown-inline{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-btn,.dropdown-btn:hover,.dropdown-btn:focus{
+    background: #43BFE3;
+    color: #FFFFFF;
+    border-radius: 0;
+}
+
+.dropdown-menu-width{
+    width: 160px
+}
+
+.search-div{
+    width: 350px;
+    display:inline-block
+}
+
+.search-input{
+    width: 160px !important;
+    display:inline-block !important;
+}
+
+.modal-form{
+    margin-bottom: 0px !important;
+    border: solid 1px #EEEEEE;
+}
+
+.date_div{
+            width: 160px;
+            float: left;
+        }
+
+#addModal .bootstrap-select.task_group_select{
+    width: 100% !important;
+}
+
+/*策略有任务组样式*/
+.hasTaskGroup{
+    background: #428bca !important;
+}
+.hasTaskGroup a{
+    color: white;
+}
+
+/*时间选择框只读取消禁用样式*/
+.form_datetime input[readonly]{
+    cursor: auto !important;
+}
+

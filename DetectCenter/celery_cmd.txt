@@ -1,0 +1,2 @@
+celery worker -A DetectCenter -l info -c 10
+celery beat -A DetectCenter -l info

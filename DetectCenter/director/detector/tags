@@ -1,0 +1,529 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+APIView	views.py	/^from rest_framework.views import APIView$/;"	i
+AdminLogin	models.py	/^class AdminLogin(models.Model):$/;"	c
+AdminLoginSerializer	detector_serializers.py	/^class AdminLoginSerializer(serializers.ModelSerializer):$/;"	c
+AppConfig	apps.py	/^from django.apps import AppConfig$/;"	i
+AuthLogin	views.py	/^class AuthLogin(APIView):$/;"	c
+AuthorityUpdate	views.py	/^class AuthorityUpdate(APIView):$/;"	c
+BusinessStatus	models.py	/^class BusinessStatus(models.Model):$/;"	c
+BusinessStatusProcess	views.py	/^class BusinessStatusProcess(APIView):$/;"	c
+BusinessStatusSerializer	detector_serializers.py	/^class BusinessStatusSerializer(serializers.ModelSerializer):$/;"	c
+Detector	models.py	/^class Detector(models.Model):$/;"	c
+DetectorCheck	views.py	/^class DetectorCheck(APIView):$/;"	c
+DetectorConfig	apps.py	/^class DetectorConfig(AppConfig):$/;"	c
+DetectorCount	views.py	/^class DetectorCount(APIView):$/;"	c
+DetectorDetail	views.py	/^class DetectorDetail(APIView):$/;"	c
+DetectorEffectivenessUpdate	views.py	/^class DetectorEffectivenessUpdate(APIView):$/;"	c
+DetectorReportExport	views.py	/^class DetectorReportExport(APIView):$/;"	c
+DetectorSerializer	detector_serializers.py	/^class DetectorSerializer(serializers.ModelSerializer):$/;"	c
+DetectorShow	views.py	/^class DetectorShow(APIView):$/;"	c
+DeviceAddUpdate	views.py	/^class DeviceAddUpdate(APIView):$/;"	c
+DeviceCount	views.py	/^class DeviceCount(APIView):$/;"	c
+DeviceDetail	views.py	/^class DeviceDetail(APIView):$/;"	c
+DeviceImport	views.py	/^class DeviceImport(APIView):$/;"	c
+DeviceInfo	models.py	/^class DeviceInfo(models.Model):$/;"	c
+DeviceInfoSerializer	detector_serializers.py	/^class DeviceInfoSerializer(serializers.ModelSerializer):$/;"	c
+DeviceShow	views.py	/^class DeviceShow(APIView):$/;"	c
+F	data_processing.py	/^from django.db.models import F, Q$/;"	i
+HttpResponse	data_processing.py	/^from django.http import HttpResponse$/;"	i
+IsPasswordExpire	views.py	/^class IsPasswordExpire(APIView):$/;"	c
+Login	views.py	/^class Login(APIView):$/;"	c
+Logout	views.py	/^class Logout(APIView):$/;"	c
+Meta	detector_serializers.py	/^    class Meta:$/;"	c	class:AdminLoginSerializer
+Meta	detector_serializers.py	/^    class Meta:$/;"	c	class:BusinessStatusSerializer
+Meta	detector_serializers.py	/^    class Meta:$/;"	c	class:DetectorSerializer
+Meta	detector_serializers.py	/^    class Meta:$/;"	c	class:DeviceInfoSerializer
+Meta	detector_serializers.py	/^    class Meta:$/;"	c	class:NetworkCardStatusSerializer
+Meta	detector_serializers.py	/^    class Meta:$/;"	c	class:PluginStatusSerializer
+Meta	detector_serializers.py	/^    class Meta:$/;"	c	class:SuspectedStatusSerializer
+Meta	detector_serializers.py	/^    class Meta:$/;"	c	class:SystemRunningStatusSerializer
+Meta	models.py	/^    class Meta:$/;"	c	class:AdminLogin
+Meta	models.py	/^    class Meta:$/;"	c	class:BusinessStatus
+Meta	models.py	/^    class Meta:$/;"	c	class:Detector
+Meta	models.py	/^    class Meta:$/;"	c	class:DeviceInfo
+Meta	models.py	/^    class Meta:$/;"	c	class:NetworkCardStatus
+Meta	models.py	/^    class Meta:$/;"	c	class:PluginStatus
+Meta	models.py	/^    class Meta:$/;"	c	class:SuspectedStatus
+Meta	models.py	/^    class Meta:$/;"	c	class:SystemRunningStatus
+Migration	migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	c
+Migration	migrations/0002_auto_20170609_1840.py	/^class Migration(migrations.Migration):$/;"	c
+Migration	migrations/0003_adminlogin_update_time.py	/^class Migration(migrations.Migration):$/;"	c
+Migration	migrations/0004_detector_comment.py	/^class Migration(migrations.Migration):$/;"	c
+Migration	migrations/0005_auto_20170908_2104.py	/^class Migration(migrations.Migration):$/;"	c
+Migration	migrations/0006_auto_20170908_2123.py	/^class Migration(migrations.Migration):$/;"	c
+NIC_status	models.py	/^    NIC_status = ($/;"	v	class:NetworkCardStatus
+NetworkCardStatus	models.py	/^class NetworkCardStatus(models.Model):$/;"	c
+NetworkCardStatusSerializer	detector_serializers.py	/^class NetworkCardStatusSerializer(serializers.ModelSerializer):$/;"	c
+PasswordUpdate	views.py	/^class PasswordUpdate(APIView):$/;"	c
+PluginStatus	models.py	/^class PluginStatus(models.Model):$/;"	c
+PluginStatusSerializer	detector_serializers.py	/^class PluginStatusSerializer(serializers.ModelSerializer):$/;"	c
+Q	data_processing.py	/^from django.db.models import F, Q$/;"	i
+ReRegister	views.py	/^class ReRegister(APIView):$/;"	c
+Register	views.py	/^class Register(APIView):$/;"	c
+RegisterStatus	views.py	/^class RegisterStatus(APIView):$/;"	c
+SuspectedStatus	models.py	/^class SuspectedStatus(models.Model):$/;"	c
+SuspectedStatusSerializer	detector_serializers.py	/^class SuspectedStatusSerializer(serializers.ModelSerializer):$/;"	c
+SystemRunningStatus	models.py	/^class SystemRunningStatus(models.Model):$/;"	c
+SystemRunningStatusSerializer	detector_serializers.py	/^class SystemRunningStatusSerializer(serializers.ModelSerializer):$/;"	c
+SystemStatusProcess	views.py	/^class SystemStatusProcess(APIView):$/;"	c
+Task	data_processing.py	/^from policy.models import Task$/;"	i
+TaskSerializer	data_processing.py	/^from policy.policy_serializers import TaskSerializer$/;"	i
+TempleteDownload	views.py	/^class TempleteDownload(APIView):$/;"	c
+TestCase	tests.py	/^from django.test import TestCase$/;"	i
+UserAdd	views.py	/^class UserAdd(APIView):$/;"	c
+UserCount	views.py	/^class UserCount(APIView):$/;"	c
+UserDel	views.py	/^class UserDel(APIView):$/;"	c
+UserDetail	views.py	/^class UserDetail(APIView):$/;"	c
+UserShow	views.py	/^class UserShow(APIView):$/;"	c
+__unicode__	models.py	/^    def __unicode__(self):$/;"	m	class:AdminLogin	file:
+__unicode__	models.py	/^    def __unicode__(self):$/;"	m	class:BusinessStatus	file:
+__unicode__	models.py	/^    def __unicode__(self):$/;"	m	class:Detector	file:
+__unicode__	models.py	/^    def __unicode__(self):$/;"	m	class:DeviceInfo	file:
+__unicode__	models.py	/^    def __unicode__(self):$/;"	m	class:NetworkCardStatus	file:
+__unicode__	models.py	/^    def __unicode__(self):$/;"	m	class:PluginStatus	file:
+__unicode__	models.py	/^    def __unicode__(self):$/;"	m	class:SuspectedStatus	file:
+__unicode__	models.py	/^    def __unicode__(self):$/;"	m	class:SystemRunningStatus	file:
+abnormal_status	models.py	/^    abnormal_status             = models.CharField(max_length=4, blank=True)$/;"	v	class:Detector
+abnormal_type	models.py	/^    abnormal_type               = models.IntegerField(default=0)$/;"	v	class:Detector
+abnormal_type	models.py	/^    abnormal_type = ($/;"	v	class:SuspectedStatus
+abnormal_version	models.py	/^    abnormal_version            = models.CharField(max_length=32, blank=True)$/;"	v	class:Detector
+abnormal_warninfo	models.py	/^    abnormal_warninfo           = models.IntegerField(default=0)$/;"	v	class:Detector
+account_listen_status	models.py	/^    account_listen_status       = models.CharField(max_length=4, blank=True)$/;"	v	class:Detector
+account_listen_type	models.py	/^    account_listen_type         = models.IntegerField(default=0)$/;"	v	class:Detector
+account_listen_version	models.py	/^    account_listen_version      = models.CharField(max_length=32, blank=True)$/;"	v	class:Detector
+account_listen_warninfo	models.py	/^    account_listen_warninfo     = models.IntegerField(default=0)$/;"	v	class:Detector
+add_update_device	data_processing.py	/^def add_update_device(request):$/;"	f
+address	models.py	/^    address                     = models.CharField(max_length=128, blank=True)$/;"	v	class:Detector
+address	models.py	/^    address           = models.CharField(max_length=128)$/;"	v	class:DeviceInfo
+address_code	models.py	/^    address_code                = models.CharField(max_length=6, blank=True)$/;"	v	class:Detector
+address_code	models.py	/^    address_code      = models.CharField(max_length=6)$/;"	v	class:DeviceInfo
+admin	admin.py	/^from django.contrib import admin$/;"	i
+alarm_status	models.py	/^    alarm_status                = models.CharField(max_length=4, blank=True)$/;"	v	class:Detector
+alarm_total_num	models.py	/^    alarm_total_num             = models.IntegerField(default=0)$/;"	v	class:Detector
+app_behavior_status	models.py	/^    app_behavior_status         = models.CharField(max_length=4, blank=True)$/;"	v	class:Detector
+app_behavior_type	models.py	/^    app_behavior_type           = models.IntegerField(default=0)$/;"	v	class:Detector
+app_behavior_version	models.py	/^    app_behavior_version        = models.CharField(max_length=32, blank=True)$/;"	v	class:Detector
+app_behavior_warninfo	models.py	/^    app_behavior_warninfo       = models.IntegerField(default=0)$/;"	v	class:Detector
+attack_status	models.py	/^    attack_status               = models.CharField(max_length=4, blank=True)$/;"	v	class:Detector
+attack_type	models.py	/^    attack_type                 = models.IntegerField(default=0)$/;"	v	class:Detector
+attack_version	models.py	/^    attack_version              = models.CharField(max_length=32, blank=True)$/;"	v	class:Detector
+attack_warninfo	models.py	/^    attack_warninfo             = models.TextField(blank=True)$/;"	v	class:Detector
+auth_fail_reason	models.py	/^    auth_fail_reason            = models.CharField(max_length=64, blank=True)$/;"	v	class:Detector
+auth_frequency	models.py	/^    auth_frequency              = models.IntegerField(default=0)$/;"	v	class:Detector
+auth_login	data_processing.py	/^def auth_login(request):$/;"	f
+auth_status	models.py	/^    auth_status                 = models.IntegerField(default=1)$/;"	v	class:Detector
+auth_time	models.py	/^    auth_time                   = models.DateTimeField(null=True, blank=True)$/;"	v	class:Detector
+block_status	models.py	/^    block_status                = models.CharField(max_length=4, blank=True)$/;"	v	class:Detector
+block_type	models.py	/^    block_type                  = models.IntegerField(default=0)$/;"	v	class:Detector
+block_version	models.py	/^    block_version               = models.CharField(max_length=32, blank=True)$/;"	v	class:Detector
+block_warninfo	models.py	/^    block_warninfo              = models.IntegerField(default=0)$/;"	v	class:Detector
+business_status_flag	data_processing.py	/^business_status_flag = 1$/;"	v
+check_detector	data_processing.py	/^def check_detector(request):$/;"	f
+comment	models.py	/^    comment                     = models.CharField(max_length=128, blank=True)$/;"	v	class:Detector
+common	data_processing.py	/^from DetectCenter import common$/;"	i
+common	models.py	/^from DetectCenter import common$/;"	i
+compress_file_status	models.py	/^    compress_file_status        = models.CharField(max_length=4, blank=True)$/;"	v	class:Detector
+compress_file_type	models.py	/^    compress_file_type          = models.IntegerField(default=0)$/;"	v	class:Detector
+compress_file_version	models.py	/^    compress_file_version       = models.CharField(max_length=32, blank=True)$/;"	v	class:Detector
+compress_file_warninfo	models.py	/^    compress_file_warninfo      = models.IntegerField(default=0)$/;"	v	class:Detector
+connection	data_processing.py	/^from django.db import connection, transaction$/;"	i
+connection	judge_online.py	/^from django.db import connection$/;"	i
+contact	models.py	/^    contact                     = models.TextField()$/;"	v	class:Detector
+contact	models.py	/^    contact           = models.TextField()$/;"	v	class:DeviceInfo
+contractor	models.py	/^    contractor                  = models.CharField(max_length=32, blank=True)$/;"	v	class:Detector
+cpu	models.py	/^    cpu          = models.TextField()$/;"	v	class:SystemRunningStatus
+cpu_info	models.py	/^    cpu_info                    = models.CharField(max_length=1024, blank=True)$/;"	v	class:Detector
+cpu_info	models.py	/^    cpu_info          = models.CharField(max_length=1024)$/;"	v	class:DeviceInfo
+cpu_usage	detect_center_audit.py	/^cpu_usage = str(psutil.cpu_percent(interval=1.0)) + '%'$/;"	v
+create_time	models.py	/^    create_time      = models.DateTimeField(null=True, blank=True)$/;"	v	class:AdminLogin
+data	detect_center_audit.py	/^data = json.dumps({$/;"	v
+datetime	data_processing.py	/^import datetime$/;"	i
+db_table	models.py	/^        db_table = 'admin_login'$/;"	v	class:AdminLogin.Meta
+db_table	models.py	/^        db_table = 'detector_info'$/;"	v	class:Detector.Meta
+db_table	models.py	/^        db_table = 'device_msg'$/;"	v	class:DeviceInfo.Meta
+db_table	models.py	/^        db_table = 'status_business'$/;"	v	class:BusinessStatus.Meta
+db_table	models.py	/^        db_table = 'status_network_card'$/;"	v	class:NetworkCardStatus.Meta
+db_table	models.py	/^        db_table = 'status_plugin'$/;"	v	class:PluginStatus.Meta
+db_table	models.py	/^        db_table = 'status_suspected'$/;"	v	class:SuspectedStatus.Meta
+db_table	models.py	/^        db_table = 'status_system_running'$/;"	v	class:SystemRunningStatus.Meta
+delete_user	data_processing.py	/^def delete_user(request):$/;"	f
+dependencies	migrations/0001_initial.py	/^    dependencies = [$/;"	v	class:Migration
+dependencies	migrations/0002_auto_20170609_1840.py	/^    dependencies = [$/;"	v	class:Migration
+dependencies	migrations/0003_adminlogin_update_time.py	/^    dependencies = [$/;"	v	class:Migration
+dependencies	migrations/0004_detector_comment.py	/^    dependencies = [$/;"	v	class:Migration
+dependencies	migrations/0005_auto_20170908_2104.py	/^    dependencies = [$/;"	v	class:Migration
+dependencies	migrations/0006_auto_20170908_2123.py	/^    dependencies = [$/;"	v	class:Migration
+detector_status_flag	data_processing.py	/^detector_status_flag = 1$/;"	v
+device_ca	models.py	/^    device_ca         = models.CharField(max_length=128)$/;"	v	class:DeviceInfo
+device_id	models.py	/^    device_id                   = models.CharField(max_length=12)$/;"	v	class:BusinessStatus
+device_id	models.py	/^    device_id                   = models.CharField(max_length=12)$/;"	v	class:Detector
+device_id	models.py	/^    device_id                   = models.CharField(max_length=12)$/;"	v	class:NetworkCardStatus
+device_id	models.py	/^    device_id               = models.CharField(max_length=12)$/;"	v	class:PluginStatus
+device_id	models.py	/^    device_id         = models.CharField(max_length=12)$/;"	v	class:DeviceInfo
+device_id	models.py	/^    device_id    = models.CharField(max_length=12)$/;"	v	class:SuspectedStatus
+device_id	models.py	/^    device_id    = models.CharField(max_length=12)$/;"	v	class:SystemRunningStatus
+device_status	models.py	/^    device_status               = models.IntegerField(default=common.DETECTOR_STATUS['register_no_check'])$/;"	v	class:Detector
+device_type	models.py	/^    device_type                 = models.CharField(max_length=2)$/;"	v	class:Detector
+disk	models.py	/^    disk         = models.IntegerField()$/;"	v	class:SystemRunningStatus
+disk_info	models.py	/^    disk_info                   = models.CharField(max_length=1024, blank=True)$/;"	v	class:Detector
+disk_info	models.py	/^    disk_info         = models.CharField(max_length=1024)$/;"	v	class:DeviceInfo
+disk_usage	detect_center_audit.py	/^disk_usage = str(psutil.disk_usage('\/').percent) + '%'$/;"	v
+django	judge_online.py	/^import django$/;"	i
+dns_filter_type	models.py	/^    dns_filter_type             = models.IntegerField(default=0)$/;"	v	class:Detector
+dns_filter_version	models.py	/^    dns_filter_version          = models.CharField(max_length=32, blank=True)$/;"	v	class:Detector
+domain_listen_status	models.py	/^    domain_listen_status        = models.CharField(max_length=4, blank=True)$/;"	v	class:Detector
+domain_listen_type	models.py	/^    domain_listen_type          = models.IntegerField(default=0)$/;"	v	class:Detector
+domain_listen_version	models.py	/^    domain_listen_version       = models.CharField(max_length=32, blank=True)$/;"	v	class:Detector
+domain_listen_warninfo	models.py	/^    domain_listen_warninfo      = models.IntegerField(default=0)$/;"	v	class:Detector
+download_templete	data_processing.py	/^def download_templete(request):$/;"	f
+duration_time	models.py	/^    duration_time               = models.IntegerField()$/;"	v	class:NetworkCardStatus
+encryption_file_status	models.py	/^    encryption_file_status      = models.CharField(max_length=4, blank=True)$/;"	v	class:Detector
+encryption_file_type	models.py	/^    encryption_file_type        = models.IntegerField(default=0)$/;"	v	class:Detector
+encryption_file_version	models.py	/^    encryption_file_version     = models.CharField(max_length=32, blank=True)$/;"	v	class:Detector
+encryption_file_warninfo	models.py	/^    encryption_file_warninfo    = models.IntegerField(default=0)$/;"	v	class:Detector
+event_type	models.py	/^    event_type   = models.IntegerField(choices=abnormal_type)$/;"	v	class:SuspectedStatus
+export_detectors_report	data_processing.py	/^def export_detectors_report(request):$/;"	f
+f_handler	detect_center_audit.py	/^f_handler = open(file_path, 'wb')$/;"	v
+field	migrations/0002_auto_20170609_1840.py	/^            field=models.CharField(blank=True, max_length=32),$/;"	v	class:Migration
+field	migrations/0003_adminlogin_update_time.py	/^            field=models.DateTimeField(blank=True, null=True),$/;"	v	class:Migration
+field	migrations/0004_detector_comment.py	/^            field=models.CharField(blank=True, max_length=128),$/;"	v	class:Migration
+field	migrations/0005_auto_20170908_2104.py	/^            field=models.IntegerField(default=1),$/;"	v	class:Migration
+field	migrations/0006_auto_20170908_2123.py	/^            field=models.DateTimeField(blank=True, null=True),$/;"	v	class:Migration
+field	migrations/0006_auto_20170908_2123.py	/^            field=models.IntegerField(default=0),$/;"	v	class:Migration
+fields	detector_serializers.py	/^        fields = ('id', 'cpu', 'mem', 'disk', 'time', 'plug_stat', 'report_time', 'device_id')$/;"	v	class:SystemRunningStatusSerializer.Meta
+fields	detector_serializers.py	/^        fields = ('id', 'device_id', 'device_ca', 'organs', 'address', 'address_code',$/;"	v	class:DeviceInfoSerializer.Meta
+fields	detector_serializers.py	/^        fields = ('id', 'device_id', 'device_type', 'contractor', 'soft_version',$/;"	v	class:DetectorSerializer.Meta
+fields	detector_serializers.py	/^        fields = ('id', 'event_type', 'time', 'risk', 'msg', 'report_time', 'device_id')$/;"	v	class:SuspectedStatusSerializer.Meta
+fields	detector_serializers.py	/^        fields = ('id', 'interface_seq', 'interface_flag', 'interface_stat',$/;"	v	class:NetworkCardStatusSerializer.Meta
+fields	detector_serializers.py	/^        fields = ('id', 'login_id', 'login_password', 'level', 'create_time', 'update_time')$/;"	v	class:AdminLoginSerializer.Meta
+fields	detector_serializers.py	/^        fields = ('id', 'plug_id', 'status', 'plug_version',$/;"	v	class:PluginStatusSerializer.Meta
+fields	detector_serializers.py	/^        fields = ('id', 'uptime', 'soft_version', 'time', 'report_time', 'device_id')$/;"	v	class:BusinessStatusSerializer.Meta
+fields	migrations/0001_initial.py	/^            fields=[$/;"	v	class:Migration
+file_dir	detect_center_audit.py	/^file_dir = handle_dir + 'system_audit\/'$/;"	v
+file_name	detect_center_audit.py	/^file_name = 'system_audit_' + str(int(time.time())) + '_' + str(system_audit_flag)$/;"	v
+file_path	detect_center_audit.py	/^file_path = file_dir + file_name$/;"	v
+finger_file_status	models.py	/^    finger_file_status          = models.CharField(max_length=4, blank=True)$/;"	v	class:Detector
+finger_file_version	models.py	/^    finger_file_version         = models.CharField(max_length=32, blank=True)$/;"	v	class:Detector
+finger_file_warninfo	models.py	/^    finger_file_warninfo        = models.IntegerField(default=0)$/;"	v	class:Detector
+format_suffix_patterns	auth_urls.py	/^from rest_framework.urlpatterns import format_suffix_patterns$/;"	i
+format_suffix_patterns	business_status_urls.py	/^from rest_framework.urlpatterns import format_suffix_patterns$/;"	i
+format_suffix_patterns	detector_info_urls.py	/^from rest_framework.urlpatterns import format_suffix_patterns$/;"	i
+format_suffix_patterns	detector_urls.py	/^from rest_framework.urlpatterns import format_suffix_patterns$/;"	i
+format_suffix_patterns	login_urls.py	/^from rest_framework.urlpatterns import format_suffix_patterns$/;"	i
+format_suffix_patterns	register_urls.py	/^from rest_framework.urlpatterns import format_suffix_patterns$/;"	i
+format_suffix_patterns	system_status_urls.py	/^from rest_framework.urlpatterns import format_suffix_patterns$/;"	i
+format_suffix_patterns	user_urls.py	/^from rest_framework.urlpatterns import format_suffix_patterns$/;"	i
+generate_sheet	data_processing.py	/^def generate_sheet(workbook, sheet_name, data):$/;"	f
+get	views.py	/^    def get(self, request, format=None):$/;"	m	class:AuthorityUpdate
+get	views.py	/^    def get(self, request, format=None):$/;"	m	class:DetectorCheck
+get	views.py	/^    def get(self, request, format=None):$/;"	m	class:DetectorCount
+get	views.py	/^    def get(self, request, format=None):$/;"	m	class:DetectorDetail
+get	views.py	/^    def get(self, request, format=None):$/;"	m	class:DetectorEffectivenessUpdate
+get	views.py	/^    def get(self, request, format=None):$/;"	m	class:DetectorReportExport
+get	views.py	/^    def get(self, request, format=None):$/;"	m	class:DetectorShow
+get	views.py	/^    def get(self, request, format=None):$/;"	m	class:DeviceAddUpdate
+get	views.py	/^    def get(self, request, format=None):$/;"	m	class:DeviceCount
+get	views.py	/^    def get(self, request, format=None):$/;"	m	class:DeviceDetail
+get	views.py	/^    def get(self, request, format=None):$/;"	m	class:DeviceImport
+get	views.py	/^    def get(self, request, format=None):$/;"	m	class:DeviceShow
+get	views.py	/^    def get(self, request, format=None):$/;"	m	class:IsPasswordExpire
+get	views.py	/^    def get(self, request, format=None):$/;"	m	class:Login
+get	views.py	/^    def get(self, request, format=None):$/;"	m	class:Logout
+get	views.py	/^    def get(self, request, format=None):$/;"	m	class:PasswordUpdate
+get	views.py	/^    def get(self, request, format=None):$/;"	m	class:RegisterStatus
+get	views.py	/^    def get(self, request, format=None):$/;"	m	class:TempleteDownload
+get	views.py	/^    def get(self, request, format=None):$/;"	m	class:UserAdd
+get	views.py	/^    def get(self, request, format=None):$/;"	m	class:UserCount
+get	views.py	/^    def get(self, request, format=None):$/;"	m	class:UserDel
+get	views.py	/^    def get(self, request, format=None):$/;"	m	class:UserDetail
+get	views.py	/^    def get(self, request, format=None):$/;"	m	class:UserShow
+get_detector_query_terms	data_processing.py	/^def get_detector_query_terms(request_data):$/;"	f
+get_device_query_terms	data_processing.py	/^def get_device_query_terms(request_data):$/;"	f
+get_register_status	data_processing.py	/^def get_register_status(request):$/;"	f
+get_reset_task	data_processing.py	/^def get_reset_task(is_first_auth, rule_model, version_num, detector_id, d_id=0):$/;"	f
+get_rule_fields	data_processing.py	/^from policy.data_processing import rule_models, get_rule_fields$/;"	i
+get_user_query_terms	data_processing.py	/^def get_user_query_terms(request_data):$/;"	f
+handle_dir	detect_center_audit.py	/^handle_dir = '\/home\/Detector\/DetectorManagement\/yewuchuzhi\/'$/;"	v
+heartbeat_time	models.py	/^    heartbeat_time              = models.DateTimeField(null=True, blank=True)$/;"	v	class:Detector
+import_device_file	data_processing.py	/^def import_device_file(request):$/;"	f
+initial	migrations/0001_initial.py	/^    initial = True$/;"	v	class:Migration
+insert_user	data_processing.py	/^def insert_user(request):$/;"	f
+interface	models.py	/^    interface                   = models.CharField(max_length=1024, blank=True)$/;"	v	class:Detector
+interface	models.py	/^    interface         = models.CharField(max_length=1024)$/;"	v	class:DeviceInfo
+interface_drop	models.py	/^    interface_drop              = models.IntegerField()$/;"	v	class:NetworkCardStatus
+interface_error	models.py	/^    interface_error             = models.IntegerField()$/;"	v	class:NetworkCardStatus
+interface_flag	models.py	/^    interface_flag              = models.CharField(max_length=64)$/;"	v	class:NetworkCardStatus
+interface_flow	models.py	/^    interface_flow              = models.IntegerField()$/;"	v	class:NetworkCardStatus
+interface_seq	models.py	/^    interface_seq               = models.IntegerField()$/;"	v	class:NetworkCardStatus
+interface_stat	models.py	/^    interface_stat              = models.IntegerField(choices=NIC_status)$/;"	v	class:NetworkCardStatus
+ip_listen_status	models.py	/^    ip_listen_status            = models.CharField(max_length=4, blank=True)$/;"	v	class:Detector
+ip_listen_type	models.py	/^    ip_listen_type              = models.IntegerField(default=0)$/;"	v	class:Detector
+ip_listen_version	models.py	/^    ip_listen_version           = models.CharField(max_length=32, blank=True)$/;"	v	class:Detector
+ip_listen_warninfo	models.py	/^    ip_listen_warninfo          = models.IntegerField(default=0)$/;"	v	class:Detector
+ip_whitelist_type	models.py	/^    ip_whitelist_type           = models.IntegerField(default=0)$/;"	v	class:Detector
+ip_whitelist_version	models.py	/^    ip_whitelist_version        = models.CharField(max_length=32, blank=True)$/;"	v	class:Detector
+is_conform_config	data_processing.py	/^def is_conform_config(cpu, memory, disk, interface=None, **kw):$/;"	f
+is_effective	models.py	/^    is_effective                = models.BooleanField(default=True)$/;"	v	class:Detector
+is_online	judge_online.py	/^def is_online(time_delta=90):$/;"	f
+is_online	models.py	/^    is_online                   = models.IntegerField(default=0)$/;"	v	class:Detector
+is_pwd_expire	data_processing.py	/^def is_pwd_expire(request):$/;"	f
+json	data_processing.py	/^import json$/;"	i
+json	detect_center_audit.py	/^import json$/;"	i
+keyword_file_status	models.py	/^    keyword_file_status         = models.CharField(max_length=4, blank=True)$/;"	v	class:Detector
+keyword_file_type	models.py	/^    keyword_file_type           = models.IntegerField(default=0)$/;"	v	class:Detector
+keyword_file_version	models.py	/^    keyword_file_version        = models.CharField(max_length=32, blank=True)$/;"	v	class:Detector
+keyword_file_warninfo	models.py	/^    keyword_file_warninfo       = models.IntegerField(default=0)$/;"	v	class:Detector
+last_warning_time	models.py	/^    last_warning_time           = models.DateTimeField(null=True, blank=True)$/;"	v	class:Detector
+level	models.py	/^    level            = models.IntegerField(default=2)$/;"	v	class:AdminLogin
+login_check	data_processing.py	/^def login_check(request):$/;"	f
+login_id	models.py	/^    login_id         = models.CharField(max_length=32)$/;"	v	class:AdminLogin
+login_password	models.py	/^    login_password   = models.CharField(max_length=32)$/;"	v	class:AdminLogin
+logout_log	data_processing.py	/^def logout_log(request):$/;"	f
+malware_status	models.py	/^    malware_status              = models.CharField(max_length=4, blank=True)$/;"	v	class:Detector
+malware_type	models.py	/^    malware_type                = models.IntegerField(default=0)$/;"	v	class:Detector
+malware_version	models.py	/^    malware_version             = models.CharField(max_length=32, blank=True)$/;"	v	class:Detector
+malware_warninfo	models.py	/^    malware_warninfo            = models.TextField(blank=True)$/;"	v	class:Detector
+mem	models.py	/^    mem          = models.IntegerField()$/;"	v	class:SystemRunningStatus
+mem_total	models.py	/^    mem_total                   = models.IntegerField(default=0)$/;"	v	class:Detector
+mem_total	models.py	/^    mem_total         = models.IntegerField(default=0)$/;"	v	class:DeviceInfo
+mem_usage	detect_center_audit.py	/^mem_usage = str(psutil.virtual_memory().percent) + '%'$/;"	v
+memo	models.py	/^    memo                        = models.CharField(max_length=128, blank=True)$/;"	v	class:Detector
+migrations	migrations/0001_initial.py	/^from django.db import migrations, models$/;"	i
+migrations	migrations/0002_auto_20170609_1840.py	/^from django.db import migrations, models$/;"	i
+migrations	migrations/0003_adminlogin_update_time.py	/^from django.db import migrations, models$/;"	i
+migrations	migrations/0004_detector_comment.py	/^from django.db import migrations, models$/;"	i
+migrations	migrations/0005_auto_20170908_2104.py	/^from django.db import migrations, models$/;"	i
+migrations	migrations/0006_auto_20170908_2123.py	/^from django.db import migrations, models$/;"	i
+model	detector_serializers.py	/^        model = AdminLogin$/;"	v	class:AdminLoginSerializer.Meta
+model	detector_serializers.py	/^        model = BusinessStatus$/;"	v	class:BusinessStatusSerializer.Meta
+model	detector_serializers.py	/^        model = Detector$/;"	v	class:DetectorSerializer.Meta
+model	detector_serializers.py	/^        model = DeviceInfo$/;"	v	class:DeviceInfoSerializer.Meta
+model	detector_serializers.py	/^        model = NetworkCardStatus$/;"	v	class:NetworkCardStatusSerializer.Meta
+model	detector_serializers.py	/^        model = PluginStatus$/;"	v	class:PluginStatusSerializer.Meta
+model	detector_serializers.py	/^        model = SuspectedStatus$/;"	v	class:SuspectedStatusSerializer.Meta
+model	detector_serializers.py	/^        model = SystemRunningStatus$/;"	v	class:SystemRunningStatusSerializer.Meta
+model_name	migrations/0002_auto_20170609_1840.py	/^            model_name='detector',$/;"	v	class:Migration
+model_name	migrations/0003_adminlogin_update_time.py	/^            model_name='adminlogin',$/;"	v	class:Migration
+model_name	migrations/0004_detector_comment.py	/^            model_name='detector',$/;"	v	class:Migration
+model_name	migrations/0005_auto_20170908_2104.py	/^            model_name='detector',$/;"	v	class:Migration
+model_name	migrations/0006_auto_20170908_2123.py	/^            model_name='detector',$/;"	v	class:Migration
+models	migrations/0001_initial.py	/^from django.db import migrations, models$/;"	i
+models	migrations/0002_auto_20170609_1840.py	/^from django.db import migrations, models$/;"	i
+models	migrations/0003_adminlogin_update_time.py	/^from django.db import migrations, models$/;"	i
+models	migrations/0004_detector_comment.py	/^from django.db import migrations, models$/;"	i
+models	migrations/0005_auto_20170908_2104.py	/^from django.db import migrations, models$/;"	i
+models	migrations/0006_auto_20170908_2123.py	/^from django.db import migrations, models$/;"	i
+models	models.py	/^from django.db import models$/;"	i
+msg	models.py	/^    msg          = models.CharField(max_length=128, blank=True)$/;"	v	class:SuspectedStatus
+name	apps.py	/^    name = 'detector'$/;"	v	class:DetectorConfig
+name	migrations/0001_initial.py	/^            name='AdminLogin',$/;"	v	class:Migration
+name	migrations/0001_initial.py	/^            name='BusinessStatus',$/;"	v	class:Migration
+name	migrations/0001_initial.py	/^            name='Detector',$/;"	v	class:Migration
+name	migrations/0001_initial.py	/^            name='DeviceInfo',$/;"	v	class:Migration
+name	migrations/0001_initial.py	/^            name='NetworkCardStatus',$/;"	v	class:Migration
+name	migrations/0001_initial.py	/^            name='PluginStatus',$/;"	v	class:Migration
+name	migrations/0001_initial.py	/^            name='SuspectedStatus',$/;"	v	class:Migration
+name	migrations/0001_initial.py	/^            name='SystemRunningStatus',$/;"	v	class:Migration
+name	migrations/0002_auto_20170609_1840.py	/^            name='picture_file_version',$/;"	v	class:Migration
+name	migrations/0003_adminlogin_update_time.py	/^            name='update_time',$/;"	v	class:Migration
+name	migrations/0004_detector_comment.py	/^            name='comment',$/;"	v	class:Migration
+name	migrations/0005_auto_20170908_2104.py	/^            name='is_online',$/;"	v	class:Migration
+name	migrations/0006_auto_20170908_2123.py	/^            name='heartbeat_time',$/;"	v	class:Migration
+name	migrations/0006_auto_20170908_2123.py	/^            name='is_online',$/;"	v	class:Migration
+net_audit_status	models.py	/^    net_audit_status            = models.CharField(max_length=4, blank=True)$/;"	v	class:Detector
+net_log_status	models.py	/^    net_log_status              = models.CharField(max_length=4, blank=True)$/;"	v	class:Detector
+net_log_type	models.py	/^    net_log_type                = models.IntegerField(default=0)$/;"	v	class:Detector
+net_log_version	models.py	/^    net_log_version             = models.CharField(max_length=32, blank=True)$/;"	v	class:Detector
+net_log_warninfo	models.py	/^    net_log_warninfo            = models.IntegerField(default=0)$/;"	v	class:Detector
+new_name	migrations/0002_auto_20170609_1840.py	/^            new_name='contractor',$/;"	v	class:Migration
+new_name	migrations/0002_auto_20170609_1840.py	/^            new_name='picture_file_status',$/;"	v	class:Migration
+new_name	migrations/0002_auto_20170609_1840.py	/^            new_name='picture_file_type',$/;"	v	class:Migration
+new_name	migrations/0002_auto_20170609_1840.py	/^            new_name='picture_file_warninfo',$/;"	v	class:Migration
+object_listen_status	models.py	/^    object_listen_status        = models.CharField(max_length=4, blank=True)$/;"	v	class:Detector
+old_name	migrations/0002_auto_20170609_1840.py	/^            old_name='picture_filter_status',$/;"	v	class:Migration
+old_name	migrations/0002_auto_20170609_1840.py	/^            old_name='picture_filter_type',$/;"	v	class:Migration
+old_name	migrations/0002_auto_20170609_1840.py	/^            old_name='picture_filter_version',$/;"	v	class:Migration
+old_name	migrations/0002_auto_20170609_1840.py	/^            old_name='picture_filter_warninfo',$/;"	v	class:Migration
+op_ip	models.py	/^    op_ip                       = models.CharField(max_length=64, blank=True)$/;"	v	class:Detector
+op_person	models.py	/^    op_person                   = models.CharField(max_length=64, blank=True)$/;"	v	class:Detector
+op_time	models.py	/^    op_time                     = models.DateTimeField(null=True, blank=True)$/;"	v	class:Detector
+operations	migrations/0001_initial.py	/^    operations = [$/;"	v	class:Migration
+operations	migrations/0002_auto_20170609_1840.py	/^    operations = [$/;"	v	class:Migration
+operations	migrations/0003_adminlogin_update_time.py	/^    operations = [$/;"	v	class:Migration
+operations	migrations/0004_detector_comment.py	/^    operations = [$/;"	v	class:Migration
+operations	migrations/0005_auto_20170908_2104.py	/^    operations = [$/;"	v	class:Migration
+operations	migrations/0006_auto_20170908_2123.py	/^    operations = [$/;"	v	class:Migration
+options	migrations/0001_initial.py	/^            options={$/;"	v	class:Migration
+organs	models.py	/^    organs                      = models.CharField(max_length=64)$/;"	v	class:Detector
+organs	models.py	/^    organs            = models.CharField(max_length=64)$/;"	v	class:DeviceInfo
+os	data_processing.py	/^import os$/;"	i
+os	detect_center_audit.py	/^import os$/;"	i
+os	judge_online.py	/^import os$/;"	i
+other_status	models.py	/^    other_status                = models.CharField(max_length=4, blank=True)$/;"	v	class:Detector
+other_version	models.py	/^    other_version               = models.CharField(max_length=32, blank=True)$/;"	v	class:Detector
+other_warninfo	models.py	/^    other_warninfo              = models.TextField(blank=True)$/;"	v	class:Detector
+pathname	judge_online.py	/^pathname = os.path.dirname(os.path.abspath(__file__))$/;"	v
+picture_file_status	models.py	/^    picture_file_status         = models.CharField(max_length=4, blank=True)$/;"	v	class:Detector
+picture_file_type	models.py	/^    picture_file_type           = models.IntegerField(default=0)$/;"	v	class:Detector
+picture_file_version	models.py	/^    picture_file_version        = models.CharField(max_length=32, blank=True)$/;"	v	class:Detector
+picture_file_warninfo	models.py	/^    picture_file_warninfo       = models.IntegerField(default=0)$/;"	v	class:Detector
+plug_id	models.py	/^    plug_id                 = models.CharField(max_length=32)$/;"	v	class:PluginStatus
+plug_policy_version	models.py	/^    plug_policy_version     = models.CharField(max_length=32)$/;"	v	class:PluginStatus
+plug_stat	models.py	/^    plug_stat    = models.TextField()$/;"	v	class:SystemRunningStatus
+plug_version	models.py	/^    plug_version            = models.CharField(max_length=32)$/;"	v	class:PluginStatus
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:AuthLogin
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:AuthorityUpdate
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:BusinessStatusProcess
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:DetectorCheck
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:DetectorCount
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:DetectorDetail
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:DetectorEffectivenessUpdate
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:DetectorReportExport
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:DetectorShow
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:DeviceAddUpdate
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:DeviceCount
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:DeviceDetail
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:DeviceImport
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:DeviceShow
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:IsPasswordExpire
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:Login
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:Logout
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:PasswordUpdate
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:ReRegister
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:Register
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:SystemStatusProcess
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:TempleteDownload
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:UserAdd
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:UserCount
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:UserDel
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:UserDetail
+post	views.py	/^    def post(self, request, format=None):$/;"	m	class:UserShow
+process_business_status	data_processing.py	/^def process_business_status(request):$/;"	f
+process_system_status	data_processing.py	/^def process_system_status(request):$/;"	f
+psutil	detect_center_audit.py	/^import psutil$/;"	i
+re_register	data_processing.py	/^def re_register(request):$/;"	f
+register	data_processing.py	/^def register(request):$/;"	f
+register_fail_reason	models.py	/^    register_fail_reason        = models.CharField(max_length=64, blank=True)$/;"	v	class:Detector
+register_frequency	models.py	/^    register_frequency          = models.IntegerField(default=1)$/;"	v	class:Detector
+register_status	models.py	/^    register_status             = models.IntegerField(default=2)$/;"	v	class:Detector
+register_time	models.py	/^    register_time               = models.DateTimeField()$/;"	v	class:Detector
+report_time	models.py	/^    report_time                 = models.DateTimeField()$/;"	v	class:BusinessStatus
+report_time	models.py	/^    report_time                 = models.DateTimeField()$/;"	v	class:NetworkCardStatus
+report_time	models.py	/^    report_time             = models.DateTimeField()$/;"	v	class:PluginStatus
+report_time	models.py	/^    report_time  = models.DateTimeField()$/;"	v	class:SuspectedStatus
+report_time	models.py	/^    report_time  = models.DateTimeField()$/;"	v	class:SystemRunningStatus
+risk	models.py	/^    risk         = models.IntegerField(choices=risk_choices)$/;"	v	class:SuspectedStatus
+risk_choices	models.py	/^    risk_choices = ($/;"	v	class:SuspectedStatus
+rule_abnormal_list	models.py	/^    rule_abnormal_list          = models.TextField(blank=True)$/;"	v	class:Detector
+rule_account_list	models.py	/^    rule_account_list           = models.TextField(blank=True)$/;"	v	class:Detector
+rule_appbehavior_list	models.py	/^    rule_appbehavior_list       = models.TextField(blank=True)$/;"	v	class:Detector
+rule_attack_list	models.py	/^    rule_attack_list            = models.TextField(blank=True)$/;"	v	class:Detector
+rule_block_list	models.py	/^    rule_block_list             = models.TextField(blank=True)$/;"	v	class:Detector
+rule_compress_list	models.py	/^    rule_compress_list          = models.TextField(blank=True)$/;"	v	class:Detector
+rule_dnsfilter_list	models.py	/^    rule_dnsfilter_list         = models.TextField(blank=True)$/;"	v	class:Detector
+rule_domain_list	models.py	/^    rule_domain_list            = models.TextField(blank=True)$/;"	v	class:Detector
+rule_encryption_list	models.py	/^    rule_encryption_list        = models.TextField(blank=True)$/;"	v	class:Detector
+rule_ip_list	models.py	/^    rule_ip_list                = models.TextField(blank=True)$/;"	v	class:Detector
+rule_ipwhite_list	models.py	/^    rule_ipwhite_list           = models.TextField(blank=True)$/;"	v	class:Detector
+rule_keyword_list	models.py	/^    rule_keyword_list           = models.TextField(blank=True)$/;"	v	class:Detector
+rule_malware_list	models.py	/^    rule_malware_list           = models.TextField(blank=True)$/;"	v	class:Detector
+rule_models	data_processing.py	/^from policy.data_processing import rule_models, get_rule_fields$/;"	i
+rule_netlog_list	models.py	/^    rule_netlog_list            = models.TextField(blank=True)$/;"	v	class:Detector
+rule_picture_list	models.py	/^    rule_picture_list           = models.TextField(blank=True)$/;"	v	class:Detector
+rule_trojan_list	models.py	/^    rule_trojan_list            = models.TextField(blank=True)$/;"	v	class:Detector
+rule_url_list	models.py	/^    rule_url_list               = models.TextField(blank=True)$/;"	v	class:Detector
+rule_webfilter_list	models.py	/^    rule_webfilter_list         = models.TextField(blank=True)$/;"	v	class:Detector
+sensitive_file_status	models.py	/^    sensitive_file_status       = models.CharField(max_length=4, blank=True)$/;"	v	class:Detector
+sensitive_file_version	models.py	/^    sensitive_file_version      = models.CharField(max_length=32, blank=True)$/;"	v	class:Detector
+sensitive_file_warninfo	models.py	/^    sensitive_file_warninfo     = models.IntegerField(default=0)$/;"	v	class:Detector
+sensitive_status	models.py	/^    sensitive_status            = models.CharField(max_length=4, blank=True)$/;"	v	class:Detector
+serialize	data_processing.py	/^from django.core.serializers import serialize$/;"	i
+serializers	detector_serializers.py	/^from rest_framework import serializers$/;"	i
+show_all_detectors	data_processing.py	/^def show_all_detectors(request):$/;"	f
+show_all_devices	data_processing.py	/^def show_all_devices(request):$/;"	f
+show_all_users	data_processing.py	/^def show_all_users(request):$/;"	f
+show_detector_detail	data_processing.py	/^def show_detector_detail(request):$/;"	f
+show_detectors_count	data_processing.py	/^def show_detectors_count(request):$/;"	f
+show_device_detail	data_processing.py	/^def show_device_detail(request):$/;"	f
+show_devices_count	data_processing.py	/^def show_devices_count(request):$/;"	f
+show_user_detail	data_processing.py	/^def show_user_detail(request):$/;"	f
+show_users_count	data_processing.py	/^def show_users_count(request):$/;"	f
+soft_version	models.py	/^    soft_version                = models.CharField(max_length=32)$/;"	v	class:BusinessStatus
+soft_version	models.py	/^    soft_version                = models.CharField(max_length=32)$/;"	v	class:Detector
+status	data_processing.py	/^from rest_framework import status$/;"	i
+status	models.py	/^    status                  = models.CharField(max_length=4)$/;"	v	class:PluginStatus
+style_file_status	models.py	/^    style_file_status           = models.CharField(max_length=4, blank=True)$/;"	v	class:Detector
+style_file_version	models.py	/^    style_file_version          = models.CharField(max_length=32, blank=True)$/;"	v	class:Detector
+style_file_warninfo	models.py	/^    style_file_warninfo         = models.IntegerField(default=0)$/;"	v	class:Detector
+sys	judge_online.py	/^import sys$/;"	i
+system_audit_flag	detect_center_audit.py	/^system_audit_flag = 1$/;"	v
+time	detect_center_audit.py	/^import time$/;"	i
+time	judge_online.py	/^import time$/;"	i
+time	models.py	/^    time                        = models.DateTimeField()$/;"	v	class:BusinessStatus
+time	models.py	/^    time         = models.DateTimeField()$/;"	v	class:SuspectedStatus
+time	models.py	/^    time         = models.DateTimeField()$/;"	v	class:SystemRunningStatus
+traceback	data_processing.py	/^import traceback$/;"	i
+transaction	data_processing.py	/^from django.db import connection, transaction$/;"	i
+trojan_status	models.py	/^    trojan_status               = models.CharField(max_length=4, blank=True)$/;"	v	class:Detector
+trojan_type	models.py	/^    trojan_type                 = models.IntegerField(default=0)$/;"	v	class:Detector
+trojan_version	models.py	/^    trojan_version              = models.CharField(max_length=32, blank=True)$/;"	v	class:Detector
+trojan_warninfo	models.py	/^    trojan_warninfo             = models.TextField(blank=True)$/;"	v	class:Detector
+unicode_literals	apps.py	/^from __future__ import unicode_literals$/;"	i
+unicode_literals	migrations/0001_initial.py	/^from __future__ import unicode_literals$/;"	i
+unicode_literals	migrations/0002_auto_20170609_1840.py	/^from __future__ import unicode_literals$/;"	i
+unicode_literals	migrations/0003_adminlogin_update_time.py	/^from __future__ import unicode_literals$/;"	i
+unicode_literals	migrations/0004_detector_comment.py	/^from __future__ import unicode_literals$/;"	i
+unicode_literals	migrations/0005_auto_20170908_2104.py	/^from __future__ import unicode_literals$/;"	i
+unicode_literals	migrations/0006_auto_20170908_2123.py	/^from __future__ import unicode_literals$/;"	i
+unicode_literals	models.py	/^from __future__ import unicode_literals$/;"	i
+update_authority	data_processing.py	/^def update_authority(request):$/;"	f
+update_detector_effective_status	data_processing.py	/^def update_detector_effective_status(request):$/;"	f
+update_password	data_processing.py	/^def update_password(request):$/;"	f
+update_time	models.py	/^    update_time      = models.DateTimeField(null=True, blank=True)$/;"	v	class:AdminLogin
+uptime	models.py	/^    uptime                      = models.IntegerField()$/;"	v	class:BusinessStatus
+url	auth_urls.py	/^from django.conf.urls import url$/;"	i
+url	business_status_urls.py	/^from django.conf.urls import url$/;"	i
+url	detector_info_urls.py	/^from django.conf.urls import url$/;"	i
+url	detector_urls.py	/^from django.conf.urls import url$/;"	i
+url	login_urls.py	/^from django.conf.urls import url$/;"	i
+url	register_urls.py	/^from django.conf.urls import url$/;"	i
+url	system_status_urls.py	/^from django.conf.urls import url$/;"	i
+url	user_urls.py	/^from django.conf.urls import url$/;"	i
+url_listen_status	models.py	/^    url_listen_status           = models.CharField(max_length=4, blank=True)$/;"	v	class:Detector
+url_listen_type	models.py	/^    url_listen_type             = models.IntegerField(default=0)$/;"	v	class:Detector
+url_listen_version	models.py	/^    url_listen_version          = models.CharField(max_length=32, blank=True)$/;"	v	class:Detector
+url_listen_warninfo	models.py	/^    url_listen_warninfo         = models.IntegerField(default=0)$/;"	v	class:Detector
+urlpatterns	auth_urls.py	/^urlpatterns = [$/;"	v
+urlpatterns	auth_urls.py	/^urlpatterns = format_suffix_patterns(urlpatterns)/;"	v
+urlpatterns	business_status_urls.py	/^urlpatterns = [$/;"	v
+urlpatterns	business_status_urls.py	/^urlpatterns = format_suffix_patterns(urlpatterns)/;"	v
+urlpatterns	detector_info_urls.py	/^urlpatterns = [$/;"	v
+urlpatterns	detector_info_urls.py	/^urlpatterns = format_suffix_patterns(urlpatterns)/;"	v
+urlpatterns	detector_urls.py	/^urlpatterns = [$/;"	v
+urlpatterns	detector_urls.py	/^urlpatterns = format_suffix_patterns(urlpatterns)/;"	v
+urlpatterns	login_urls.py	/^urlpatterns = [$/;"	v
+urlpatterns	login_urls.py	/^urlpatterns = format_suffix_patterns(urlpatterns)$/;"	v
+urlpatterns	register_urls.py	/^urlpatterns = [$/;"	v
+urlpatterns	register_urls.py	/^urlpatterns = format_suffix_patterns(urlpatterns)/;"	v
+urlpatterns	system_status_urls.py	/^urlpatterns = [$/;"	v
+urlpatterns	system_status_urls.py	/^urlpatterns = format_suffix_patterns(urlpatterns)/;"	v
+urlpatterns	user_urls.py	/^urlpatterns = [$/;"	v
+urlpatterns	user_urls.py	/^urlpatterns = format_suffix_patterns(urlpatterns)$/;"	v
+version_check_type	models.py	/^    version_check_type          = models.IntegerField(default=0)$/;"	v	class:Detector
+views	auth_urls.py	/^import views$/;"	i
+views	business_status_urls.py	/^import views$/;"	i
+views	detector_info_urls.py	/^import views$/;"	i
+views	detector_urls.py	/^import views$/;"	i
+views	login_urls.py	/^import views$/;"	i
+views	register_urls.py	/^import views$/;"	i
+views	system_status_urls.py	/^import views$/;"	i
+views	user_urls.py	/^import views$/;"	i
+web_filter_type	models.py	/^    web_filter_type             = models.IntegerField(default=0)$/;"	v	class:Detector
+web_filter_version	models.py	/^    web_filter_version          = models.CharField(max_length=32, blank=True)$/;"	v	class:Detector
+xlrd	data_processing.py	/^import xlrd$/;"	i
+xlsxwriter	data_processing.py	/^import xlsxwriter$/;"	i

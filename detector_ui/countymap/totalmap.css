@@ -1,0 +1,108 @@
+.middle_main {
+    height: 610px;
+}
+
+.total_map {
+    height: 420px;
+    border: 1px solid #000079;
+    background-image:url(grid.jpg);
+}
+
+.pie {
+    height: 180px;
+    padding-top: 10px;
+    border: 1px solid #000079;
+    background: #003;
+}
+
+.friendlink {
+    height: 20px;
+    padding-top: 10px;
+}
+
+.left_left_elictric_exponent {
+    height: 180px;
+    width: 40%;
+    float: left;
+    color:gray;
+    font-size: 10px;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+
+.left_left_expense {
+
+    height: 180px;
+    width: 18%;
+    float: left;
+}
+
+.map_title {
+    height: 110px;
+    width: 200px;
+    position: relative;
+    color: gray;
+    margin-left: 20px;
+}
+
+.map_fix {
+    height: 24px;
+    width: 200px;
+    position: relative;
+    margin-left: 20px;
+}
+
+.expense_show {
+    height: 24px;
+    width: 33%;
+    float: left;
+    color:gray;
+    padding-left: 2px;
+    font-size: 12px;
+    margin: 0px;
+    cursor: pointer;
+    padding-top: 6px;
+    text-align: center;
+}
+
+.population_show {
+    height: 24px;
+    width: 33%;
+    float: left;
+    font-size: 12px;
+    margin: 0px;
+    color: gray;
+    cursor: pointer;
+    padding-top: 6px;
+    text-align: center;
+}
+
+.happy_show {
+    height: 24px;
+    width: 33%;
+    float: left;
+    color: gray;
+    font-size: 12px;
+    margin: 0px;
+    cursor: pointer;
+    padding-top: 6px;
+    text-align: center;
+}
+.map1{
+    height: 264px;
+    width: 200px;
+    position: relative;
+    margin-left: 20px;
+}
+.map_left{
+    height: 420px;
+    width: 35%;
+    margin: 0;
+    float: left;
+}
+.map_right{
+    height: 420px;
+    width: 65%;
+    margin: 0;
+    float: left;
+}

@@ -1,0 +1,368 @@
+/* 
+Author: Start Bootstrap - http://startbootstrap.com
+'SB Admin' HTML Template by Start Bootstrap
+
+All Start Bootstrap themes are licensed under Apache 2.0. 
+For more info and more free Bootstrap 3 HTML themes, visit http://startbootstrap.com!
+*/
+
+/* ATTN: This is mobile first CSS - to update 786px and up screen width use the media query near the bottom of the document! */
+
+/* Global Styles */
+
+body {
+  margin-top: 50px;
+  background-color: #EAEDF1;
+  overflow-x: hidden;
+}
+
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei";
+}
+
+#whole-wrapper {
+  /*padding-left: 180px;*/
+}
+
+
+#whole-wrapper-no-menu {
+    padding-left: 0px;
+}
+
+/* Nav Messages */
+
+.messages-dropdown .dropdown-menu .message-preview .avatar,
+.messages-dropdown .dropdown-menu .message-preview .name,
+.messages-dropdown .dropdown-menu .message-preview .message,
+.messages-dropdown .dropdown-menu .message-preview .time {
+  display: block;
+}
+
+.messages-dropdown .dropdown-menu .message-preview .avatar {
+  float: left;
+  margin-right: 15px;
+}
+
+.messages-dropdown .dropdown-menu .message-preview .name {
+  font-weight: bold;
+  color: #06c;
+}
+
+.messages-dropdown .dropdown-menu .message-preview .message {
+  font-size: 12px;
+}
+
+.messages-dropdown .dropdown-menu .message-preview .time {
+  font-size: 12px;
+}
+
+
+/* Nav Announcements */
+
+.announcement-heading {
+  font-size: 50px;
+  margin: 0;
+}
+
+.announcement-text {
+  margin: 0;
+}
+
+/* Table Headers */
+
+table.tablesorter thead {
+  cursor: pointer;
+}
+
+table.tablesorter thead tr th:hover {
+  background-color: #f5f5f5;
+}
+
+/* Flot Chart Containers */
+
+.flot-chart {
+  display: block;
+  height: 400px;
+}
+
+.flot-chart-content {
+  width: 100%;
+  height: 100%;
+}
+
+.side-nav {
+    margin-left: -180px;
+    left: 180px;
+    width: 180px;
+    position: fixed;
+    top: 50px;
+    height: 100%;
+    border-radius: 0;
+    border: none;
+    background-color: #293038;
+    overflow-y: auto;
+}
+
+/* Bootstrap Default Overrides - Customized Dropdowns for the Side Nav */
+
+/*.side-nav>li.dropdown>ul.dropdown-menu,.side-nav>li.dropdown>ul.dropdown-menu>li.dropdown-submenu>ul.dropdown-menu{*/
+     /*position: relative;*/
+     /*min-width: 180px;*/
+     /*margin: 0;*/
+     /*padding: 0;*/
+     /*border: none;*/
+     /*border-radius: 0;*/
+     /*background-color: transparent;*/
+     /*box-shadow: none;*/
+     /*-webkit-box-shadow: none;*/
+ /*}*/
+
+/*.side-nav>li.dropdown>ul.dropdown-menu>li>a,.side-nav>li.dropdown>ul.dropdown-menu>li.dropdown-submenu>ul.dropdown-menu>li>a {*/
+    /*color: #999999;*/
+    /*padding: 10px 15px 10px 25px;*/
+/*}*/
+
+.side-nav li.dropdown ul.dropdown-menu{
+    position: relative;
+    min-width: 180px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.side-nav li.dropdown ul.dropdown-menu li a{
+    color: #999999;
+    padding: 10px 15px 10px 25px;
+}
+
+/*第三级目录样式*/
+.side-nav>li.dropdown>ul.dropdown-menu>li.dropdown>ul.dropdown-menu>li>a {
+    font-size: small;
+    padding-left: 35px;
+}
+
+
+.side-nav li.dropdown ul.dropdown-menu li>a:hover,
+.side-nav li.dropdown ul.dropdown-menu li>a.active,
+.side-nav li.dropdown ul.dropdown-menu li>a:focus {
+	color: #fff;
+	background-color: #37424F;
+}
+
+.side-nav>li>a {
+	width: 180px;
+	background: #22282e;
+	color: #f5f5f5;
+}
+
+/* Nav Messages */
+
+.messages-dropdown .dropdown-menu {
+	min-width: 400px;
+}
+
+.messages-dropdown .dropdown-menu li a {
+	white-space: normal;
+}
+
+.navbar-blue{
+	background-color: #09C;
+	height:50px;
+}
+.navbar-header-fix-height{
+	height:50px;
+}
+
+.navbar-header-img{
+	height:40px; margin:5px;
+}
+
+.navbar-right > li > a {
+	color: #f5f5f5;
+}
+
+.side-nav .open > a, .side-nav .open > a:hover, .side-nav .open > a:focus {
+    background-color: #22282E;
+}
+.side-nav > li > a:hover, .side-nav > li > a:focus {
+    color: #fff;
+	background-color: #37424F;
+}
+
+.navbar-right > li > a:hover, .navbar-right > li > a:focus {
+    background-color: rgba(2, 96, 128, 0.19);
+}
+
+.side-nav .open > a, .side-nav .open > a:hover, .side-nav .open > a:focus {
+    color: #f5f5f5;
+}
+
+.navbar-right .open > a, .navbar-right .open > a:hover, .navbar-right .open > a:focus {
+    color: #080808;
+}
+
+.navbar-nav .caret {
+    border-top-color: #f5f5f5;
+	border-bottom-color: #f5f5f5;
+}
+
+.navbar-nav a:hover .caret {
+    border-top-color: #f5f5f5;
+    border-bottom-color: #f5f5f5;
+}
+
+.side-nav .open > a .caret, .side-nav .open > a:hover .caret, .side-nav .open > a:focus .caret {
+    border-top-color: #f5f5f5;
+	border-bottom-color: #f5f5f5;
+}
+
+
+.navbar-right .open > a .caret, .navbar-right .open > a:hover .caret, .navbar-right .open > a:focus .caret {
+    border-top-color: #080808;
+    border-bottom-color: #080808;
+}
+
+.side-nav > li {
+	border-bottom: solid 1px rgb(49, 49, 49);
+}
+
+.active-blue{
+	background: #09C;
+	color: #fff;
+}
+
+.search-dropdown ul{
+	padding:0 0;
+	border: none;
+	min-width: 300px;
+}
+
+.qrcode-dropdown .thumbnail{
+    margin-bottom: 0;
+}
+.qrcode-dropdown p{
+	text-align: center;
+}
+
+.qrcode-dropdown ul{
+	padding:0 0;
+	border: none;
+}
+p.check-more{
+	text-align: center;
+}
+
+.navbar-right .badge{
+	background: #FF9900;
+}
+
+
+
+
+/*--------------------------------
+        login
+---------------------------------*/
+.copyright {
+    text-align: center;
+    color: lightgray;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+/* 2017/9/26 
+   导航
+*/
+.navbar .brand {
+    font-weight: 600;
+    position: relative;
+    top: 2px;
+    float: left;
+    display: block;
+    padding: 8px 20px 12px;
+    font-size: 20px;
+    line-height: 1;
+    color: #ffffff;
+    text-decoration: none;
+}
+.navbar-inner .nav-collapse > ul > li {
+    float: left;
+    min-width: 75px;
+    /* height: 60px; */
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    list-style: none;
+    /*border-left: 1px solid #d9d9d9;*/
+    line-height: 18px;
+    text-align: left;
+}
+.navbar-inner .nav-collapse > ul > li >a {
+    padding: 10px 10px 11px;
+    height: 50px;
+    line-height: 30px;
+}
+#whole-wrapper .loginInfo{
+    display: inline;
+    line-height: 18px;
+}
+
+/*tabnav*/
+.margin-navtab{
+    margin-top: 52px;
+    margin-left: 15px;
+}
+
+
+        /*二级、三级菜单*/
+
+        .dropdown-submenu {
+            position: relative;  
+        }  
+        .dropdown-submenu > .dropdown-menu {
+            top: 0;  
+            left: 100%;  
+            margin-top: -6px;  
+            margin-left: -1px;  
+            -webkit-border-radius: 0 6px 6px 6px;  
+            -moz-border-radius: 0 6px 6px;  
+            border-radius: 0 6px 6px 6px;
+            min-width: 180px;
+        }  
+        .dropdown-submenu:hover > .dropdown-menu {
+            display: block;  
+        }  
+        .dropdown-submenu > a:after {  
+            display: block;  
+            content: " ";  
+            float: right;  
+            width: 0;  
+            height: 0;  
+            border-color: transparent;  
+            border-style: solid;  
+            border-width: 5px 0 5px 5px;  
+            border-left-color: #ccc;  
+            margin-top: 5px;  
+            margin-right: -10px;  
+        }  
+        .dropdown-submenu:hover > a:after {  
+            border-left-color: #fff;  
+        }  
+        .dropdown-submenu.pull-left {  
+            float: none;  
+        }  
+        .dropdown-submenu.pull-left > .dropdown-menu {  
+            left: -100%;  
+            margin-left: 10px;  
+            -webkit-border-radius: 6px 0 6px 6px;  
+            -moz-border-radius: 6px 0 6px 6px;  
+            border-radius: 6px 0 6px 6px;  
+        }
+
+        .dropdown-submenu .dropdown-menu li a{
+            padding-left:5px;
+        }

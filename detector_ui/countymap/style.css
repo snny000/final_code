@@ -1,0 +1,26 @@
+b {
+    font-size: 20px;
+    color: #ffffff;
+}
+
+b .emphasize{
+    font-size: 15px;
+    color: #ffffff;
+}
+
+.large{
+    font-size: 28px;
+    color: #ffffff;
+}
+
+
+a {
+    padding-top: 8px;
+    font-size: 8px;
+    text-align: center;
+    color: gray;
+    padding-right: 10px;
+    text-align: right;
+    text-decoration: none;
+    float: right;
+}

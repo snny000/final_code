@@ -1,0 +1,137 @@
+#modal-container {
+    padding: 20px;
+}
+
+.modal-textarea {
+    width: 100%;
+    height: 100px;
+    margin: 10px 0;
+    white-space: pre-line;
+    overflow: scroll;
+}
+
+.black-white-list-alert {
+    position: absolute;
+    margin-bottom: -10px;
+    color: #9f9f9f;
+}
+
+.certificate-textarea {
+    background-color: #C0C0C0;
+}
+
+span.modal-tab-color {
+    color: #31e1ff;
+}
+
+.certificate-row {
+    margin: 0 30px 0 20px;
+}
+
+.certificate-name {
+    padding-top: 5px;
+    text-align: right;
+}
+
+.certificate-example {
+    background-color: black;
+    color: white;
+}
+
+label span.pemcode {
+    color: #9f9f9f;
+    font-weight: normal;
+    font-size: 0.9em;
+}
+
+.use-ruidun-sertificate {
+    /*position: absolute;*/
+    margin: 15px 0px -15px !important;
+    text-align: left;
+    vertical-align: bottom;
+}
+.use-ruidun-sertificate input {
+    vertical-align: bottom;
+}
+.modal-left-text {
+    margin-top: 7px;
+    text-align: right;
+}
+
+.modal-input-text-hint {
+    color: #9f9f9f;
+    margin: -10px 0 -10px 0;
+    white-space: pre-line;
+}
+
+.waf-rule_table {
+    margin-bottom: 0 !important;
+    width: 100%;
+    border: 2px solid #cccccc;
+    border-Right-width: 3px;
+    border-radius: 5px;
+}
+
+.waf-rule_table > thead {
+    background-color: #bbbbbb;
+}
+
+.waf-rule_table > tr {
+    vertical-align: middle;
+}
+
+.wafRuleMatchLabel {
+    margin-top: 15px;
+}
+
+.close-tr {
+    position: relative;
+    padding: 5px 0px 0 0 !important;
+}
+
+.wafAccessControlRuleActionType {
+    padding: 0 !important;
+    width: 100px;
+}
+
+/*finish config*/
+#saveAllConfig {
+    margin: 130px 200px;
+}
+
+span.checkIcon {
+    margin: 0 3px 0 0px;
+}
+
+span.checkIcon::before {
+    font-family: "FontAwesome";
+    content: "\f00c";
+    font-size: 2.5rem;
+    color: #0099CC;
+}
+
+#saveAllConfig ul {
+    margin-top: 7%;
+}
+
+#saveAllConfig li {
+    font-size: 1.3em;
+    list-style-type: none;
+}
+
+#saveAllConfig li.circle-li::before {
+    font-family: "FontAwesome";
+    content: "\f111";
+    font-size: 1.5rem;
+    color: #5bc0de;
+}
+
+#saveAllConfig .form-group {
+    text-align: right;
+    margin: 10% 0px 0 0;
+}
+
+#saveAllConfig button {
+    text-align: center;
+    margin-right: 5px;
+}

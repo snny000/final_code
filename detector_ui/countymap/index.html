@@ -1,0 +1,1904 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <!-- 引入Echarts文件 -->
+    <title>郡县图治</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <link type="text/css" rel="stylesheet" href="public.css">
+    <link type="text/css" rel="stylesheet" href="footer.css">
+    <link type="text/css" rel="stylesheet" href="column.css">
+    <link type="text/css" rel="stylesheet" href="totalmap.css">
+    <link type="text/css" rel="stylesheet" href="totaldata.css">
+</head>
+<body>
+<div class="header">
+    <h1 class="text-gradient">郡县图治</h1>
+</div>
+<div class="mainbody">
+    <div class="body_left">
+        <div class="column_left">
+            <div class="column_produce block">
+                <div class="column_left_bng">
+                    <p class="column_left_font">生产总值</p>
+                </div>
+                <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                <div class="column_produce_title">
+                    <p>生产总值<br/><b>88.88</b>亿元</p>
+                </div>
+                <div id="produce" style="height:200px;width: auto">
+
+                </div>
+
+                <!-- ECharts单文件引入 -->
+                <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+                <script type="text/javascript">
+                    // 路径配置
+                    require.config({
+                        paths: {
+                            echarts: 'http://echarts.baidu.com/build/dist'
+                        }
+                    });
+
+                    // 使用
+                    require(
+                            [
+                                'echarts',
+                                'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+                            ],
+                            function (ec) {
+                                // 基于准备好的dom，初始化echarts图表
+                                var myChart = ec.init(document.getElementById('produce'));
+                                var builderJson0 = {
+                                    "all": 100,
+                                    "charts": {
+                                        "map": 5,
+                                        "lines": 10,
+                                        "bar": 15,
+                                        "line": 20,
+                                        "pie": 15,
+                                        "scatter": 8,
+                                        "sankey": 5,
+                                        "a": 8,
+                                        "b": 15,
+                                        "c": 8,
+                                        "d": 20,
+                                        "e": 25
+
+                                    }, "charts1": {
+                                        "map": 5,
+                                        "lines": 10,
+                                        "bar": 15,
+                                        "line": 20,
+                                        "pie": 15,
+                                        "scatter": 8,
+                                        "sankey": 5,
+                                        "a": 8,
+                                        "b": 15,
+                                        "c": 8,
+                                        "d": 20,
+                                        "e": 25
+                                    }, "charts2": {
+                                        "map": 5,
+                                        "lines": 10,
+                                        "bar": 15,
+                                        "line": 20,
+                                        "pie": 15,
+                                        "scatter": 8,
+                                        "sankey": 5,
+                                        "a": 8,
+                                        "b": 15,
+                                        "c": 8,
+                                        "d": 20,
+                                        "e": 25
+                                    }
+                                };
+                                var dataAxis0 = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+                                var datalegend = ['一产总值', '二产总值', '三产总值'];
+                                var option = {
+                                    title: {
+                                        text: '生产值趋势',
+                                        y: 55,
+                                        x: 10,
+                                        textStyle: {
+                                            fontSize: 6,
+                                            color: 'gray',
+                                            fontWeight: 'normal'
+
+                                        }
+                                    },
+                                    tooltip: {
+                                        trigger: 'axis',
+                                        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                                            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                                        },
+                                        textStyle: {
+                                            fontSize: 8
+                                        }
+                                    },
+                                    legend: {
+                                        data: datalegend,
+                                        x: 'right',
+                                        top: '2%',
+                                        orient: 'vertical',
+                                        textStyle: {
+                                            color: 'gray',      // 图例文字颜色
+                                            fontSize: 8
+                                        }
+
+                                    },
+                                    grid: {
+                                        show: true,
+                                        borderWidth: '0',
+                                        x: '5%',
+                                        x2: '5%',
+                                        y: '40%',
+                                        y2: '15%'
+                                    },
+                                    xAxis: [
+                                        {
+                                            type: 'category',
+                                            data: dataAxis0,
+                                            scale: false,
+                                            splitLine: {
+                                                show: false
+                                            },
+                                            axisTick: {
+                                                show: false
+                                            },
+                                            axisLabel: {
+                                                "interval": 0,
+                                                textStyle: {
+                                                    color: 'gray'
+                                                }
+                                            },
+                                            axisLine: {
+                                                show: false
+                                            },
+                                            splitArea: {
+                                                show: false
+                                            },
+
+                                        }
+                                    ],
+                                    yAxis: [
+                                        {
+                                            max: builderJson0.all,
+                                            scale: false,
+                                            show: false,
+                                            splitLine: {
+                                                show: false
+                                            },
+                                            splitArea: {
+                                                show: false
+                                            }
+
+                                        }
+
+                                    ],
+                                    series: [
+
+                                        {
+                                            name: '一产总值',
+                                            type: 'bar',
+                                            barMaxWidth: 5,
+                                            z: 10,
+                                            barGap: "10%",
+                                            stack: '总值',
+                                            itemStyle: {
+                                                normal: {
+                                                    color: 'red'
+                                                }
+                                            },
+                                            data: Object.keys(builderJson0.charts).map(function (key) {
+                                                return builderJson0.charts[key];
+                                            })
+                                        },
+                                        {
+                                            name: '二产总值',
+                                            type: 'bar',
+                                            stack: '总值',
+                                            z: 10,
+                                            barMaxWidth: 5,
+                                            barGap: "10%",
+                                            itemStyle: {
+                                                normal: {
+                                                    color: 'yellow'
+                                                }
+                                            },
+                                            data: Object.keys(builderJson0.charts1).map(function (key) {
+                                                return builderJson0.charts1[key];
+                                            })
+                                        },
+                                        {
+                                            name: '三产总值',
+                                            type: 'bar',
+                                            barMaxWidth: 5,
+                                            z: 10,
+                                            barGap: "10%",
+                                            stack: '总值',
+                                            data: Object.keys(builderJson0.charts2).map(function (key) {
+                                                return builderJson0.charts2[key];
+                                            }),
+                                            itemStyle: {
+                                                normal: {
+                                                    color: 'blue'
+                                                }
+                                            },
+                                        },
+                                        {
+                                            name: '未生产总值',
+                                            type: 'bar',
+                                            stack: '总值',
+                                            silent: true,
+                                            itemStyle: {
+                                                normal: {
+                                                    color: '#000079'
+                                                }
+                                            },
+                                            data: Object.keys(builderJson0.charts, builderJson0.charts1, builderJson0.charts2).map(function (key) {
+                                                return builderJson0.all - builderJson0.charts[key] - builderJson0.charts1[key] - builderJson0.charts2[key];
+                                            })
+                                        }
+                                    ]
+                                };
+                                // 为echarts对象加载数据
+                                myChart.setOption(option);
+
+                            }
+                    );
+                </script>
+
+
+            </div>
+            <div class="column_service block">
+                <div class="column_left_bng">
+                    <p class="column_left_font">服务业</p>
+                </div>
+                <div class="column_content">
+                    <div class="column_left_text">
+                        <p>总产值<br/><b>88.88</b>亿元</p>
+                    </div>
+                    <div class="column_left_bar">
+                        <div id="service" style="height:220px;width: auto"></div>
+                        <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+                        <script type="text/javascript">
+                            // 路径配置
+                            require.config({
+                                paths: {
+                                    echarts: 'http://echarts.baidu.com/build/dist'
+                                }
+                            });
+
+                            // 使用
+                            require(
+                                    [
+                                        'echarts',
+                                        'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+                                    ],
+                                    function (ec) {
+                                        // 基于准备好的dom，初始化echarts图表
+                                        var myChart = ec.init(document.getElementById('service'));
+                                        var builderJson = {
+                                            "all": 6,
+                                            "charts": {
+                                                "map": 4.8,
+                                                "lines": 4.2,
+                                                "bar": 3.8,
+                                                "line": 3.2,
+                                                "pie": 2.3,
+                                                "scatter": 1.5,
+                                                "sankey": 1,
+                                            }
+                                        };
+                                        var dataAxis = ['批发零售', '金融', '房地产', '交通运输', '仓储邮政', '住宿餐饮', '其他'];
+
+                                        var option = {
+                                                    tooltip: {
+                                                        trigger: 'axis',
+                                                        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                                                            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                                                        },
+                                                        formatter: "{b} :{c}亿元",
+                                                        textStyle: {
+                                                            fontSize: 8
+                                                        }
+                                                    },
+                                                    grid: {
+                                                        show: true,
+                                                        borderWidth: '0',
+                                                        x: 20,
+                                                        x2: 55,
+                                                        y: 10,
+                                                        y2: 10
+                                                    },
+                                                    xAxis: {
+                                                        show: false,
+                                                        type: 'value',
+                                                        max: builderJson.all
+                                                    },
+                                                    yAxis: {
+                                                        type: 'category',
+                                                        data: dataAxis,
+                                                        axisLine: {
+                                                            show: false
+                                                        },
+                                                        axisLabel: {
+                                                            interval: 0,
+                                                            margin: '0',
+                                                            textStyle: {
+                                                                color: 'gray',
+                                                                align: 'left',
+                                                                baseline: 'bottom'
+
+                                                            }
+                                                        },
+                                                        splitLine: {
+                                                            show: false
+                                                        },
+                                                        axisTick: {
+                                                            show: false
+                                                        }
+                                                    },
+                                                    series: [
+                                                        {
+                                                            name: '值',
+                                                            stack: 'chart',
+                                                            type: 'bar',
+                                                            z: 3,
+                                                            barMaxWidth: 2,
+                                                            barGap: '100%',
+                                                            barCategoryGap: '50%',
+                                                            itemStyle: {
+                                                                normal: {
+                                                                    color: (function () {
+                                                                        var zrColor = require('zrender/tool/color');
+                                                                        return zrColor.getLinearGradient(
+                                                                                20, 0, 140, 0,
+                                                                                [[0, '#00008B'], [1, '#00BFFF']]
+                                                                        )
+                                                                    })(),
+                                                                    label: {
+                                                                        show: false,
+                                                                        position: 'right',
+                                                                        formatter: '{c}亿元',
+                                                                        textStyle: {
+                                                                            color: 'gray'
+                                                                        }
+                                                                    }
+                                                                }
+                                                            },
+                                                            data: Object.keys(builderJson.charts).map(function (key) {
+                                                                return builderJson.charts[key];
+                                                            }),
+                                                        }
+                                                        , {
+                                                            type: 'bar',
+                                                            stack: 'chart',
+                                                            silent: true,
+                                                            itemStyle: {
+                                                                normal: {
+                                                                    color: '#000079',
+                                                                    label: {
+                                                                        show: true,
+                                                                        position: 'right',
+                                                                        formatter:(function (p) {
+                                                                           return (builderJson.all - p.value+'亿元');
+                                                                        }) ,
+                                                                        textStyle: {
+                                                                            color: 'gray'
+                                                                        }
+                                                                    }
+                                                                }
+                                                            },
+                                                            data: Object.keys(builderJson.charts).map(function (key) {
+                                                                return builderJson.all - builderJson.charts[key];
+                                                            })
+                                                        }
+                                                    ]
+                                                }
+                                                ;
+                                        // 为echarts对象加载数据
+                                        myChart.setOption(option);
+                                    }
+                            )
+                            ;
+                        </script>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="column_labour block">
+                <div class="column_left_bng">
+                    <p class="column_left_font">劳动业</p>
+                </div>
+                <div class="column_content">
+                    <div class="column_labor_content">
+                        <div class="column_left_labor_text">
+                            <p>从业人数<br/><b>19.00</b>万人</p>
+                        </div>
+                        <div class="column_left_labor_bar">
+                            <div id="labor1" style="height:110px;width: auto"></div>
+                            <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+                            <script type="text/javascript">
+                                // 路径配置
+                                require.config({
+                                    paths: {
+                                        echarts: 'http://echarts.baidu.com/build/dist'
+                                    }
+                                });
+
+                                // 使用
+                                require(
+                                        [
+                                            'echarts',
+                                            'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+                                        ],
+                                        function (ec) {
+                                            // 基于准备好的dom，初始化echarts图表
+                                            var myChart = ec.init(document.getElementById('labor1'));
+                                            var builderJson1 = {
+                                                "all": 9.0,
+                                                "charts": {
+                                                    "map": 4.00,
+                                                    "lines": 6.08,
+                                                    "bar": 8.12
+                                                }
+                                            };
+                                            var dataAxis1 = ['第三产业', '第二产业', '第一产业'];
+                                            var option = {
+                                                tooltip: {
+                                                    trigger: 'axis',
+                                                    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                                                        type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                                                    },
+                                                    formatter: "{b} :{c}万人",
+                                                    textStyle: {
+                                                        fontSize: 8
+                                                    }
+                                                },
+                                                grid: {
+                                                    show: true,
+                                                    borderWidth: '0',
+                                                    x: 20,
+                                                    x2: 50,
+                                                    y: 10,
+                                                    y2: 10
+                                                },
+                                                xAxis: {
+                                                    show: false,
+                                                    type: 'value',
+                                                    max: builderJson1.all
+                                                },
+                                                yAxis: {
+                                                    type: 'category',
+                                                    data: dataAxis1,
+                                                    axisLine: {
+                                                        show: false
+                                                    },
+                                                    axisLabel: {
+                                                        "interval": 0,
+                                                        margin: '0',
+                                                        textStyle: {
+                                                            color: 'gray',
+
+                                                            align: 'left',
+                                                            baseline: 'bottom'
+                                                        }
+                                                    },
+                                                    splitLine: {
+                                                        show: false
+                                                    },
+                                                    axisTick: {
+                                                        show: false
+                                                    }
+                                                },
+                                                series: [
+                                                    {
+                                                        name: '值',
+                                                        stack: 'chart1',
+                                                        type: 'bar',
+                                                        z: 3,
+                                                        barMaxWidth: 2,
+                                                        barGap: '100%',
+                                                        barCategoryGap: '50%',
+                                                        itemStyle: {
+                                                            normal: {
+                                                                color: (function () {
+                                                                    var zrColor = require('zrender/tool/color');
+                                                                    return zrColor.getLinearGradient(
+                                                                            20, 0, 140, 0,
+                                                                            [[0, '#00008B'], [1, '#00BFFF']]
+                                                                    )
+                                                                })(),
+                                                                label: {
+                                                                    show: false,
+                                                                    position: 'right',
+                                                                    align: 'right',
+                                                                    formatter: '{c}万人',
+                                                                    textStyle: {
+                                                                        color: 'gray'
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        data: Object.keys(builderJson1.charts).map(function (key) {
+                                                            return builderJson1.charts[key];
+                                                        })
+                                                    }
+                                                    , {
+                                                        type: 'bar',
+                                                        stack: 'chart1',
+                                                        silent: true,
+                                                        itemStyle: {
+                                                            normal: {
+                                                                color: '#000079',
+                                                                label: {
+                                                                    show: true,
+                                                                    position: 'right',
+                                                                    formatter:(function (p) {
+                                                                        return (builderJson1.all - p.value+'万人');
+                                                                    }) ,
+                                                                    textStyle: {
+                                                                        color: 'gray'
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        data: Object.keys(builderJson1.charts).map(function (key) {
+                                                            return builderJson1.all - builderJson1.charts[key];
+                                                        })
+                                                    }
+                                                ]
+                                            };
+                                            // 为echarts对象加载数据
+                                            myChart.setOption(option);
+                                        }
+                                );
+                            </script>
+                        </div>
+                    </div>
+                    <div class="column_labor_content">
+                        <div class="column_left_labor_text">
+                            <p>人才资源<br/><b>18.88</b>万人</p>
+                        </div>
+                        <div class="column_left_labor_bar">
+                            <div id="labor2" style="height:110px;width: auto"></div>
+                            <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+                            <script type="text/javascript">
+                                // 路径配置
+                                require.config({
+                                    paths: {
+                                        echarts: 'http://echarts.baidu.com/build/dist'
+                                    }
+                                });
+
+                                // 使用
+                                require(
+                                        [
+                                            'echarts',
+                                            'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+                                        ],
+                                        function (ec) {
+                                            // 基于准备好的dom，初始化echarts图表
+                                            var myChart = ec.init(document.getElementById('labor2'));
+                                            var builderJson2 = {
+                                                "all": 9.0,
+                                                "charts": {
+                                                    "map": 6.82,
+                                                    "lines": 6.82,
+                                                    "bar": 6.82
+                                                }
+                                            };
+                                            var dataAxis2 = ['政党机关人员', '企业管理人员', '专业技术人员'];
+                                            var option = {
+                                                tooltip: {
+                                                    trigger: 'axis',
+                                                    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                                                        type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                                                    },
+                                                    formatter: "{b} :{c}万人",
+                                                    textStyle: {
+                                                        fontSize: 8
+                                                    }
+                                                },
+                                                grid: {
+                                                    show: true,
+                                                    borderWidth: '0',
+                                                    x: 20,
+                                                    x2: 50,
+                                                    y: 10,
+                                                    y2: 10
+                                                },
+                                                xAxis: {
+                                                    show: false,
+                                                    type: 'value',
+                                                    max: builderJson2.all
+                                                },
+                                                yAxis: {
+                                                    type: 'category',
+                                                    data: dataAxis2,
+                                                    axisLine: {
+                                                        show: false
+                                                    },
+                                                    axisLabel: {
+                                                        "interval": 0,
+                                                        margin: '0',
+                                                        textStyle: {
+                                                            color: 'gray',
+                                                            align: 'left',
+                                                            baseline: 'bottom'
+                                                        }
+                                                    },
+                                                    splitLine: {
+                                                        show: false
+                                                    },
+                                                    axisTick: {
+                                                        show: false
+                                                    }
+                                                },
+                                                series: [
+                                                    {
+                                                        name: '值',
+                                                        stack: 'chart2',
+                                                        type: 'bar',
+                                                        z: 3,
+                                                        barMaxWidth: 2,
+                                                        barGap: '100%',
+                                                        barCategoryGap: '50%',
+                                                        itemStyle: {
+                                                            normal: {
+                                                                color: (function () {
+                                                                    var zrColor = require('zrender/tool/color');
+                                                                    return zrColor.getLinearGradient(
+                                                                            20, 0, 140, 0,
+                                                                            [[0, '#00008B'], [1, '#00BFFF']]
+                                                                    )
+                                                                })(),
+                                                                shadowColor: 'rgba(0,0,0,0.5)',
+                                                                shadowBlur: 10,
+                                                                shadowOffsetX: 8,
+                                                                shadowOffsetY: 8,
+                                                                label: {
+                                                                    show: false,
+                                                                    position: 'right',
+                                                                    align: 'right',
+                                                                    formatter: '{c}万人',
+                                                                    textStyle: {
+                                                                        color: 'gray'
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        data: Object.keys(builderJson2.charts).map(function (key) {
+                                                            return builderJson2.charts[key];
+
+                                                        })
+                                                    }, {
+                                                        type: 'bar',
+                                                        stack: 'chart2',
+                                                        silent: true,
+                                                        itemStyle: {
+                                                            normal: {
+                                                                color: '#000079',
+                                                                label: {
+                                                                    show: true,
+                                                                    position: 'right',
+                                                                    formatter:(function (p) {
+                                                                        return (builderJson2.all - p.value+'万人');
+                                                                    }) ,
+                                                                    textStyle: {
+                                                                        color: 'gray'
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        data: Object.keys(builderJson2.charts).map(function (key) {
+                                                            return builderJson2.all - builderJson2.charts[key];
+
+
+                                                        })
+                                                    }
+                                                ]
+                                            };
+                                            // 为echarts对象加载数据
+                                            myChart.setOption(option);
+                                        }
+                                );
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="left_footer">
+            <div class="weather_img">
+                <img src="weather.jpg">
+            </div>
+            <div class="date_info">
+                <div class="date">
+                    <p>2015年12月9日 周三</p>
+                </div>
+                <div class="temperature">
+                    <p>
+                        14-11℃|小雨转中雨
+                    </p>
+
+                </div>
+            </div>
+            <div class="air_info">
+                <div class="lunar_date">
+                    <p>农历十月甘八</p>
+                </div>
+                <div class="air">
+                    <p>
+                        空气质量 良好
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="body_right">
+        <div class="right_top_body">
+            <div class="right_left_body">
+                <div class="total">
+                    <div class="acumulate">
+                        <p>当前累计生产总值<br/>
+                            <b class="large">18.88</b>亿元
+                        </p>
+                    </div>
+                    <div class="acumulate">
+                        <p>本月财政收入<br/>
+                            <b class="large">18.88</b>亿元
+                        </p>
+                    </div>
+                    <div class="acumulate">
+                        <p>当前累计零售总值<br/>
+                            <b class="large">18.88</b>亿元<br/>
+                            商品房销售面积 6400万平方米
+                        </p>
+                    </div>
+
+                </div>
+                <div class="middle_main">
+                    <div class="total_map">
+                        <div class="map_left">
+                            <div class="map_title">
+                                <p>
+                                    <b>互联网+指数</b>
+                                    <br/><br/>
+                                    与威海市其他区域指数对比
+                                </p>
+                            </div>
+                            <div class="map_fix">
+                                <dd class="expense_show" id="expense_show" onclick="showMap1()">消费活跃度</dd>
+                                <dd class="population_show" id="population_show" onclick="showMap2()">人口质量</dd>
+                                <dd class="happy_show" id="happy_show" onclick="showMap3()">幸福指数</dd>
+                            </div>
+                            <div class="map1">
+                                <div id="map1_expense">
+                                    <div id="expense_map1" style="height:240px;width: auto"></div>
+                                    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+                                    <script type="text/javascript">
+                                        // 路径配置
+                                        require.config({
+                                            paths: {
+                                                echarts: 'http://echarts.baidu.com/build/dist'
+                                            }
+                                        });
+
+                                        // 使用
+                                        require(
+                                                [
+                                                    'echarts',
+                                                    'echarts/chart/map'  // 使用柱状图就加载bar模块，按需加载
+                                                ],
+                                                function (ec) {
+                                                    // 基于准备好的dom，初始化echarts图表
+                                                    var myChart = ec.init(document.getElementById('expense_map1'));
+                                                    option = {
+                                                        tooltip: {
+                                                            trigger: 'item',
+                                                            formatter: '{b}'
+                                                        },
+                                                        series: [
+                                                            {
+                                                                name: '中国',
+                                                                type: 'map',
+                                                                mapType: 'china',
+                                                                selectedMode: 'multiple',
+                                                                label: {
+                                                                    normal: {
+                                                                        show: true
+                                                                    },
+                                                                    emphasis: {
+                                                                        show: true
+                                                                    }
+                                                                },
+                                                                data: [
+                                                                    {name: '广东', selected: true}
+                                                                ]
+                                                            }
+                                                        ]
+                                                    };
+                                                    // 为echarts对象加载数据
+                                                    myChart.setOption(option);
+
+                                                }
+                                        );
+                                    </script>
+
+                                </div>
+                                <div id="map1_population">
+
+                                </div>
+                                <div id="map1_happy">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="map_right">
+                            <div id="expense_map2" style="height:400px;width: auto"></div>
+                            <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+                            <script type="text/javascript">
+                                // 路径配置
+                                require.config({
+                                    paths: {
+                                        echarts: 'http://echarts.baidu.com/build/dist'
+                                    }
+                                });
+
+                                // 使用
+                                require(
+                                        [
+                                            'echarts',
+                                            'echarts/chart/map'  // 使用柱状图就加载bar模块，按需加载
+                                        ],
+                                        function (ec) {
+                                            // 基于准备好的dom，初始化echarts图表
+                                            var myChart = ec.init(document.getElementById('expense_map2'));
+                                            option = {
+                                                tooltip: {
+                                                    trigger: 'item',
+                                                    formatter: '{b}'
+                                                },
+                                                series: [
+                                                    {
+                                                        name: '中国',
+                                                        type: 'map',
+                                                        mapType: 'china',
+                                                        selectedMode: 'multiple',
+                                                        label: {
+                                                            normal: {
+                                                                show: true
+                                                            },
+                                                            emphasis: {
+                                                                show: true
+                                                            }
+                                                        },
+                                                        data: [
+                                                            {name: '广东', selected: true}
+                                                        ]
+                                                    }
+                                                ]
+                                            };
+                                            // 为echarts对象加载数据
+                                            myChart.setOption(option);
+
+                                        }
+                                );
+                            </script>
+
+                        </div>
+
+                        <script>
+                            function showMap1() {
+                                document.getElementById("map1_expense").style.display = "block";
+                                document.getElementById("expense_show").style.color = "#fff";
+                                document.getElementById("expense_show").style.background = "#46a3ff";
+                                document.getElementById("map1_population").style.display = "none";
+                                document.getElementById("population_show").style.color = "gray";
+                                document.getElementById("population_show").style.background = "transparent";
+                                document.getElementById("map1_happy").style.display = "none";
+                                document.getElementById("happy_show").style.color = "gray";
+                                document.getElementById("happy_show").style.background = "transparent";
+
+                            }
+                            function showMap2() {
+                                document.getElementById("map1_expense").style.display = "none";
+                                document.getElementById("expense_show").style.color = "gray";
+                                document.getElementById("expense_show").style.background = "transparent";
+                                document.getElementById("map1_population").style.display = "block";
+                                document.getElementById("population_show").style.color = "#fff";
+                                document.getElementById("population_show").style.background = "#46a3ff";
+                                document.getElementById("map1_happy").style.display = "none";
+                                document.getElementById("happy_show").style.color = "gray";
+                                document.getElementById("happy_show").style.background = "transparent";
+
+                            }
+                            function showMap3() {
+                                document.getElementById("map1_expense").style.display = "none";
+                                document.getElementById("expense_show").style.color = "gray";
+                                document.getElementById("expense_show").style.background = "transparent";
+                                document.getElementById("map1_population").style.display = "none";
+                                document.getElementById("population_show").style.color = "gray";
+                                document.getElementById("population_show").style.background = "transparent";
+                                document.getElementById("map1_happy").style.display = "block";
+                                document.getElementById("happy_show").style.color = "#fff";
+                                document.getElementById("happy_show").style.background = "#46a3ff";
+
+                            }
+                        </script>
+
+                    </div>
+                    <div class="pie">
+                        <div class="left_left_elictric_exponent">
+                            <p>电子商务发展指数<br/><br/>
+                                <b>3.925</b><br/><br/>
+                                网商指数 <b class="emphasize">2.799</b> 县域排名 <b class="emphasize">368</b><br/>
+                                网购指数 <b class="emphasize">5.105</b> 省内排名 <b class="emphasize">6</b><br/>
+                                淘宝付 <b class="emphasize">200</b> 家
+                            </p>
+                        </div>
+                        <div class="left_left_expense">
+                            <div id="expense" style="height:180px;width: auto"></div>
+                            <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+                            <script type="text/javascript">
+                                // 路径配置
+                                require.config({
+                                    paths: {
+                                        echarts: 'http://echarts.baidu.com/build/dist'
+                                    }
+                                });
+
+                                // 使用
+                                require(
+                                        [
+                                            'echarts',
+                                            'echarts/chart/pie'  // 使用柱状图就加载bar模块，按需加载
+                                        ],
+                                        function (ec) {
+                                            // 基于准备好的dom，初始化echarts图表
+                                            var myChart = ec.init(document.getElementById('expense'));
+                                            var placeHolderStyle = {
+                                                normal: {
+                                                    color: 'rgba(0,0,0,0)',
+                                                    label: {
+                                                        show: false
+                                                    },
+                                                    labelLine: {
+                                                        show: false
+                                                    }
+                                                },
+                                                emphasis: {
+                                                    color: 'rgba(0,0,0,0)'
+                                                }
+                                            };
+                                            option = {
+                                                title: {
+                                                    text: '消费活跃度',
+                                                    subtext: '\n68',
+                                                    x: 'center',
+                                                    y: '22',
+                                                    textStyle: {
+                                                        color: 'blue',
+                                                        fontSize: 12,
+
+                                                    },
+                                                    subtextStyle: {
+                                                        color: '#fff',
+                                                        fontSize: 30,
+                                                    }
+                                                },
+                                                color: ['#85b6b2', '#6d4f8d'],
+                                                tooltip: {
+                                                    show: true,
+                                                    formatter: "{b} :<br/> <br/>{c} ({d}%)",
+                                                    position: ['50%', '50%'],
+                                                    textStyle: {
+                                                        fontSize: 6
+                                                    }
+                                                },
+                                                series: [{
+                                                    name: 'Line 1',
+                                                    type: 'pie',
+                                                    clockWise: true,
+                                                    radius: [40, 50],
+                                                    shadowBlur: 40,
+                                                    shadowColor: 'rgba(40, 40, 40, 0.5)',
+                                                    hoverAnimation: false,
+                                                    startAngle: 225,
+                                                    data: [{
+                                                        value: 68,
+                                                        name: '消费活跃度',
+                                                        itemStyle: {
+                                                            normal: {
+                                                                color: "blue",
+                                                                labelLine: {
+                                                                    show: false
+                                                                },
+                                                                label: {
+                                                                    show: false,
+                                                                    position: 'inner'
+                                                                },
+                                                            },
+
+                                                        }
+
+                                                    }, {
+                                                        value: 32,
+                                                        itemStyle: {
+                                                            normal: {
+                                                                color: "#000079",
+                                                                labelLine: {
+                                                                    show: false
+                                                                }
+                                                            },
+                                                            label: {
+                                                                show: false
+                                                            },
+
+                                                        }
+
+                                                    }, {
+                                                        value: 25,
+                                                        itemStyle: placeHolderStyle
+                                                    },]
+                                                }
+
+                                                ]
+                                            };
+                                            // 为echarts对象加载数据
+                                            myChart.setOption(option);
+
+                                        }
+                                );
+                            </script>
+                        </div>
+                        <div class="left_left_expense">
+                            <div id="population" style="height:180px;width: auto"></div>
+                            <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+                            <!--http://s1.bdstatic.com/r/www/cache/ecom/esl/1-6-10/esl.js-->
+                            <script type="text/javascript">
+                                // 路径配置
+                                require.config({
+                                    paths: {
+                                        echarts: 'http://echarts.baidu.com/build/dist'
+                                        //     'echarts': 'http://echarts.baidu.com/build/echarts',
+                                        //    'echarts/chart/pie': 'http://echarts.baidu.com/build/echarts'
+                                    }
+                                });
+
+                                // 使用
+                                require(
+                                        [
+                                            'echarts',
+                                            'echarts/chart/pie'  // 使用柱状图就加载bar模块，按需加载
+                                        ],
+                                        function (ec) {
+                                            // 基于准备好的dom，初始化echarts图表
+                                            var myChart = ec.init(document.getElementById('population'));
+                                            var placeHolderStyle = {
+                                                normal: {
+                                                    color: 'rgba(0,0,0,0)',
+                                                    label: {
+                                                        show: false
+                                                    },
+                                                    labelLine: {
+                                                        show: false
+                                                    }
+                                                },
+                                                emphasis: {
+                                                    color: 'rgba(0,0,0,0)'
+                                                }
+                                            };
+                                            option = {
+                                                title: {
+                                                    text: '人口质量',
+                                                    subtext: '\n68',
+                                                    x: 'center',
+                                                    y: '22',
+                                                    textStyle: {
+                                                        color: 'yellow',
+                                                        fontSize: 12,
+
+                                                    },
+                                                    subtextStyle: {
+                                                        color: '#fff',
+                                                        fontSize: 30,
+                                                    }
+                                                },
+                                                color: ['#85b6b2', '#6d4f8d'],
+                                                tooltip: {
+                                                    show: true,
+                                                    formatter: "{b} :<br/> <br/>{c} ({d}%)",
+                                                    position: ['50%', '50%'],
+                                                    textStyle: {
+                                                        fontSize: 6
+                                                    }
+                                                },
+                                                series: [{
+                                                    name: 'Line 1',
+                                                    type: 'pie',
+                                                    clockWise: true,
+                                                    radius: [40, 50],
+                                                    shadowBlur: 40,
+                                                    shadowColor: 'rgba(40, 40, 40, 0.5)',
+                                                    hoverAnimation: false,
+                                                    startAngle: 225,
+                                                    data: [{
+                                                        value: 68,
+                                                        name: '人口质量',
+
+                                                        itemStyle: {
+                                                            normal: {
+                                                                color: "yellow",
+                                                                labelLine: {
+                                                                    show: false
+                                                                },
+                                                                label: {
+                                                                    show: false,
+                                                                    normal: {position: [100, 100],}
+
+                                                                },
+                                                            },
+
+                                                        },
+
+                                                    }, {
+                                                        value: 32,
+                                                        itemStyle: {
+                                                            normal: {
+                                                                color: "#000079",
+                                                                labelLine: {
+                                                                    show: false
+                                                                }
+                                                            },
+                                                            label: {
+                                                                show: false
+                                                            },
+
+                                                        }
+
+                                                    }, {
+                                                        value: 25,
+                                                        itemStyle: placeHolderStyle
+                                                    },]
+                                                }
+
+                                                ]
+                                            };
+                                            // 为echarts对象加载数据
+                                            myChart.setOption(option);
+
+                                        }
+                                );
+                            </script>
+                        </div>
+                        <div class="left_left_expense">
+                            <div id="happy" style="height:180px;width: auto"></div>
+                            <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+                            <script type="text/javascript">
+                                // 路径配置
+                                require.config({
+                                    paths: {
+                                        echarts: 'http://echarts.baidu.com/build/dist'
+                                    }
+                                });
+
+                                // 使用
+                                require(
+                                        [
+                                            'echarts',
+                                            'echarts/chart/pie'  // 使用柱状图就加载bar模块，按需加载
+                                        ],
+                                        function (ec) {
+                                            // 基于准备好的dom，初始化echarts图表
+                                            var myChart = ec.init(document.getElementById('happy'));
+                                            var placeHolderStyle = {
+                                                normal: {
+                                                    color: 'rgba(0,0,0,0)',
+                                                    label: {
+                                                        show: false
+                                                    },
+                                                    labelLine: {
+                                                        show: false
+                                                    }
+                                                },
+                                                emphasis: {
+                                                    color: 'rgba(0,0,0,0)'
+                                                }
+                                            };
+                                            option = {
+                                                title: {
+                                                    text: '幸福指数',
+                                                    subtext: '\n68',
+                                                    x: 'center',
+                                                    y: '22',
+                                                    textStyle: {
+                                                        color: 'red',
+                                                        fontSize: 12,
+
+                                                    },
+                                                    subtextStyle: {
+                                                        color: '#fff',
+                                                        fontSize: 30,
+                                                    }
+                                                },
+                                                color: ['#85b6b2', '#6d4f8d'],
+                                                tooltip: {
+                                                    show: true,
+                                                    formatter: "{b} :<br/> <br/>{c} ({d}%)",
+                                                    position: ['50%', '50%'],
+                                                    textStyle: {
+                                                        fontSize: 6
+                                                    }
+                                                },
+                                                series: [{
+                                                    name: 'Line 1',
+                                                    type: 'pie',
+                                                    clockWise: true,
+                                                    radius: [40, 50],
+                                                    shadowBlur: 40,
+                                                    shadowColor: 'rgba(40, 40, 40, 0.5)',
+                                                    hoverAnimation: false,
+                                                    startAngle: 225,
+                                                    data: [{
+                                                        value: 68,
+                                                        name: '幸福指数',
+                                                        itemStyle: {
+                                                            normal: {
+                                                                color: "red",
+                                                                labelLine: {
+                                                                    show: false
+                                                                },
+                                                                label: {
+                                                                    show: false,
+                                                                    position: 'inner'
+                                                                },
+                                                            },
+
+                                                        }
+
+                                                    }, {
+                                                        value: 32,
+                                                        itemStyle: {
+                                                            normal: {
+                                                                color: "#000079",
+                                                                labelLine: {
+                                                                    show: false
+                                                                }
+                                                            },
+                                                            label: {
+                                                                show: false
+                                                            },
+
+                                                        }
+
+                                                    }, {
+                                                        value: 25,
+                                                        itemStyle: placeHolderStyle
+                                                    }]
+                                                }
+
+                                                ]
+                                            };
+                                            // 为echarts对象加载数据
+                                            myChart.setOption(option);
+
+                                        }
+                                );
+                            </script>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="friendlink">
+                    <a href="url">关于指数</a>
+                </div>
+
+            </div>
+            <div class="right_right_body">
+                <div class="left_right_info">
+                    <div class="column_finance block">
+                        <div class="column_left_bng">
+                            <p class="column_left_font">财政收入</p>
+                        </div>
+                        <div class="column_produce_title">
+                            <p>本月财政收入<br/><b>18.88</b>亿元</p>
+                        </div>
+                        <div id="finance" style="height:200px;width: auto"></div>
+                        <!-- ECharts单文件引入 -->
+                        <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+                        <script type="text/javascript">
+                            // 路径配置
+                            require.config({
+                                paths: {
+                                    echarts: 'http://echarts.baidu.com/build/dist'
+                                }
+                            });
+
+                            // 使用
+                            require(
+                                    [
+                                        'echarts',
+                                        'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+                                    ],
+                                    function (ec) {
+                                        // 基于准备好的dom，初始化echarts图表
+                                        var myChart = ec.init(document.getElementById('finance'));
+                                        var builderJson3 = {
+                                            "all": 30,
+                                            "charts": {
+                                                "map": 5,
+                                                "lines": 10,
+                                                "bar": 15,
+                                                "line": 20,
+                                                "pie": 15,
+                                                "scatter": 8,
+                                                "sankey": 5,
+                                                "a": 8,
+                                                "b": 15,
+                                                "c": 8,
+                                                "d": 20,
+                                                "e": 25
+
+                                            }
+                                        };
+                                        var dataAxis3 = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+                                        var option = {
+                                            tooltip: {
+                                                trigger: 'axis',
+                                                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                                                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                                                },
+                                                textStyle: {
+                                                    fontSize: 8
+                                                }
+                                            },
+                                            grid: {
+                                                show: true,
+                                                borderWidth: '0',
+                                                x: '5%',
+                                                x2: '5%',
+                                                y: '40%',
+                                                y2: '15%'
+                                            },
+                                            xAxis: [
+                                                {
+                                                    type: 'category',
+                                                    data: dataAxis3,
+                                                    scale: false,
+                                                    splitLine: {
+                                                        show: false
+                                                    },
+                                                    axisTick: {
+                                                        show: false
+                                                    },
+                                                    axisLabel: {
+                                                        "interval": 0,
+                                                        textStyle: {
+                                                            color: 'gray'
+                                                        }
+                                                    },
+                                                    axisLine: {
+                                                        show: false
+                                                    },
+                                                    splitArea: {
+                                                        show: false
+                                                    }
+
+
+                                                }
+                                            ],
+                                            yAxis: [
+                                                {
+                                                    max: builderJson3.all,
+                                                    scale: false,
+                                                    show: false,
+                                                    splitLine: {
+                                                        show: false
+                                                    },
+                                                    axisTick: {
+                                                        show: false
+                                                    },
+                                                    axisLabel: {
+                                                        show: false
+                                                    },
+                                                    axisLine: {
+                                                        show: false
+                                                    },
+                                                    splitArea: {
+                                                        show: false
+                                                    }
+
+                                                }
+
+                                            ],
+                                            series: [
+
+                                                {
+                                                    name: 'economy',
+                                                    type: 'bar',
+                                                    barMaxWidth: 5,
+                                                    z: 3,
+                                                    barGap: "10%",
+                                                    stack: '总值',
+                                                    itemStyle: {
+                                                        normal: {
+                                                            color: (function () {
+                                                                var zrColor = require('zrender/tool/color');
+                                                                return zrColor.getLinearGradient(
+                                                                        0, 145, 0, 165,
+                                                                        [[0, '#00BFFF'], [1, '#00008B']]
+                                                                )
+                                                            })()
+                                                        }
+                                                    },
+                                                    data: Object.keys(builderJson3.charts).map(function (key) {
+                                                        return builderJson3.charts[key];
+                                                    })
+                                                },
+                                                {
+                                                    type: 'bar',
+                                                    stack: '总值',
+                                                    barMaxWidth: 5,
+                                                    silent: true,
+                                                    itemStyle: {
+                                                        normal: {
+
+                                                            color: '#000079'
+                                                        }
+                                                    },
+                                                    data: Object.keys(builderJson3.charts).map(function (key) {
+                                                        return builderJson3.all - builderJson3.charts[key];
+                                                    })
+                                                }
+                                            ]
+                                        };
+                                        // 为echarts对象加载数据
+                                        myChart.setOption(option);
+
+                                    }
+                            );
+                        </script>
+                    </div>
+                    <div class="column_industry block">
+                        <div class="column_left_bng">
+                            <p class="column_left_font">规模以上工业</p>
+                        </div>
+                        <div class="column_produce_title">
+                            <p>企业数<br/><b>5.32</b>万家</p>
+                        </div>
+                        <div id="industry" style="height:200px;width: auto"></div>
+                        <!-- ECharts单文件引入 -->
+                        <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+                        <script type="text/javascript">
+                            // 路径配置
+                            require.config({
+                                paths: {
+                                    echarts: 'http://echarts.baidu.com/build/dist'
+                                }
+                            });
+
+                            // 使用
+                            require(
+                                    [
+                                        'echarts',
+                                        'echarts/chart/bar',  // 使用柱状图就加载bar模块，按需加载
+                                        'echarts/chart/line'
+                                    ],
+                                    function (ec) {
+                                        // 基于准备好的dom，初始化echarts图表
+                                        var myChart = ec.init(document.getElementById('industry'));
+                                        var builderJson6 = {
+                                            "all": 1000,
+                                            "charts": {
+                                                "map": 600,
+                                                "lines": 700,
+                                                "bar": 800,
+                                                "line": 700,
+                                                "pie": 400,
+                                                "scatter": 300,
+                                                "sankey": 200,
+                                                "a": 300,
+                                                "b": 400,
+                                                "c": 500,
+                                                "d": 400,
+                                                "e": 200
+
+                                            }, "charts1": {
+                                                "map": 800,
+                                                "lines": 400,
+                                                "bar": 300,
+                                                "line": 400,
+                                                "pie": 500,
+                                                "scatter": 600,
+                                                "sankey": 500,
+                                                "a": 400,
+                                                "b": 300,
+                                                "c": 200,
+                                                "d": 400,
+                                                "e": 800
+                                            }, "charts2": {
+                                                "map": 900,
+                                                "lines": 500,
+                                                "bar": 400,
+                                                "line": 500,
+                                                "pie": 700,
+                                                "scatter": 900,
+                                                "sankey": 800,
+                                                "a": 700,
+                                                "b": 600,
+                                                "c": 400,
+                                                "d": 300,
+                                                "e": 600
+                                            }
+                                        };
+                                        var dataAxis6 = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+                                        var datalegend1 = ['小型企业 500家', '中型企业 200家', '大型企业 600家'];
+                                        var option = {
+                                            title: {
+                                                text: '企业增加值',
+                                                y: 55,
+                                                textStyle: {
+                                                    fontSize: 7,
+                                                    color: 'gray',
+                                                    fontWeight: 'normal'
+
+                                                }
+                                            },
+                                            tooltip: {
+                                                trigger: 'axis',
+                                                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                                                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                                                },
+                                                textStyle: {
+                                                    fontSize: 8
+                                                }
+                                            },
+                                            legend: {
+                                                //    data: datalegend1,
+                                                x: '200',
+                                                top: '2%',
+                                                orient: 'vertical',
+                                                //   textStyle: {
+                                                //     color: 'aliceblue',      // 图例文字颜色
+                                                //   fontSize: 8
+                                                //}
+                                                data: [
+                                                    {
+                                                        name: '小型企业 500家',
+                                                        icon: 'triangle',
+                                                        textStyle: {
+                                                            color: 'gray',
+                                                            fontSize: 8,
+                                                        },
+
+                                                    },
+                                                    {
+                                                        name: '中型企业 200家',
+                                                        textStyle: {
+                                                            color: 'gray',
+                                                            fontSize: 8
+                                                        },
+                                                    },
+                                                    {
+                                                        name: '大型企业 600家',
+                                                        textStyle: {
+                                                            color: 'gray',
+                                                            fontSize: 8
+                                                        },
+                                                    }
+                                                ]
+
+                                            },
+                                            grid: {
+                                                show: true,
+                                                borderWidth: '0',
+                                                x: '12%',
+                                                x2: '5%',
+                                                y: '40%',
+                                                y2: '15%'
+                                            },
+                                            xAxis: [
+                                                {
+                                                    type: 'category',
+                                                    data: dataAxis6,
+                                                    scale: false,
+                                                    splitLine: {
+                                                        show: false
+                                                    },
+                                                    axisTick: {
+                                                        show: false
+                                                    },
+                                                    axisLabel: {
+                                                        "interval": 0,
+                                                        textStyle: {
+                                                            color: 'gray'
+                                                        }
+                                                    },
+                                                    axisLine: {
+                                                        show: false
+                                                    },
+                                                    splitArea: {
+                                                        show: false
+                                                    }
+
+
+                                                }
+                                            ],
+                                            yAxis: [
+                                                {
+                                                    max: builderJson6.all,
+                                                    scale: false,
+                                                    axisTick: {
+                                                        show: false
+                                                    },
+                                                    axisLine: {
+                                                        show: false
+                                                    },
+                                                    splitLine: {
+                                                        show: false
+                                                    },
+                                                    splitArea: {
+                                                        show: false
+                                                    },
+                                                    axisLabel: {
+                                                        textStyle: {
+                                                            color: 'gray'
+                                                        }
+                                                    },
+
+                                                }
+
+                                            ],
+                                            series: [
+
+                                                {
+                                                    name: '小型企业 500家',
+                                                    type: 'line',
+                                                    symbolSize: 10,
+                                                    symbol: 'none',
+                                                    smooth: true,
+                                                    data: Object.keys(builderJson6.charts).map(function (key) {
+                                                        return builderJson6.charts[key];
+                                                    }),
+                                                    itemStyle: {
+                                                        normal: {
+                                                            color: "red",
+
+                                                        },
+                                                    }
+                                                },
+                                                {
+                                                    name: '中型企业 200家',
+                                                    type: 'line',
+                                                    symbolSize: 10,
+                                                    symbol: 'none',
+                                                    smooth: true,
+                                                    data: Object.keys(builderJson6.charts1).map(function (key) {
+                                                        return builderJson6.charts1[key];
+                                                    }),
+                                                    itemStyle: {
+                                                        normal: {
+                                                            color: "yellow",
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    name: '大型企业 600家',
+                                                    type: 'line',
+                                                    symbolSize: 10,
+                                                    symbol: 'none',
+                                                    smooth: true,
+                                                    data: Object.keys(builderJson6.charts2).map(function (key) {
+                                                        return builderJson6.charts2[key];
+                                                    }),
+                                                    itemStyle: {
+                                                        normal: {
+                                                            color: "blue",
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    type: 'bar',
+                                                    stack: '总值',
+                                                    silent: true,
+                                                    barMaxWidth: 1,
+                                                    itemStyle: {
+                                                        normal: {
+                                                            color: '#000079'
+                                                        }
+                                                    },
+                                                    data: Object.keys(builderJson6.charts, builderJson6.charts1, builderJson6.charts2).map(function (key) {
+                                                        return builderJson6.all;
+                                                    })
+                                                }
+                                            ]
+                                        };
+                                        // 为echarts对象加载数据
+                                        myChart.setOption(option);
+
+                                    }
+                            );
+                        </script>
+                    </div>
+                    <div class="column_economy block">
+                        <div class="column_left_bng">
+                            <p class="column_left_font">对外经济</p>
+                        </div>
+                        <div class="column_produce_title">
+                            <p>规模以上工业出口交货值<br/><b>18.88</b>亿元</p>
+                        </div>
+                        <div id="economy" style="height:200px;width: auto"></div>
+                        <!-- ECharts单文件引入 -->
+                        <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+                        <script type="text/javascript">
+                            // 路径配置
+                            require.config({
+                                paths: {
+                                    echarts: 'http://echarts.baidu.com/build/dist'
+                                }
+                            });
+
+                            // 使用
+                            require(
+                                    [
+                                        'echarts',
+                                        'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+                                    ],
+                                    function (ec) {
+                                        // 基于准备好的dom，初始化echarts图表
+                                        var myChart = ec.init(document.getElementById('economy'));
+                                        var builderJson4 = {
+                                            "all": 30,
+                                            "charts": {
+                                                "map": 5,
+                                                "lines": 10,
+                                                "bar": 15,
+                                                "line": 20,
+                                                "pie": 15,
+                                                "scatter": 8,
+                                                "sankey": 5,
+                                                "a": 8,
+                                                "b": 15,
+                                                "c": 8,
+                                                "d": 20,
+                                                "e": 25
+
+                                            }
+                                        };
+                                        var dataAxis4 = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+                                        var option = {
+                                            tooltip: {
+                                                trigger: 'axis',
+                                                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                                                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                                                },
+                                                textStyle: {
+                                                    fontSize: 8
+                                                }
+                                            },
+                                            grid: {
+                                                show: true,
+                                                borderWidth: '0',
+                                                x: '5%',
+                                                x2: '5%',
+                                                y: '40%',
+                                                y2: '15%'
+                                            },
+                                            xAxis: [
+                                                {
+                                                    type: 'category',
+                                                    data: dataAxis4,
+                                                    scale: false,
+                                                    splitLine: {
+                                                        show: false
+                                                    },
+                                                    axisTick: {
+                                                        show: false
+                                                    },
+                                                    axisLabel: {
+                                                        "interval": 0,
+                                                        textStyle: {
+                                                            color: 'gray'
+                                                        }
+                                                    },
+                                                    axisLine: {
+                                                        show: false
+                                                    },
+                                                    splitArea: {
+                                                        show: false
+                                                    }
+
+
+                                                }
+                                            ],
+                                            yAxis: [
+                                                {
+                                                    max: builderJson4.all,
+                                                    scale: false,
+                                                    show: false,
+                                                    splitLine: {
+                                                        show: false
+                                                    },
+                                                    axisTick: {
+                                                        show: false
+                                                    },
+                                                    axisLabel: {
+                                                        show: false
+                                                    },
+                                                    axisLine: {
+                                                        show: false
+                                                    },
+                                                    splitArea: {
+                                                        show: false
+                                                    }
+                                                }
+
+                                            ],
+                                            series: [
+
+                                                {
+                                                    name: '一产总值 6.23亿元',
+                                                    type: 'bar',
+                                                    barMaxWidth: 5,
+                                                    z: 3,
+                                                    barGap: "10%",
+                                                    stack: '总值',
+                                                    itemStyle: {
+                                                        normal: {
+                                                            color: (function () {
+                                                                var zrColor = require('zrender/tool/color');
+                                                                return zrColor.getLinearGradient(
+                                                                        0, 145, 0, 165,
+                                                                        [[0, '#00BFFF'], [1, '#00008B']]
+                                                                )
+                                                            })()
+                                                        }
+                                                    },
+                                                    data: Object.keys(builderJson4.charts).map(function (key) {
+                                                        return builderJson4.charts[key];
+                                                    })
+                                                },
+                                                {
+                                                    type: 'bar',
+                                                    stack: '总值',
+                                                    silent: true,
+                                                    barMaxWidth: 5,
+                                                    itemStyle: {
+                                                        normal: {
+                                                            color: '#000079'
+                                                        }
+                                                    },
+                                                    data: Object.keys(builderJson4.charts).map(function (key) {
+                                                        return builderJson4.all - builderJson4.charts[key];
+                                                    })
+                                                }
+                                            ]
+                                        };
+                                        // 为echarts对象加载数据
+                                        myChart.setOption(option);
+
+                                    }
+                            );
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="banner">
+            <marquee direction=left loop="infinite">公告信息：热烈祝贺本市GDP首超15亿元！ 热烈祝贺本市GDP首超15亿元！ 热烈祝贺本市GDP首超15亿元！
+                热烈祝贺本市GDP首超15亿元！
+                热烈祝贺本市GDP首超15亿元！
+                热烈祝贺本市GDP首超15亿元！
+            </marquee>
+        </div>
+    </div>
+</div>
+</body>
+</html>

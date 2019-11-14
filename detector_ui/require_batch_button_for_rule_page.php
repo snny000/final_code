@@ -1,0 +1,10 @@
+<button class="btn btn-default btn-sm" id="delete">删除</button>
+<button class="btn btn-default btn-sm" id="alter">批量变更生效范围</button>
+<button class="btn btn-default btn-sm" id="append">批量追加生效范围</button>
+<button class="btn btn-default btn-sm" id="recover">批量全部生效</button>
+<button class="btn btn-default btn-sm" id="clean">批量清空生效范围</button>
+<button class="btn btn-default btn-sm" id="rewrite_label">批量修改标签</button>
+<button class="btn btn-info btn-sm" id="add_taskGroup">批量更新任务组</button>
+<button class="btn btn-info btn-sm" id="copy_taskGroup">批量复制到任务组</button>
+<button class="btn btn-info btn-sm" id="clear_taskGroup">批量清空任务组</button>
+<button class="btn btn-default btn-sm" id="refresh">刷新</button>

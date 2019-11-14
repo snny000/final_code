@@ -1,0 +1,440 @@
+/*--------------------------------
+        set_config
+---------------------------------*/
+
+.config-padding {
+    padding: 8px;
+}
+
+.step-wrapper {
+    margin: 0;
+    position: relative;
+    background: #fff;
+    padding-top: 30px;
+}
+
+.config-wrapper {
+    margin: 0;
+    padding: 40px;
+    position: relative;
+    background: #fff;
+    font-size: 13px;
+    font-family: "\5FAE\8F6F\96C5\9ED1", "Microsoft Yahei", "Hiragino Sans GB", tahoma, arial, "\5B8B\4F53";
+}
+
+.config-part {
+    background: #FAFAFA;
+    border-bottom: solid 25px #FAFAFA;
+}
+
+.config-table tr > th {
+    width: 20px;
+    text-align: center;
+    vertical-align: middle !important;
+    color: #bbb;
+    background: #f2f2f2;
+    border-top: none !important;
+}
+
+.config-table tr > td {
+    padding: 20px !important;
+    border-top: none !important;
+}
+
+.one-config {
+    margin: 30px 15px;
+    height: 28px;
+    line-height: 28px;
+    position: relative;
+}
+
+.config-name {
+    font-size: 12px;
+    width: 94px;
+    color: #999;
+    white-space: nowrap;
+    float: left;
+    margin-bottom: 0;
+}
+
+.config-name span {
+    border-left: solid 2px rgb(137, 208, 252);
+    padding-left: 2px;
+}
+
+.config-content {
+    margin-left: 96px;
+}
+
+button.config-btn {
+    padding: 0;
+    width: 100px;
+    border-radius: 0;
+    margin-right: 2px;
+    border: none;
+    background: #E8E8E8;
+    color: #666;
+    font-size: 13px;
+    height: 28px;
+    line-height: 28px;
+}
+
+button.config-btn:hover {
+    background: #43BFE3;
+    color: #FFFFFF;
+}
+
+button.config-btn.active {
+    background: #43BFE3;
+    color: #FFFFFF;
+}
+button.config-btn-business-type {
+    padding: 0;
+    width: 100px;
+    border-radius: 0;
+    margin-right: 2px;
+    border: none;
+    background: #E8E8E8;
+    color: #666;
+    font-size: 13px;
+    height: 28px;
+    line-height: 28px;
+}
+
+li>a.selected_page {
+    display: inline;
+}
+li>a.selected_page:hover {
+    background: #31e1ff;
+    color: #FFFFFF;
+}
+li>a.selected_page.active {
+    background: #43BFE3;
+    color: #FFFFFF;
+}
+button.config-btn-business-type:hover {
+    background: #31e1ff;
+    color: #FFFFFF;
+}
+
+button.config-btn-business-type.active {
+    background: #43BFE3;
+    color: #FFFFFF;
+}
+button.config-btn-band {
+    padding: 0;
+    width: 100px;
+    border-radius: 0;
+    margin-right: 2px;
+    border: none;
+    background: #E8E8E8;
+    color: #666;
+    font-size: 13px;
+    height: 28px;
+    line-height: 28px;
+}
+
+button.config-btn-band:hover {
+    background: #43BFE3;
+    color: #FFFFFF;
+}
+
+button.config-btn-band.active {
+    background: #43BFE3;
+    color: #FFFFFF;
+}
+
+#bandwidth-range {
+    width: 500px;
+    height: 20px;
+}
+
+#bandwidth-range input {
+    position: absolute;
+    left: 530px;
+    border: 1px solid #E8E8E8;
+    padding-left: 2px;
+}
+
+.config-part:hover th {
+    background: #ddd !important;
+    color: #333;
+}
+
+.one-config.header-line {
+    margin: 15px 15px !important;;
+}
+
+ul#wizardStatus {
+    list-style: none;
+    margin: 15px 0;
+    padding: 0;
+    text-align: center;
+}
+
+ul#wizardStatus li {
+    background-color: #E8E8E8;
+    color: #f5f5f5;
+    display: inline-block;
+    margin: 0;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 30px;
+    padding: 0 25px 0 40px;
+    position: relative;
+    width: 20%;
+}
+
+ul#wizardStatus li:first-child {
+    padding-left: 25px;
+    -webkit-border-top-left-radius: 3px;
+    border-top-left-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    border-bottom-left-radius: 3px
+}
+
+ul#wizardStatus li:last-child {
+    -webkit-border-top-right-radius: 3px;
+    border-top-right-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    border-bottom-right-radius: 3px
+}
+
+ul#wizardStatus li:after,
+ul#wizardStatus li:before {
+    background-color: #E8E8E8;
+    content: "";
+    display: block;
+    position: absolute
+}
+
+ul#wizardStatus li:after {
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border-right: 3px solid white;
+    border-top: 3px solid white;
+    height: 21px;
+    right: -13px;
+    top: 4px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    width: 21px;
+    z-index: 5
+}
+
+ul#wizardStatus li:before {
+    height: 30px;
+    right: 3px;
+    width: 20px;
+    z-index: 6
+}
+
+ul#wizardStatus li:last-child:after,
+ul#wizardStatus li:last-child:before {
+    display: none
+}
+
+ul#wizardStatus li.current {
+    background-color: #43BFE3;
+    color: #fff;
+}
+
+ul#wizardStatus li.current:after,
+ul#wizardStatus li.current:before {
+    background-color: #43BFE3
+}
+
+ul#wizardStatus li.completed {
+    background-color: #ccc;
+    color: #fff;
+}
+
+ul#wizardStatus li.completed:after,
+ul#wizardStatus li.completed:before {
+    background-color: #ccc
+}
+
+.config-times {
+    padding: 0;
+    width: 50px;
+    border-radius: 0;
+    margin-right: 2px;
+    border: none;
+    background: #E8E8E8;
+    color: #666;
+    font-size: 13px;
+    height: 28px;
+    line-height: 28px;
+}
+
+button.config-times:hover {
+    background: #43BFE3;
+    color: #FFFFFF;
+}
+
+button.config-times.active {
+    background: #43BFE3;
+    color: #FFFFFF;
+}
+
+ul.dropdown-menu > li:hover {
+    background: lightgray;
+    color: #FFFFFF;
+}
+
+.btn-ddos-link {
+    padding: 3px 4px;
+    background-color: #43BFE3 !important;
+    color: #ffffff;
+}
+.btn-ddos-link>span:last-child {
+    border-top: white 4px solid;
+}
+
+.btn-uplimit {
+    width: 80px;
+    height: 30px;
+    background-color: #43BFE3;
+    color: white;
+    border-radius: 0;
+}
+
+.btn-uplimit > span:last-child {
+    border-top: white 4px solid;
+}
+
+.area-config {
+    margin: 15px 15px;
+
+    position: relative;
+}
+
+.table tbody tr td {
+    vertical-align: middle;
+    padding: 0 !important;
+    text-align: left;
+}
+
+.table tbody {
+    height: 60px;;
+}
+
+.table thead th {
+    text-align: center !important;
+}
+
+.table tbody tr {
+    height: 40px;
+}
+
+.table thead tr {
+    height: 35px;
+}
+
+.input_port {
+    width: 60px !important;
+}
+
+.protocol_td td {
+    text-align: center !important;
+}
+
+.thead_pad tr th {
+    padding: 0 !important;
+}
+
+ul.dropdown-menu li {
+    text-align: left !important;
+    margin: 0 5px !important;
+}
+
+.gift {
+    color: orangered;
+}
+
+.td_5_percent {
+    width: 5% !important;
+}
+
+.td_8_percent {
+    width: 8% !important;
+}
+
+.td_10_percent {
+    width: 13% !important;
+}
+
+.td_13_percent {
+    width: 13% !important;
+}
+
+.td_20_percent {
+    width: 20% !important;
+}
+
+.padding_zero {
+    padding: 0 !important;
+}
+
+.add_div_border {
+    border: dashed 1px darkgray;
+    text-align: center;
+}
+
+.add_div_border em {
+    font-size: 12px;
+}
+
+.margin_zero {
+    margin: 0 !important;
+    padding: 0px !important;
+    text-align: left;
+}
+.margin_zero .protocol_margin_left {
+    margin-left: 25%;
+}
+
+/*--------------------------------
+        set_config_waf
+---------------------------------*/
+
+.config-waf-trfc {
+    width: 130px !important;
+}
+
+.config-waf-uplimit {
+    margin-left: 120px;
+}
+
+/*--------------------------------
+        set_config_cdn
+---------------------------------*/
+.config-cdn-business {
+    width: 140px !important;
+}
+
+.one-config-lg {
+    margin: 10px 5px;
+    height: 28px;
+    line-height: 28px;
+    position: relative;
+}
+
+.config-name-lg {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    width: 94px;
+    color: #999;
+    white-space: nowrap;
+    float: left;
+    margin-bottom: 0;
+    margin-top: 3px;
+}
+.row-cdn {
+    height: 30px;
+    vertical-align: middle;
+    margin: 10px 0 !important;
+}

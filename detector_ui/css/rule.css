@@ -1,0 +1,61 @@
+body {
+    background-color: white;
+}
+
+.widget {
+    clear: both;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.widget .widget-header {
+    border: 1px solid #e1e6eb;
+    position: relative;
+    background-color: #f5f6fa;
+    height: 52px;
+    padding: 0 15px;
+    line-height: 52px;
+}
+
+.widget .widget-header .title {
+    color: #3693cf;
+    font-weight: bold;
+}
+
+/*监控详情页*/
+.widget-header-index {
+    border-bottom: 0px solid #e1e6eb !important;
+    border-left: 4px solid #328FCA !important;
+
+}
+.widget-header-index-title {
+
+    text-align: left;
+    font-size: 14px;
+}
+
+ul.dropdown-list-style > li:hover{
+    cursor:pointer;
+    background-color: #D9D9D9;
+}
+
+ul.dropdown-list-style> li{
+    padding-left: 10px;
+    border-bottom: solid 1px #D9D9D9;
+    height: 34px;
+    line-height: 34px;
+}
+
+.dropdown-list-style{
+    padding: 0px
+}
+
+.upper-btn-group{
+    position: relative;
+    display: inline-block;
+}
+
+.upper-line{
+    border-bottom: solid 1px #DDDDDD;
+    margin-bottom: 20px;
+}

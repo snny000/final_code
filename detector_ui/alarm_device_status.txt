@@ -1,0 +1,1 @@
+{"msg":[{"amount":3,"status":"未审核"},{"amount":2,"status":"已认证"},{"amount":2,"status":"异常"},{"amount":5,"status":"待认证"},{"amount":4,"status":"正常运行"}],"code":200}

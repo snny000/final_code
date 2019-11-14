@@ -1,0 +1,103 @@
+<?php
+ini_set("display_errors", "On");
+ini_set("log_errors", "On");
+error_reporting(E_ALL | E_STRICT);
+
+require_once(dirname(__FILE__).'/data/get.json.from.server.php');
+
+$t1 = microtime(true);
+
+$start_time = null;
+$end_time = null;
+$dev_id = null;
+if(isset($_REQUEST["dev_id"])){
+    $dev_id =$_REQUEST["dev_id"];
+}
+if(isset($_REQUEST["start_time"])){
+    $start_time =$_REQUEST["start_time"];
+}
+if(isset($_REQUEST["end_time"])){
+    $end_time =$_REQUEST["end_time"];
+}
+
+putLog("id:".$dev_id);
+putLog("start_time:".$start_time);
+putLog("end_time:".$end_time);
+
+$url = Config::$serverurl_es.'/kafka/log/_search?pretty';
+//$url = Config::$serverurl_detector.'/'.$arr[0].'/'.$arr[1];
+
+putLog("url:".$url);
+
+
+$query = "";
+if($dev_id){
+    if(strlen($query)!=0){
+        $query.=",";
+    }
+
+    $query .=
+    "{
+        \"term\": {
+                \"auth.dev_id\": \"".$dev_id."\"
+            }
+    }";
+}
+
+if($start_time && $end_time){
+    if(strlen($query)!=0){
+        $query.=",";
+    }
+
+    $query .=
+    "{
+        \"range\": {
+            \"date\": {
+                \"gte\": $start_time,
+                \"lte\": $end_time
+            }
+        }
+    }";
+}
+
+//echo $query."<br/>";
+$data=
+"{
+    \"query\": {
+        \"bool\": {
+            \"must\": [
+                ".$query."
+            ]
+        }
+    },
+    \"from\": 0,
+    \"size\": 20,
+    \"sort\": {\"date\": { \"order\": \"desc\" }}
+}";
+
+putLog("data:".$data);
+
+$resRaw = http_request($url, $data);
+
+putLog($resRaw);
+//$res = json_decode($resRaw, true);
+//putLog($res);
+$res = json_decode($resRaw, true);
+
+//echo var_dump($res["hits"]["hits"][0]["_source"]);
+
+$array = array();
+$length = count($res["hits"]["hits"]);
+for($x=0;$x<$length;$x++) {
+    array_push($array,$res["hits"]["hits"][$x]["_source"]);
+}
+
+
+echo "{\"code\":0,\"data\":".json_encode($array)."}";
+//echo count($res["hits"]["hits"]);
+//echo $resRaw;//json_encode($res);
+
+$t2 = microtime(true);
+
+putLog('耗时'.round(($t2-$t1)*1000,1).'毫秒');
+?>

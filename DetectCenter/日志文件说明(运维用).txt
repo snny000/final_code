@@ -1,0 +1,44 @@
+管理中心默认部署目录为：/alidata/DetectCenter/(后续目录均为相对此目录的相对路径)
+
+1. log/uwsgi.log
+    记录下所有访问管理中心后台的请求信息（包括、页面前端、检测器前端、指挥中心等等）
+    一般情况下的报错都可以从该log进行定位
+
+2. 管理中心后台会发送请求到ES服务器（现在没用了）、业务系统和指挥中心，
+    上述请求都可以支持异步发送（celery+redis），
+    如果是异步发送请求日志会存在sv_celery.ini里设置的目录
+    ->ES服务器：log/celery_log/celery_es.log（发送数据包括通联关系审计文件、应用行为审计文件）
+    ->业务系统：log/celery_log/celery_business.log（发送数据包括通联关系审计文件、应用行为审计文件、检测器审计信息、告警数据和文件）
+    ->指挥中心：发往指挥中心的请求分了高中低三个优先级分别对应于 log/celery_log/celery_director_hi.log log/celery_log/celery_director.log log/celery_log/celery_director_lo.log
+        发送到指挥中心的数据类型与优先级对应关系为
+
+        检测器相关：
+
+            系统运行状态（JCQ_STATUS_SYSTEM）：              director_hi(1)
+            告警（包括告警数据和原始报文）：                 director_hi(1)
+
+            插件告警（JCQ_CJGJ_FILE）：                      director_hi(1)
+            插件状态（JCQ_CJZT）：                           director(2)
+            业务状态（JCQ_STATUS_BUSINESS）：                director(2)
+
+            审计日志（JCQ_AUDIT）：                          director_lo(3)
+            部署信息（JCQ_STATUS_INFO）：		             director_lo(3)
+            策略（CENTER_POLICY）：                          director_lo(3)
+
+            通联关系审计文件（JCQ_XWSJ_NETLOG_FILE）：       director_lo(3)
+            应用行为审计文件（JCQ_XWSJ_APPBEHAVIOR_FILE）：  director_lo(3)
+
+        管理中心相关：
+            审计日志（CENTER_AUDIT）：                       director_lo(3)
+            管理中心状态（CENTER_STATUS_INFO）随心跳上传：   director_hi(1)
+
+    如果不是异步发送，则所有的日志都在log/uwsgi.log中
+
+管理中心也可以存储业务系统处置文件到本地，默认存在/alidata/DetectorManagement/businessDisposition/（包括通联关系审计文件、应用行为审计文件、检测器审计信息、告警数据和文件、检测器业务状态和运行状态、检测器注册信息、管理中心策略信息）
+
+3. 相关定时器
+    -> 管理中心发送心跳到指挥中心log                          log/celery_log/heartbeat.log
+    -> 管理中心发送自身审计日志给指挥中心                      log/uwsgi.log
+    -> 管理中心检查检测器的在线情况                           log/online.log
+    -> 管理中心定期删除前端和检测器上传的旧文件（时间可以设定）  log/remove_file_crontab/crontab.log
+    -> 管理中心定期业务处置系统需要的策略信息                  log/write_policy.log

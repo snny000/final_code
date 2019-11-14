@@ -1,0 +1,16 @@
+Jul 22, 2016 8:34:37 AM org.apache.catalina.realm.LockOutRealm authenticate
+WARNING: An attempt was made to authenticate the locked user "admin"
+Jul 22, 2016 8:34:37 AM org.apache.catalina.realm.LockOutRealm authenticate
+WARNING: An attempt was made to authenticate the locked user "admin"
+Jul 22, 2016 8:34:38 AM org.apache.catalina.realm.LockOutRealm authenticate
+WARNING: An attempt was made to authenticate the locked user "admin"
+Jul 22, 2016 8:34:38 AM org.apache.catalina.realm.LockOutRealm authenticate
+WARNING: An attempt was made to authenticate the locked user "admin"
+Jul 22, 2016 8:34:38 AM org.apache.catalina.realm.LockOutRealm authenticate
+WARNING: An attempt was made to authenticate the locked user "tomcat"
+Jul 22, 2016 8:34:38 AM org.apache.catalina.realm.LockOutRealm authenticate
+WARNING: An attempt was made to authenticate the locked user "tomcat"
+Jul 22, 2016 8:34:38 AM org.apache.catalina.realm.LockOutRealm authenticate
+WARNING: An attempt was made to authenticate the locked user "tomcat"
+Jul 22, 2016 8:34:38 AM org.apache.catalina.realm.LockOutRealm authenticate
+WARNING: An attempt was made to authenticate the locked user "tomcat"

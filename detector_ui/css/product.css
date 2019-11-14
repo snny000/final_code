@@ -1,0 +1,132 @@
+/*--------------------------------
+        ddos
+---------------------------------*/
+.hr_horizontal {
+    text-align: left;
+    background-color: lightgray;
+    height: 0.5px;
+    margin: 0 15px;
+}
+
+.thead {
+    font-size: 12px;
+    font-family: Helvetica;
+    color: gray;
+    font-weight: normal;
+    background-color: #F5F6FA;
+}
+
+.i_check {
+    color: green;
+}
+
+.i_warn {
+    color: red;
+}
+
+.i_conf {
+    color: #3276b1;
+}
+
+.margin_ddos1 {
+    margin: 15px 30px;
+}
+
+.tab_color {
+    color: lightskyblue;
+}
+
+.tbl_font_size {
+    font-size: 12px;
+}
+
+/*--------------------------------
+       waf
+---------------------------------*/
+
+.margin_waf {
+    margin: 0 30px;
+}
+
+.tbl_waf {
+    text-align: left;
+    height: 102px;
+    font-size: 12px;
+}
+
+.tbl_rules_waf {
+    color: #31b0d5;
+    font-size: 12px;
+    height: 102px;
+    text-align: left;
+}
+
+.table tbody tr td {
+    vertical-align: middle;
+}
+
+.number_font {
+    font-size: larger;
+}
+
+.waf_img {
+    width: 50px;
+    height: 50px;
+}
+
+.common_margin {
+    margin: 10px 15px;
+}
+
+.td_img {
+    width: 10%;
+}
+
+/*--------------------------------
+       cdn
+---------------------------------*/
+
+.div_cdn {
+    margin: 0 15px;
+    width: 40%;
+}
+
+.tbl_cdn {
+    border: 1px solid lightgray;
+}
+
+.row_margin {
+    margin: 0 0 !important;
+}
+
+/*--------------------------------
+       TD-nav
+---------------------------------*/
+.nav_margin{
+    margin-top: 60px;
+    margin-left: 10px;
+}
+
+.nav_interval_first{
+    margin-left: 15px
+}
+
+.nav_interval{
+    margin-left: 2px
+}
+
+button.nav-btn {
+    border-radius: 0;
+    background: #E8E8E8;
+    color: #666;
+}
+
+button.nav-btn:hover {
+    background: #FDFDFD;
+    color: #666;
+}
+
+button.nav-btn.active, button.nav-btn:active, button.nav-btn:focus{
+    background: #546478;
+    color: #FFFFFF;
+}

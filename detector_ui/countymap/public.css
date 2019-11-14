@@ -1,0 +1,77 @@
+body {
+    background-image: url(https://img.alicdn.com/tps/TB1XBlMNpXXXXXQaFXXXXXXXXXX-2878-1516.jpg);
+    margin: 0px;
+}
+
+.header {
+    font-size: 20px;
+    text-align: center;
+    position: relative;
+    display: block;
+    height: 100px;
+    line-height: 100px;
+    width: 1400px;
+    color: cornflowerblue;
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));
+    background-image: url(bg.jpg);
+}
+.text-gradient{
+    margin: 0px;
+}
+.mainbody {
+    position: relative;
+    display: block;
+    height: 900px;
+    width: 1400px;
+}
+
+.block {
+    height: 250px;
+    width: 330px;
+    margin: 5px;
+    position: relative;
+    display: block;
+    border: 1px solid #000079;
+}
+
+.body_left {
+    float: left;
+    margin-left: 10px;
+    height: 900px;
+    width: 24%;
+    position: relative;
+    display: block;
+}
+
+.body_right {
+    float: left;
+    margin-left: 10px;
+    height: 900px;
+    width: 72%;
+    position: relative;
+    display: block;
+
+}
+
+.right_left_body {
+    float: left;
+    height: 900px;
+    width: 65%;
+    position: relative;
+    display: block;
+}
+
+.right_right_body {
+    float: left;
+    margin-left: 10px;
+    height: 900px;
+    width: 28%;
+    position: relative;
+    display: block;
+
+}
+
+.right_top_body {
+    height: 780px;
+    width: 1000px;
+}

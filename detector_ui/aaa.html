@@ -1,0 +1,732 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>检测器状态</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-switch.css" rel="stylesheet">
+    <link href="css/bootstrap-toggle.min.css" rel="stylesheet">
+
+
+    <!-- Add custom CSS here -->
+    <link href="css/frame.css" rel="stylesheet">
+    <link href="css/product.css" rel="stylesheet">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link href="css/detector.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: white;
+        }
+
+        .widget {
+            clear: both;
+            margin-top: 0px;
+            margin-bottom: 10px;
+        }
+
+        .widget .widget-header {
+            border: 1px solid #e1e6eb;
+            position: relative;
+            background-color: #f5f6fa;
+            height: 52px;
+            padding: 0 15px;
+            line-height: 52px;
+        }
+
+        .widget .widget-header .title {
+            color: #3693cf;
+            font-weight: bold;
+        }
+
+        /*监控详情页*/
+        .widget-header-index {
+            border-bottom: 0px solid #e1e6eb !important;
+            border-left: 4px solid #328FCA !important;
+
+        }
+        .widget-header-index-title {
+
+            text-align: left;
+            font-size: 14px;
+        }
+
+        ul.dropdown-list-style > li:hover{
+            cursor:pointer;
+            background-color: #D9D9D9;
+        }
+
+        ul.dropdown-list-style> li{
+            padding-left: 10px;
+            border-bottom: solid 1px #D9D9D9;
+            height: 34px;
+            line-height: 34px;
+        }
+
+        .dropdown-list-style{
+            padding: 0px
+        }
+
+        .td_8_percent {
+            width: 8% !important;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div id="whole-wrapper">
+<input name="status" type="checkbox" data-size="small">
+    <div>
+        <div class="row">
+            <div class="pull-left margin_ddos1">
+                <h4><span class="tab_color">|</span>&nbsp;&nbsp;检测器管理</h4>
+            </div>
+
+        </div>
+
+        <div class="row btn-banner">
+                <div class="dropdown dropdown-inline">
+                    <button type="button" data-toggle="dropdown"
+                            class="btn dropdown-btn dropdown-menu-width"
+                            aria-haspopup="true"
+                            aria-expanded="false">
+                        <span id="contractor" class="pull-left" value="00">所有厂商</span>
+                        <i class="fa fa-sort-down pull-right"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-width dropdown-list-style" id="ipslist">
+                        <li onclick="selectProtoFwd(this);" value="00">所有厂商</li>
+                        <li onclick="selectProtoFwd(this);" value="01">厂商1</li>
+                        <li onclick="selectProtoFwd(this);" value="02">厂商2</li>
+                        <li onclick="selectProtoFwd(this);" value="03">厂商3</li>
+                    </ul>
+                </div>
+
+                <div class="dropdown btn-interval dropdown-inline">
+                    <button type="button" data-toggle="dropdown"
+                            class="btn dropdown-btn dropdown-menu-width"
+                            aria-haspopup="true"
+                            aria-expanded="false">
+                        <span id="address_code" class="pull-left" value="0">所有位置</span>
+                        <i class="fa fa-sort-down pull-right"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-width dropdown-list-style" id="ipslist">
+                        <li onclick="selectProtoFwd(this);" value="0">所有位置</li>
+                        <li onclick="selectProtoFwd(this);" value="100000">北京</li>
+                        <li onclick="selectProtoFwd(this);" value="200000">上海</li>
+                        <li onclick="selectProtoFwd(this);" value="510000">广州</li>
+                    </ul>
+                </div>
+
+                <div class="dropdown btn-interval dropdown-inline">
+                    <button type="button" data-toggle="dropdown"
+                            class="btn dropdown-btn dropdown-menu-width"
+                            aria-haspopup="true"
+                            aria-expanded="false">
+                        <span id="device_status" class="pull-left" value="0">所有状态</span>
+                        <i class="fa fa-sort-down pull-right"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-width dropdown-list-style" id="ipslist">
+                        <li onclick="selectProtoFwd(this);" value="0">所有状态</li>
+                        <li onclick="selectProtoFwd(this);" value="1">正常运行</li>
+                        <li onclick="selectProtoFwd(this);" value="2">暂未审核</li>
+                        <li onclick="selectProtoFwd(this);" value="3">审核失败</li>
+                        <li onclick="selectProtoFwd(this);" value="4">认证失败</li>
+                        <li onclick="selectProtoFwd(this);" value="5">系统异常</li>
+                        <li onclick="selectProtoFwd(this);" value="6">软件异常</li>
+                        <li onclick="selectProtoFwd(this);" value="7">插件异常</li>
+                        <li onclick="selectProtoFwd(this);" value="8">规则异常</li>
+                    </ul>
+                </div>
+
+                <input id="device_id" type="text" class="form-control search-input btn-interval" placeholder="检测器ID(模糊搜索)">
+                <input id="organs" type="text" class="form-control search-input btn-interval" placeholder="部署单位(模糊搜索)">
+                <button id="searchButton" type="button" class="btn btn-primary btn-interval"><i class="fa fa-search">&nbsp;&nbsp;</i>搜索</button>
+                <button id="clearButton" type="button" class="btn btn-default"><i class="fa fa-eraser">&nbsp;&nbsp;</i>清除</button>
+        </div>
+
+
+        <div class="row common_margin">
+            <table id="maintable" class="table table-hover tbl_font_size "
+                   style="border: 1px solid lightgray;border-collapse: inherit">
+                <thead class="thead">
+                <tr >
+                    <th width="2%"><input type="checkbox" class="checkbox" id="chk_all1"></th>
+                    <!-- <th width="2%">ID</th> -->
+                    <th width="10%">检测器编号</th>
+                    <th width="10%">生产厂商</th>
+                    <th width="10%">部署位置</th>
+                    <th width="10%">部署单位</th>
+                    <th width="9%">设备状态</th>
+                    <th width="12%">最后告警产生时间</th>
+
+                    <th width="4%">禁用</th>
+                    <th width="4%">操作</th>
+
+
+                </tr>
+                </thead>
+
+                <tbody>
+                </tbody>
+
+                <tfoot>
+                <tr>
+                    <td><input type="checkbox" class="checkbox" id="chk_all2"></td>
+                    <td colspan="9">
+                        <div class="pull-left">
+
+                            <button class="btn btn-default btn-sm" id="refresh">刷新</button>
+                        </div>
+                        <div class="pull-right">
+
+                            <?php
+                            require_once(dirname(__FILE__) . '/require_page_bar_for_all_page.php');
+                            ?>
+
+<!--                            <nav id="paginationbox">
+                                <span style="vertical-align:10px;">共有<strong id="totalcount"></strong>条，每页显示：<strong>10</strong>条</span>
+                                <ul id="pagination" class="pagination pagination-sm" style="margin: 0%;"> </ul>
+                            </nav>-->
+                        </div>
+                    </td>
+                </tr>
+
+                </tfoot>
+            </table>
+
+        </div>
+
+    </div>
+</div>
+<!-- /#page-wrapper -->
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="checkModal" tabindex="-1" role="dialog" aria-labelledby="checkLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title">
+                    审核
+                </h4>
+            </div>
+            <div class="modal-body" id="check-form">
+
+                <div class="widget no-margin">
+                    <div class="widget-header widget-header-index">
+                        <div class="title widget-header-index-title">
+                            基本信息
+                        </div>
+                    </div>
+                    <div>
+                        <table class="table no-margin modal-form">
+                            <tbody id="base-form">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="btn-group" role="group" id="ischeck" style="margin-top: 10px;width: 100%">
+                    <button type="button" class="btn btn-default condition-btn singlechoose active" value="0" style="width: 50%">审核通过</button>
+                    <button type="button" class="btn btn-default condition-btn singlechoose" value="1" style="width: 50%">审核不通过</button>
+                </div>
+                <div style="margin-top: 10px">
+                   <span> 审核人:</span> <input id="op_person" type="text" class="search-input form-control" style="width:100%!important;";>
+                </div>
+                <div style="margin-top: 10px">
+                     <span>未通过原因:</span>
+                     <textarea id="register_message" style="width:100%;height:80px;resize: vertical;" class="form-control"></textarea>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button id="check-submit" type="button" class="btn btn-primary">
+                    提交
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
+
+<div class="modal fade" id="failModal" tabindex="-1" role="dialog" aria-labelledby="failLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title">
+                    未通过原因
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div  id="fail-reason"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+</div>
+<!-- /#wrapper -->
+
+<!-- JavaScript -->
+<script src="js/jquery-1.10.2.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/bootstrap-switch.js"></script>
+
+<script src="js/bootstrap-toggle.min.js"></script>
+
+
+<script src="js/frame_detector.js"></script>
+<script src="js/common.js"></script>
+<script src="js/jquery.twbsPagination.min.js"></script>
+<script>
+    buildFrame("menu-detector");
+	
+	$('[name="status"]').bootstrapSwitch({
+		onText:"启动",
+		offText:"停止",
+		onColor:"success",
+		offColor:"info",
+		size:"small",
+		onSwitchChange:function(event,state){
+			if(state==true){
+			alert(state)
+				$(this).val("1");
+			}else{
+				$(this).val("2");
+			}
+		}
+	})
+
+    function selectProtoFwd(obj) {
+        $(obj).parent().parent().find("span:first").attr("value",$(obj).attr("value"))
+        $(obj).parent().parent().find("span:first").text($(obj).text());
+        //$("#"+id).attr("value",$(obj).attr("value"));
+       // $("#"+id).text($(obj).text());
+    }
+
+    $('button.condition-btn.singlechoose').click(function () {
+        $(this).siblings().removeClass("active");
+        $(this).addClass("active");
+    })
+
+    var option = {
+      //  totalPages: totalPages,
+        visiblePages: 3,
+        first: "<<",
+        prev: "<",
+        next: ">",
+        last: ">>",
+        onPageClick: function (event, page){
+            $.ajax({
+                url: option.myurl+"&pn="+page,
+                type: "post",
+                data: option.searchParam,
+                success:function(data) {
+                    var ret = JSON.parse(data);
+                    if (ret["code"] == 200) {
+
+                        List(ret["msg"]);
+                    } else if (ret["code"] == 20000) {
+                        $("#maintable tbody tr").remove();
+                        $("<tr><td colspan='8' style='text-align: center'><h4>没有消息</h4></td></tr>").appendTo("#maintable tbody");
+                    }else if (ret["code"] == 9001){
+                        window.location.href = "login.php?ref="+window.location.href;
+                    }else{
+                        alert(ret["msg"]);
+                    }
+                },
+                beforeSend: function () {
+                    $("#maintable tbody tr").remove();
+                    $("#maintable tbody").append("<tr><td colspan='9'  style='text-align: center'><img src='images/loading.gif'></td></tr>")
+                },
+                error: function () {
+                    alert("无法连接服务器");
+                }
+            });
+
+        }
+    }
+
+    function pagination(totalcount,url,startPage,searchParam){
+        var totalPages = 0;
+        if(totalcount == 0){
+            totalPages = 1; //0条数据会报错
+        }else{
+            totalPages = Math.ceil(totalcount/p_size);
+        }
+        option["totalPages"] = totalPages
+        option["myurl"] = url
+        option["startPage"] = startPage
+        option["searchParam"] = searchParam
+        //console.log(option)
+        $('#pagination').twbsPagination(option);
+    }
+
+
+    $("#chk_all1,#chk_all2").click(function(){
+        if(this.checked){
+            $("table :checkbox").prop("checked", true);
+        }else{
+            $("table :checkbox").prop("checked", false);
+        }
+    });
+
+
+    function detail(id) {//查看详情
+      //  window.location.href = "detector_detail.php?id=" + id;
+
+
+        window.open("detector_detail.php?id=" + id);
+
+
+        //post('detector_detail.php',{id:id});
+    }
+
+    function check(id){
+        $.ajax({
+            url: "/ajax_action_detector.php?uu=detector.detail&id="+id, //ajax请求
+            type: "post",
+            success: function(data){
+                console.log(data)
+                var server = JSON.parse(data);
+
+
+
+                var msg = server.msg;
+                var base_form = "<tr><td><span class='text-muted'> ID：</span><span id='check_id'>"+msg.id+"</span></td></tr>" +
+                    "<tr><td><span class='text-muted'> 设备厂商:</span>"+msg.contractor+"</td></tr>" +
+                    "<tr><td><span class='text-muted'> 产品软件版本号:</span>"+msg.soft_version+"</td></tr>" +
+                    "<tr><td><span class='text-muted'> 检测器部署的客户单位名:</span>"+msg.organs+"</td></tr>" +
+                    "<tr><td><span class='text-muted'> 检测器部署的地理位置:</span>"+msg.address+"</td></tr>" +
+                    "<tr><td><span class='text-muted'> 行政区域:</span>"+msg.address_code+"</td></tr>" +
+                    "<tr><td><span class='text-muted'> 客户单位联系人:</span>"+(msg.contact.length==0?" 无":list_name(msg.contact))+"</td></tr>"+
+                    "<tr><td><span class='text-muted'> 设备配置信息:</span>"+(msg.interface.length==0?" 无":list_interface(msg.interface))+"</td></tr>"+
+                    "<tr><td><span class='text-muted'> 内存总数:</span>"+msg.mem_total+"</td></tr>"+
+                    "<tr><td><span class='text-muted'> CPU信息:</span>"+(msg.cpu_info.length==0?" 无":list_cpu(msg.cpu_info))+"</td></tr>"+
+                    "<tr><td><span class='text-muted'> 磁盘信息:</span>"+(msg.disk_info.length==0?" 无":list_disk(msg.disk_info))+"</td></tr>"
+                // $("tbody#base-form").html(base_form);
+                $("tbody#base-form").html(base_form);
+            }
+        });
+    }
+
+    function list_name(contact){
+        var str = "<table class='table table-condensed modal-form'><tr><td>姓名</td><td>工作</td><td>电话</td><td>邮箱</td></tr>"
+        for(var i=0;i<contact.length;i++){
+            str  = str  + "<tr><td>"+ contact[i].name + "</td><td>"+
+                contact[i].job + "</td><td>"+
+                contact[i].phone + "</td><td>"+
+                contact[i].email + "</td></tr>"
+        }
+        str += "</table>";
+        return str;
+    }
+
+    function list_disk(disk_info){
+        var str = "<table class='table table-condensed modal-form'><tr><td>磁盘序列号</td><td>磁盘大小</td></tr>"
+        for(var i=0;i<disk_info.length;i++){
+            str  = str  + "<tr><td>"+ disk_info[i].disk_id + "</td><td>"+disk_info[i].size + "</td></tr>"
+        }
+        str += "</table>";
+        return str;
+    }
+
+    function list_interface(info){
+        var str = "<table class='table table-condensed modal-form'><tr><td>网卡名</td><td>IP地址</td><td>网关地址</td></tr>"
+        for(var i=0;i<info.length;i++){
+            str  = str  + "<tr><td>"+ info[i].name + "</td><td>"+
+                info[i].ip + "</td><td>"+
+                info[i].mac + "</td></tr>"
+        }
+        str += "</table>";
+        return str;
+    }
+
+    function list_cpu(info){
+        var str = "<table class='table table-condensed modal-form'><tr><td>核心数</td><td>主频</td></tr>"
+        for(var i=0;i<info.length;i++){
+            str  = str  + "<tr><td>"+ info[i].core + "</td><td>"+
+                info[i].clock + "</td></tr>"
+        }
+        str += "</table>";
+        return str;
+    }
+
+    $("#check-submit").click(function(){
+        $.ajax({
+            url: "/ajax_action_detector.php?uu=detector.permit",
+            type: "post",
+            data: {id:$("#check_id").text(),type:$("#ischeck .active").prop("value"),op_person:$("#op_person").val(),register_message:$("#register_message").val()},
+            success:function(data) {
+                var ret = JSON.parse(data);
+                console.log(ret)
+            }
+        })
+        $("#checkModal").modal('hide');
+    }
+    )
+
+    function fail(status,id){
+        console.log("status:"+status)
+        console.log("id:"+id)
+        $.ajax({
+            url: "/ajax_action_detector.php?uu=detector.detail&id="+id, //ajax请求
+            type: "post",
+            data:null,
+            cache: false,
+            success: function(data){
+                console.log(data)
+                var server = JSON.parse(data);
+                var msg = server.msg;
+                if (status == 3){
+                    $("#fail-reason").html("审核未通过:"+msg.register_message)
+                }else if(status == 4){
+                    $("#fail-reason").html("认证未通过:"+msg.message)
+                }
+            }
+        });
+        //
+    }
+
+    /**
+     *
+     * @param status 1-待提交,2-配置中,3-失效
+     * @param id
+     * @returns {*}
+     */
+    function getStrManipulation(status, id) {
+        switch (status) {
+            case 1:
+                return "<a href=\"javascript:void(0);\" class=\"fa fa-bars\" onclick=\"detail(" + id + ")\">详情</a>";
+            case 2:
+                return "<a href=\"javascript:void(0);\" data-toggle=\"modal\" data-target=\"#checkModal\" onclick=\"check(" + id + ")\">审核</a>";
+            case 3:
+                return "<a href=\"javascript:void(0);\" data-toggle=\"modal\" data-target=\"#failModal\" onclick=\"fail("+ status +"," + id + ")\">查看</a>";
+            case 4:
+                return "<a href=\"javascript:void(0);\" data-toggle=\"modal\" data-target=\"#failModal\" onclick=\"fail("+ status +"," + id + ")\">查看</a>";
+            default:
+                return "<a href=\"javascript:void(0);\"  class=\"fa fa-bars\" onclick=\"detail(" + id + ")\">详情</a>";
+
+        }
+    }
+
+
+
+
+    /*
+    var msgListObj = eval(msgList);
+    List(msgListObj); //默认列表
+    */
+
+    function List(msgListObj){
+
+        var address_codeMap={'100000':'北京','200000':'上海','510000':'广州'};
+        var device_statusMap={1:'正常运行',2:'暂未审核',3:'审核失败',4:'认证失败',5:'系统异常',6:'软件异常',7:'插件异常',8:'规则异常'};
+        var contractorMap={'01':'厂商1', '02':'厂商2', '03':'厂商3'};
+        var imgMap = {
+            1: "<strong style='color:red;font-size:18px'>!&nbsp;&nbsp;</strong>",
+            2: "<i class='fa fa-circle' style='color:#5BC0DE; font-size:xx-small ' />",
+            3: "&nbsp;&nbsp;<span style='background: #FF9900;padding: 3px;border-radius: 5px; color: white'>置顶</span>"
+        }
+
+        var device_status_imgMap = {
+            1: "<i class='fa fa-circle' style='color:#5BC0DE; font-size:xx-small ' />",
+            2: "<strong style='color:red;font-size:18px'>!&nbsp;&nbsp;</strong>",
+            3: "<strong style='color:red;font-size:18px'>!&nbsp;&nbsp;</strong>",
+            4: "<strong style='color:red;font-size:18px'>!&nbsp;&nbsp;</strong>",
+            5: "<strong style='color:red;font-size:18px'>!&nbsp;&nbsp;</strong>",
+            6: "<strong style='color:red;font-size:18px'>!&nbsp;&nbsp;</strong>",
+            7: "<strong style='color:red;font-size:18px'>!&nbsp;&nbsp;</strong>",
+            8: "<strong style='color:red;font-size:18px'>!&nbsp;&nbsp;</strong>"
+
+        }
+
+
+
+        //var _row = $("#content").clone();
+        //$("#content").remove();
+        $("#maintable tbody tr").remove();
+
+        var _row = $("<tr><td><input type='checkbox' class='checkbox'></td>"+
+            "<td ></td><td style='color:#999999'></td><td style='color:#999999'></td><td style='color:#999999'></td><td style='color:#999999'></td><td style='color:#999999'></td><td style='color:#999999'></td><td style='color:#999999'></td></tr>");
+
+        for (var i = 0; i < msgListObj.length; i++) {
+            var row = _row.clone();
+            var imghtml = '';
+            var titlehtml = "<a href = 'detector_detail.php?id="+msgListObj[i].id+"' style='color:#000000'>"+msgListObj[i].device_id+"</a>";
+
+
+            $.fn.bootstrapSwitch.defaults.size = 'mini';
+            $.fn.bootstrapSwitch.defaults.onText = '开启';
+            $.fn.bootstrapSwitch.defaults.offText = '禁用';
+
+           var operatehtml = getStrManipulation(msgListObj[i].device_status, msgListObj[i].id);
+
+           // var operatehtml = getStrManipulation(msgListObj[i].device_status, msgListObj[i].id)+"<div><input name='my-checkbox' type='checkbox' data-toggle='toggle' data-size='mini' id="+msgListObj[i].id+" checked /></div>";
+
+            if(msgListObj[i].device_is_effective==1){
+
+                var is_checked="checked"
+            }else{
+
+                var is_checked=""
+            }
+
+
+
+            var switchhtml = "<div><input name='my-checkbox' type='checkbox' id="+msgListObj[i].id+"  "+is_checked+"  onclick='alterSwitch(this);'/></div>";
+
+
+            row.attr("id",msgListObj[i].id)
+            row.find("td:eq(0)").html("<input type='checkbox' class='checkbox'>")
+          //  row.find("td:eq(1)").text(msgListObj[i].id);
+//            row.find("td:eq(1)").html(device_status_imgMap[msgListObj[i].device_status]+titlehtml);
+            row.find("td:eq(1)").html(msgListObj[i].device_id);
+            row.find("td:eq(2)").text(contractorMap[msgListObj[i].contractor]);
+            row.find("td:eq(3)").html(address_codeMap[msgListObj[i].address_code]?address_codeMap[msgListObj[i].address_code]:"未知地区");
+            row.find("td:eq(4)").html(msgListObj[i].organs);
+            row.find("td:eq(5)").html(device_statusMap[msgListObj[i].device_status]);
+            row.find("td:eq(6)").text(msgListObj[i].last_warning_time);
+            row.find("td:eq(7)").html(switchhtml);
+            row.find("td:eq(8)").html(operatehtml);
+
+            row.show();
+            row.appendTo("#maintable tbody");
+
+
+        }
+
+        $("[name='my-checkbox']").bootstrapSwitch()
+
+
+
+        $("[name='my-checkbox']").on('switch-change', function (e, data) {
+
+            alert(1111)
+            var $el = $(data.el)
+                , value = data.value;
+            console.log(e, $el, value);
+        });
+        /*
+        $("tbody tr a").click(function () {
+            console.log("test")
+            window.location.href = "message_detail.php?id="+$(this).parent().parent().attr("id");
+        })
+        */
+    }
+
+    function LoadPage(currentPage,searchParam){
+        $.ajax({
+            url: "/ajax_action_detector.php?uu=detector.count",
+            type: "post",
+            data: searchParam,
+            success:function(data) {
+                var ret = JSON.parse(data);
+                if (ret["code"] == 200)
+                    ret = ret["msg"]["count"]
+                else {
+                    ret = 0;
+                }
+                $("#totalcount").text(ret);
+                $('#pagination').empty();
+                $('#pagination').removeData("twbs-pagination");
+                $('#pagination').unbind("page");
+                pagination(ret,"/ajax_action_detector.php?uu=detector.show&p_size="+p_size,parseInt(currentPage),searchParam)
+
+                $("#isRead").removeClass("active");
+                $("#allMessage").addClass("active");
+                $("#unRead").removeClass("active");
+            },
+            beforeSend: function () {
+                $(".loading-pic").removeClass("hidden");
+            },
+            error: function () {
+                alert("无法连接服务器");
+            }
+        })
+    }
+
+    //var globalSearchParam = {random:1,register_ce_type:1,is_online:1}
+
+    var globalSearchParam = {random:1}
+    //第一次加载分页
+    LoadPage(1,globalSearchParam)
+
+
+
+
+
+    $("#searchButton").click(function(){
+        var device_id =  $("#device_id").val();
+        var organs =  $("#organs").val();
+       // var rct = $("#select_verify").attr("value")
+       // var ison = $("#select_isonline").attr("value")
+        var contractor = $("#contractor").attr("value").toString()
+        var address_code = $("#address_code").attr("value").toString()
+        var device_status = $("#device_status").attr("value").toString()
+
+       // globalSearchParam = {random:1,register_ce_type:rct,is_online:ison}
+        globalSearchParam = {random:1}
+        if(contractor!="00"){
+            globalSearchParam["contractor"] = contractor
+        }
+        if(address_code!="0"){
+            globalSearchParam["address_code"] = address_code
+        }
+        if(device_status!="0"){
+            globalSearchParam["device_status"] = device_status
+        }
+
+        if(device_id!=""){
+            globalSearchParam["device_id"] = device_id
+        }
+        if(organs!=""){
+            globalSearchParam["organs"] = organs
+        }
+        LoadPage(1,globalSearchParam)
+    })
+
+    $("#clearButton").click(function(){
+        firstSelect("contractor");
+        firstSelect("address_code");
+        firstSelect("device_status");
+        $("#device_id").val("");
+        $("#organs").val("");
+    })
+
+    function alterSwitch(obj){
+        var id= $(obj).attr("id")
+
+        alert(id)
+    }
+
+/*    $("#refresh").click(function(){
+        var currentPage = $('#pagination .active a').text()
+        LoadPage(currentPage,globalSearchParam)
+    })*/
+
+
+
+</script>
+
+</body>
+</html>

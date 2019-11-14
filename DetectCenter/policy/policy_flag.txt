@@ -1,0 +1,20 @@
+[policy_flag]
+trojan = 3
+attack = 3
+malware = 3
+abnormal = 3
+keyword_file = 3
+encryption_file = 3
+compress_file = 3
+picture_filter = 3
+ip_listen = 3
+domain_listen = 3
+url_listen = 3
+account_listen = 3
+net_log = 3
+app_behavior = 3
+web_filter = 3
+dns_filter = 3
+ip_whitelist = 3
+block = 3
+
