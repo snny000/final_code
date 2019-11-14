@@ -615,7 +615,7 @@ def download_rule_template(request):
 
         file_name = 'rules.zip'
         relative_path = 'template/' + file_name
-        file_path = common.BASE_DIR + '/' + relative_path
+        file_path = common.MEDIA_ROOT + relative_path
         if not os.path.exists(file_path):
             return common.ui_message_response(400, '服务器上没有该文件:' + file_path.encode('utf-8'), '文件不存在')
 

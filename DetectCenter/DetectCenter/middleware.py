@@ -18,6 +18,31 @@ except ImportError:
 	MiddlewareMixin = object  # Django 1.4.x - Django 1.9.x
 
 
+class URLControlMiddleware(MiddlewareMixin):
+
+	def process_request(self, request):
+		# 执行视图view之前被调用  返回None 或 HttpResponse
+
+		remote_addr = request.META['HTTP_X_FORWARDED_FOR'] if request.META.has_key('HTTP_X_FORWARDED_FOR') \
+			else request.META.get('REMOTE_ADDR', '0.0.0.0')
+
+		server_port = request.META.get('SERVER_PORT', '0')
+
+		request_method = request.method
+
+		request_path = request.path
+
+
+
+		if (server_port == '8089' and  request_method == 'GET') or \
+			(server_port == '8089' and remote_addr != global_config.MY_NODE_IP):
+
+			#return message_response(400,'非法访问')
+			return HttpResponse('开发的程序员已经被打死')
+		return None
+
+
+
 class SimpleMiddleware(MiddlewareMixin):
 	def process_request(self, request):
 		# 调用 view 之前的代码

@@ -249,17 +249,17 @@ require_once(dirname(__FILE__) . '/require_login_check_for_all_page.php');
 								</div>
 								<div class="col-xs-4">
 									<div class="reminder-title"><h5><small>告警概览：</small></h5></div>
-									<div class="reminder-content">共有告警<span id="alarm-num"></span>条，今日新增<span id="today-alarm-num"></span>条</div>
+									<div class="reminder-content">共有告警<span id="alarm-num">40</span>条，今日新增<span id="today-alarm-num">3</span>条</div>
 									<div class="reminder-entrance"><a href="alarm.php">点击查看</a></div>
 								</div>
 								<div class="col-xs-4">
 									<div class="reminder-title"><h5><small>策略概览：</small></h5></div>
-									<div class="reminder-content">共有<span id="class-num"></span>类，共计<span id="rule-num"></span>条策略</div>
+									<div class="reminder-content">共有<span id="class-num"></span>类，共计<span id="rule-num">40</span>条策略</div>
 									<div class="reminder-entrance"><a href="rule_task.php">点击查看</a></div>
 								</div>
 								<div class="col-xs-4">
 									<div class="reminder-title"><h5><small>检测器审核概览：</small></h5></div>
-									<div class="reminder-content">共<span id="detector-audit-num"></span>台检测器待审核</div>
+									<div class="reminder-content">共<span id="detector-audit-num">0</span>台检测器待审核</div>
 									<div class="reminder-entrance"><a href="detector.php">点击查看</a></div>
 								</div>
 							</div>

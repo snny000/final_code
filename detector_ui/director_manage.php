@@ -744,6 +744,7 @@ require_once(dirname(__FILE__) . '/require_get_parameter_for_post.php');
             default:
                 break;
         }
+        all_operate.removeClass('operate_config');
         return all_operate;
     }
 

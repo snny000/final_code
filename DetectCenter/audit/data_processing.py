@@ -335,8 +335,10 @@ def process_system_audit(request):
                         'id': detector_id
                     }),
                 }  # 业务数据传输请求头
-                business_data_list.append((business_request_header, business_request_data))
-
+                ##### update by wwenan 2019.06.18 17:47####
+                #business_data_list.append((business_request_header, business_request_data))
+                ###########################################
+		
             if config.const.UPLOAD_DIRECTOR and check_global_director_connection():
                 common_header = ccd.get_common_command_header_of_detector('status', 'AUDIT', 'JCQ_AUDIT',
                                                                           request, detector_id,
@@ -348,13 +350,15 @@ def process_system_audit(request):
         if serializer.is_valid():
             serializer.save()  # 存储数据库
 
-            if config.const.UPLOAD_BUSINESS:
-                sender.async_send_business_data('project.audit', 'JCQ_XTSJ', detector_id, business_data_list)
+            ##### update by wwenan 2019.06.18 17:47#####
+            #if config.const.UPLOAD_BUSINESS:
+                #sender.async_send_business_data('project.audit', 'JCQ_XTSJ', detector_id, business_data_list)
+            ############################################
 
             # 生成业务处置系统所需文件
             if config.const.UPLOAD_BUSINESS_DISPOSAL:
-                handle_data_type = 'audit(detector)'
-                file_dir = os.path.join(config.const.DISPOSAL_DIR, 'detector_audit')
+                handle_data_type = 'detector_audit'
+                file_dir = os.path.join(config.const.DISPOSAL_DIR, 'audit')
                 file_name = 'detector_audit_' + str(int(time.time())) + '_' + str(1)
                 sender.send_business_disposal(file_dir, file_name, request.META.get('HTTP_USER_AGENT'), handle_data_type, handle_data)
 
@@ -619,6 +623,38 @@ def send_audit(request, retract=0):
         traceback.print_exc()
         return common.ui_message_response(500, '服务器内部错误', '服务器内部错误',
                                           status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+from DetectCenter.director_config import CENTER_USER_AGENT
+# 写管理系统自身审计日志到业务处置（临时@@@@@@）
+def write_center_audit_to_business_disposal():
+    try:
+        # 生成业务处置系统所需文件
+        if config.const.UPLOAD_BUSINESS_DISPOSAL:
+            # query_data = AuditManagement.objects.filter(is_send_command=0)
+            query_data = AuditManagement.objects.filter()
+            if not query_data.exists():
+                print '没有审计信息'
+            serializer_data = serialize('json', query_data,
+                                        fields=('log_id', 'user', 'opt_type', 'event_type',
+                                                'message', 'time')
+                                        )
+            list_data = json.loads(serializer_data)
+
+            command_data = []
+            for data in list_data:
+                fields = data['fields']
+                fields['id'] = fields.pop('log_id')
+                fields['time'] = fields['time'].replace('T', ' ')  # 去除时间显示时多出的字符'T'
+                command_data.append(fields)
+            command_data = json.dumps(command_data, ensure_ascii=False).encode('utf-8')
+            handle_data_type = 'center_audit'
+            file_dir = os.path.join(config.const.DISPOSAL_DIR, 'audit')
+            file_name = 'center_audit_' + str(int(time.time())) + '_' + str(1)
+            sender.send_business_disposal(file_dir, file_name, CENTER_USER_AGENT, handle_data_type, command_data)
+    except Exception:
+        traceback.print_exc()
+
 
 
 # 发送管理系统运行状态, 随心跳上传 不单独 上传

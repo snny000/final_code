@@ -5,5 +5,3 @@
 <li onclick="selectProtoFwd(this);" value="04">鼎普</li>
 <li onclick="selectProtoFwd(this);" value="05">网安</li>
 <li onclick="selectProtoFwd(this);" value="06">信工所</li>
-<li onclick="selectProtoFwd(this);" value="07">网神360</li>
-<li onclick="selectProtoFwd(this);" value="08">金城</li>

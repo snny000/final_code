@@ -345,10 +345,10 @@ new_name	migrations/0002_auto_20170609_1840.py	/^            new_name='picture_f
 new_name	migrations/0002_auto_20170609_1840.py	/^            new_name='picture_file_type',$/;"	v	class:Migration
 new_name	migrations/0002_auto_20170609_1840.py	/^            new_name='picture_file_warninfo',$/;"	v	class:Migration
 object_listen_status	models.py	/^    object_listen_status        = models.CharField(max_length=4, blank=True)$/;"	v	class:Detector
-old_name	migrations/0002_auto_20170609_1840.py	/^            old_name='picture_filter_status',$/;"	v	class:Migration
-old_name	migrations/0002_auto_20170609_1840.py	/^            old_name='picture_filter_type',$/;"	v	class:Migration
-old_name	migrations/0002_auto_20170609_1840.py	/^            old_name='picture_filter_version',$/;"	v	class:Migration
-old_name	migrations/0002_auto_20170609_1840.py	/^            old_name='picture_filter_warninfo',$/;"	v	class:Migration
+old_name	migrations/0002_auto_20170609_1840.py	/^            old_name='picture_file_status',$/;"	v	class:Migration
+old_name	migrations/0002_auto_20170609_1840.py	/^            old_name='picture_file_type',$/;"	v	class:Migration
+old_name	migrations/0002_auto_20170609_1840.py	/^            old_name='picture_file_version',$/;"	v	class:Migration
+old_name	migrations/0002_auto_20170609_1840.py	/^            old_name='picture_file_warninfo',$/;"	v	class:Migration
 op_ip	models.py	/^    op_ip                       = models.CharField(max_length=64, blank=True)$/;"	v	class:Detector
 op_person	models.py	/^    op_person                   = models.CharField(max_length=64, blank=True)$/;"	v	class:Detector
 op_time	models.py	/^    op_time                     = models.DateTimeField(null=True, blank=True)$/;"	v	class:Detector

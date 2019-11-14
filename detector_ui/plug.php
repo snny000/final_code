@@ -572,7 +572,7 @@ require_once(dirname(__FILE__) . '/require_hint_modal_for_rule_page.php');
             row.find("td:eq(1)").text(msgListObj[i].plug_id);
             row.find("td:eq(2)").html(msgListObj[i].plug_version);
             // row.find("td:eq(3)").html(msgListObj[i].plug_path);
-            row.find("td:eq(3)").html("<a url="+msgListObj[i].plug_path+" href=ajax_action_download_renamealarm"+msgListObj[i].plug_path+"&rename="+msgListObj[i].plug_name+">"+msgListObj[i].plug_name+"</a>");
+            row.find("td:eq(3)").html("<a url="+msgListObj[i].plug_path+" href=ajax_action_download_rename_common.php?uu=download&path="+msgListObj[i].plug_path+"&rename="+msgListObj[i].plug_name+">"+msgListObj[i].plug_name+"</a>");
             row.find("td:eq(4)").html(msgListObj[i].plug_config_version);
            // row.find("td:eq(5)").html(prevalenceMap[msgListObj[i].prevalence]);
             row.find("td:eq(5)").html(msgListObj[i].cpu);

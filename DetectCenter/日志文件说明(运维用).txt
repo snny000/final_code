@@ -42,3 +42,6 @@
     -> 管理中心检查检测器的在线情况                           log/online.log
     -> 管理中心定期删除前端和检测器上传的旧文件（时间可以设定）  log/remove_file_crontab/crontab.log
     -> 管理中心定期业务处置系统需要的策略信息                  log/write_policy.log
+
+    # update by wwenan 2019.04.15
+    -> 管理中心定期清除uwsgi僵尸进程manual_shutdown_useless_uwsgi.py log/shutdown_useless_uwsgi.log

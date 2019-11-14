@@ -14,7 +14,7 @@ if not os.path.exists(file_dir):
 file_name = 'system_audit_' + str(int(time.time())) + '_' + str(system_audit_flag)
 file_path = file_dir + file_name
 f_handler = open(file_path, 'wb')
-f_handler.write('---------------7d81741d1803de---------------\n')
+f_handler.write('---------------------------7d81741d1803de--------------\n')
 f_handler.write('Type:audit(system)\n')
 mem_usage = str(psutil.virtual_memory().percent) + '%'
 # psutil.swap_memory().percent

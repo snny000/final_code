@@ -33,7 +33,7 @@ class Detector(models.Model):
     disk_info                   = models.CharField(max_length=1024, blank=True)
     auth_time                   = models.DateTimeField(null=True, blank=True)
     auth_frequency              = models.IntegerField(default=0)
-    auth_status                 = models.IntegerField(default=1)
+    auth_status                 = models.IntegerField(default=2)
     auth_fail_reason            = models.CharField(max_length=64, blank=True)
 
     is_online                   = models.IntegerField(default=0)

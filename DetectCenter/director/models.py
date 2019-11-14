@@ -302,7 +302,7 @@ class DirectorPictureRule(models.Model):
     map_rule_id_list = models.TextField(blank=True)
 
     class Meta:
-        db_table = 'director_rule_picture_filter'
+        db_table = 'director_rule_picture_file'
 
     def __unicode__(self):
         return self.name

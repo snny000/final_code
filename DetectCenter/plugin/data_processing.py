@@ -752,7 +752,7 @@ def generate_increment_plug_task(request_data):
         # 所有正在运行的检测器
         device_id_all = list(Detector.objects.filter(device_status=1).values_list('id', 'device_id'))
         id_device_dict = {item[0]: item[1] for item in device_id_all}   # id与device_id的对应关系
-        device_id_dict = {item[1]: item[0] for item in device_id_all}   # device_id与id的对应关系
+        device_id_dict = {int(item[1]): item[0] for item in device_id_all}   # device_id与id的对应关系
         print "device_id_dict:", pu.pretty_print_format(device_id_dict)
 
         device_plugs_dict = {}  # key: 检测器ID, value: 要下发的插件操作List
@@ -770,10 +770,10 @@ def generate_increment_plug_task(request_data):
         index = 0
         for plug in plug_data:
             # first_cmd = plug.cmd.split("#")[0]
-            # previous_device_list 表示该规则已经生成任务的检测器主键id列表
+            # previous_device_list 表示该规则已经生成任务的检测器id列表
             previous_device_list = common.generate_device_ids_list_from_model_str(plug.device_id_list_run, id_device_dict.values())
 
-            # now_device_list表示该规则变更之后的检测器主键id列表
+            # now_device_list表示该规则变更之后的检测器id列表
             now_device_list = common.generate_device_ids_list_from_model_str(plug.device_id_list, id_device_dict.values())
 
             print 'previous_device_list:', previous_device_list
@@ -795,12 +795,12 @@ def generate_increment_plug_task(request_data):
                         add_command[field] = plug_dict.get(field)
                     add_plugin_operate(detector_id, add_command, device_plugs_dict)
                     # add_plugin_operate(detector_id, {'type': 'plug', 'cmd': 'start', 'plug_id': plug.plug_id}, device_plugs_dict)   # 添加一条开启插件命令
-                    add_device_status_dict[device_id_dict[detector_id]] = '1'
+                    add_device_status_dict[detector_id] = '1'
             if 'del' in plug.cmd:
                 for detector_id in previous_device_list:
                     add_command = {'type': 'plug', 'cmd': 'del', 'plug_id': plug.plug_id}
                     add_plugin_operate(detector_id, add_command, device_plugs_dict)
-                    del_device_status_dict[device_id_dict[detector_id]] = '0'
+                    del_device_status_dict[detector_id] = '0'
             if 'update_plug' in plug.cmd:
                 for detector_id in previous_device_list:
                     plug_set = get_plug_fields('update_plug')
@@ -825,12 +825,12 @@ def generate_increment_plug_task(request_data):
                         add_command[field] = plug_dict.get(field)
                     add_plugin_operate(detector_id, add_command, device_plugs_dict)
                     # add_plugin_operate(detector_id, {'type': 'plug', 'cmd': 'start', 'plug_id': plug.plug_id}, device_plugs_dict)  # 添加一条开启插件命令
-                    add_device_status_dict[device_id_dict[detector_id]] = '1'
+                    add_device_status_dict[detector_id] = '1'
                 del_device_ids = set(previous_device_list) - (set(previous_device_list) & set(now_device_list))
                 for detector_id in del_device_ids:   # 插件对应的部分检测器删除
                     add_command = {'type': 'plug', 'cmd': 'del', 'plug_id': plug.plug_id}
                     add_plugin_operate(detector_id, add_command, device_plugs_dict)
-                    del_device_status_dict[device_id_dict[detector_id]] = '0'
+                    del_device_status_dict[detector_id] = '0'
 
             # 处理 插件在检测器上的运行状态
             pre_device_status_dict = pc.generate_plug_on_device_status_dict(plug.plug_on_device_status)
@@ -910,7 +910,7 @@ def generate_fulldose_plug_task(request_data):
         elif device_id_list == '[]':  # 表示全部检测器
             device_id_list = id_device_dict.values()
         else:
-            device_id_list = json.loads(device_id_list)
+            device_id_list = [str(item) for item in json.loads(device_id_list)]
 
         generate_time = du.get_current_time()
 
@@ -934,11 +934,11 @@ def generate_fulldose_plug_task(request_data):
 
             plug_json = serialize('json', plug_data, fields=result_set)  # 序列化成json
             plug_all = json.loads(plug_json)
-            plug_data_list = [plug['fields'] for plug in plug_all]
+            plug_data_list = [plug['fields'] for plug in plug_all] if plug_all else []
 
             plug_json_director = serialize('json', plug_data_director, fields=result_set)  # 序列化成json
             plug_all_director = json.loads(plug_json_director)
-            plug_data_director_list = [plug['fields'] for plug in plug_all_director]
+            plug_data_director_list = [plug['fields'] for plug in plug_all_director] if plug_all_director else []
 
             plug_data_list.extend(plug_data_director_list)
             print 'plug:', pu.pretty_print_format(plug_data_list)
@@ -1084,6 +1084,8 @@ def start_stop_plugin(request):
         if detector_id is None:
             return common.ui_message_response(400, '请设置detector_id主键ID参数', '请设置detector_id主键ID参数')
         detector_info = Detector.objects.filter(id=detector_id)
+        if not detector_info.exists():
+            return common.ui_message_response(400, '指定检测器不存在', '指定检测器不存在', status.HTTP_200_OK)
         new_status = ''
         plug_id = ''
         for plug in plug_data:
@@ -1091,8 +1093,8 @@ def start_stop_plugin(request):
             plug_id = plug.plug_id
             print 'begin operate:', new_status
             plug_on_device_status_dict = pc.generate_plug_on_device_status_dict(plug.plug_on_device_status)
-            if detector_id in plug_on_device_status_dict:
-                plug_on_device_status_dict[detector_id] = str(operate)
+            if detector_info[0].device_id in plug_on_device_status_dict:
+                plug_on_device_status_dict[detector_info[0].device_id] = str(operate)
                 new_status = pc.generate_plug_on_device_status_str(plug_on_device_status_dict)
             else:
                 return common.ui_message_response(400, '给定插件plug_id的生效检测器不包括给定检测器detector_id',
@@ -1102,7 +1104,7 @@ def start_stop_plugin(request):
         operate_str = 'start' if operate else 'stop'
         add_command = {'type': 'plug', 'cmd': operate_str, 'plug_id': plug_id}
 
-        version_num = common.cal_task_version([PlugTask, DirectorPluginTask], detector_info[0].device_id if detector_info.exists() else detector_id, 'plugin', '2')
+        version_num = common.cal_task_version([PlugTask, DirectorPluginTask], detector_info[0].device_id, 'plugin', '2')
 
         task_data = {
             'version': version_num,
@@ -1110,7 +1112,7 @@ def start_stop_plugin(request):
             'num': 1,
             'config': json.dumps([add_command], encoding='utf-8', ensure_ascii=False),
             'generate_time': generate_time,
-            'device_id': detector_info[0].device_id if detector_info.exists() else detector_id,
+            'device_id': detector_info[0].device_id,
             'user': request_data.get('uuid', '')
         }
         if not task_data:

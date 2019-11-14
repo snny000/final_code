@@ -24,7 +24,7 @@ import traceback
 import json
 from django.core.serializers import serialize
 
-over_time_minute = 5
+over_time_minute = 3
 
 
 def is_online(time_delta=180):

@@ -908,7 +908,6 @@ if(empty($id)){header('Location: error.php');}
             $("#plugAlarmCount").html("<a onclick=postAlarm(6,\""+msg.device_id+"\")>"+msg.plug.plug_alarm+"</a>"); //插件告警数目
             $("#newPlugSync").html("<a onclick=postPlug(\""+msg.device_id+"\")>"+msg.plug.time+"</a>"); //最新插件下发时间
             $('#center_rule_count').text(msg.rule_count.all); //策略总数
-           
             var _row = `<tr><td><a onclick="postAlarm('',${msg.device_id})" class="highlightValue">${msg.alarm_count.all}</a></td>
                     <td><a onclick="postAlarm(1,${msg.device_id})">${msg.alarm_count.alarm}</a></td>
                     <td><a onclick="postAlarm(2,${msg.device_id})">${msg.alarm_count.abnormal}</a></td>
@@ -1105,7 +1104,7 @@ if(empty($id)){header('Location: error.php');}
         var _rowspan = $('#disk_info tbody tr').length-1;
         if(msg.run_resource.disk) {
             $('#disk_info tbody tr:eq(1)').append("<td class='highlightValue' style='text-align:center' rowspan="+_rowspan+">"+msg.run_resource.disk+" GB</td>");
-0
+
             $('#disk_count tbody tr:eq(1) td:eq(2)').html("<span class='highlightValue' style='text-align:center'>"+msg.run_resource.disk+" GB</span>")
         }
         if(msg.run_resource.cpu)
@@ -1116,7 +1115,7 @@ if(empty($id)){header('Location: error.php');}
         function list_cpu2(data){
             info = data;
             for(var i=0;i<info.length;i++){
-                $('#cpu_info tbody tr[physical_id='+info[i]["physical_id"]+'] td:eq(3)').html("<span class='highlightValue'>"+info[i]["cpu_usage"]+"%</span>")              
+                $('#cpu_info tbody tr[physical_id='+info[i]["physical_id"]+'] td:eq(3)').html("<span class='highlightValue'>"+info[i]["cpu_usage"]+"%</span>")
             }
         }
 

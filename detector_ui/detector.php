@@ -1336,8 +1336,7 @@ require_once(dirname(__FILE__) . '/require_login_check_for_all_page.php');
             '04': '鼎普',
             '05': '网安',
             '06': '信工所',
-            '07': '网神360',
-            '08': '金城'
+            '07': '未知'
         }
         contractor_name = contractor_dict[contractor]
         return contractor_name

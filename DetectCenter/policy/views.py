@@ -109,10 +109,10 @@ class RuleBatchInsert(APIView):
     批量插入某个监测模块的规则.
     """
     def get(self, request, format=None):
-        return batch_insert_rules(request, 'policy/')
+        return batch_insert_rules(request, '')
 
     def post(self, request, format=None):
-        return batch_insert_rules(request, 'policy/')
+        return batch_insert_rules(request, '')
 
 
 class RuleDelete(APIView):

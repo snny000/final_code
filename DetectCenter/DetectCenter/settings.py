@@ -28,8 +28,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'f+o*f-n=j!ye68ssm#kzk!ckz45)h-o#!htj%_8%k49@_nma!w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+#DEBUG = True
+DEBUG = False
 
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['*']
@@ -97,6 +97,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'DetectCenter.middleware.SimpleMiddleware',
 	'DetectCenter.middleware.RequestsLog',
+	#'DetectCenter.middleware.URLControlMiddleware',
 ]
 
 ROOT_URLCONF = 'DetectCenter.urls'
@@ -189,16 +190,34 @@ USE_TZ = False
 # )
 
 ####定时任务相关####
+CRONTAB_LOCK_JOBS = True
+
 CRONJOBS = [
-	('*/1 * * * *', 'director.heartbeat.task_heartbeat', '>> ' + BASE_DIR + '/log/celery_log/heartbeat.log'),  # 发送心跳到指挥节点
-	('*/10 * * * *', 'audit.data_processing.send_audit', '>> ' + BASE_DIR + '/log/uwsgi.log'),              # 发送审计日志到指挥节点
-	('*/1 * * * *', 'detector.judge_online.record_event', '>> ' + BASE_DIR + '/log/online.log'),           # 检查检测器的在线情况
-	('* * */5 * *', 'DetectCenter.delete_media_file_crontab.delete_media_file', '>> ' + BASE_DIR + '/log/remove_file_crontab/crontab.log'),           # 定期删除旧文件
-	# ('*/1 * * * *', 'DetectCenter.delete_media_file_crontab.delete_media_file', '>> ' + BASE_DIR + '/log/remove_file_crontab/crontab.log'),           # 检查检测器的在线情况
-	# ('*/1 * * * *', 'detector.data_processing.center_report_detector_running_status', '>> ' + BASE_DIR + '/log/online.log'),  # 通过检测器运行状态上传接口上报检测器在线状态，现在通过检测器在线状态时间定时器上传
-	# ('*/1 * * * *', 'DetectCenter.crontab.hello', '>> ' + BASE_DIR + '/log/hello.log')                   # 测试定时器
-    ('* * */5 * *', 'policy.write_policy_data.process_all_policy', '>> ' + BASE_DIR + '/log/write_policy.log'),           # 定期写业务处置策略信息
+    # ('*/1 * * * *', 'director.heartbeat.task_heartbeat', '>> ' + BASE_DIR + '/log/celery_log/heartbeat.log 2>&1'),                               # 发送心跳到指挥节点
+    # ('*/10 * * * *', 'audit.data_processing.send_audit', '>> ' + BASE_DIR + '/log/uwsgi.log 2>&1'),                                              # 发送审计日志到指挥节点
+    ('*/1 * * * *', 'detector.judge_online.record_event', '>> ' + BASE_DIR + '/log/online.log 2>&1'),                                              # 检查检测器的在线情况
+    ('* * */5 * *', 'DetectCenter.delete_media_file_crontab.delete_media_file', '>> ' + BASE_DIR + '/log/remove_file_crontab/crontab.log 2>&1'),   # 定期删除旧文件
+    # ('*/1 * * * *', 'detector.data_processing.center_report_detector_running_status', '>> ' + BASE_DIR + '/log/online.log 2>&1'),                # 通过检测器运行状态上传接口上报检测器在线状态，现在通过检测器在线状态时间定时器上传
+    # ('*/1 * * * *', 'DetectCenter.crontab.hello', '>> ' + BASE_DIR + '/log/hello.log 2>&1')                                                      # 测试定时器
+
+    # update by wwenan 2019.04.15
+    ('* */24 * * *', 'manual_shutdown_useless_uwsgi.shutdown_useless_uwsgi_process', '>> ' + BASE_DIR + '/log/shutdown_useless_uwsgi.log 2>&1'),  # 管理中心定期清除uwsgi僵尸进程
+    # update by wwenan 2019.04.15
+
+    ##############################################
+    # ('*/5 * * * *', 'audit.data_processing.write_center_audit_to_business_disposal', '>> ' + BASE_DIR + '/log/uwsgi.log 2>&1'),                  # 管理中心审计, generate_system_log会写
+    # ('* * */5 * *', 'policy.write_policy_data.process_all_policy', '>> ' + BASE_DIR + '/log/write_policy.log 2>&1'),                             # 定期写业务处置策略信息
+    # ('*/5 * * * *', 'director.heartbeat.write_center_status_to_business_disposal', '>> ' + BASE_DIR + '/log/business_disposal.log 2>&1'),        # 管理中心运行状态
+    ##############################################
 ]
+
+if config.const.DIRECTOR_VERSION:
+    CRONJOBS.append(('*/1 * * * *', 'director.heartbeat.task_heartbeat', '>> ' + BASE_DIR + '/log/celery_log/heartbeat.log 2>&1'))
+    CRONJOBS.append(('*/10 * * * *', 'audit.data_processing.send_audit', '>> ' + BASE_DIR + '/log/uwsgi.log 2>&1'))
+
+if config.const.UPLOAD_BUSINESS_DISPOSAL:
+    CRONJOBS.append(('* * */5 * *', 'policy.write_policy_data.process_all_policy', '>> ' + BASE_DIR + '/log/write_policy.log 2>&1'))
+    CRONJOBS.append(('*/5 * * * *', 'director.heartbeat.write_center_status_to_business_disposal', '>> ' + BASE_DIR + '/log/business_disposal.log 2>&1'))
 
 # celery configuration
 ####异步任务相关####

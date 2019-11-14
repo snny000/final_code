@@ -101,7 +101,7 @@ director_rule_serializers = [
 director_database_tables = [
     'director_rule_trojan', 'director_rule_attack', 'director_rule_malware', 'director_rule_abnormal',
     'director_rule_keyword_file', 'director_rule_encryption_file', 'director_rule_compress_file',
-    'director_rule_picture_filter', 'director_rule_ip_listen', 'director_rule_dns_listen', 
+    'director_rule_picture_file', 'director_rule_ip_listen', 'director_rule_dns_listen',
     'director_rule_url_listen', 'director_rule_account_listen', 'director_rule_net_log', 
     'director_rule_app_behavior', 'director_rule_web_filter', 'director_rule_dns_filter',
     'director_rule_ip_whitelist', 'director_rule_block',
@@ -532,10 +532,10 @@ def generate_increment_policy(policy_type, director_down_header={}):
             if rule.device_id_list == rule.device_id_list_run == '':    # 新增同时没有设置生效范围
                 continue
 
-            # previous_device_list 表示该规则已经生成任务的检测器主键id列表
+            # previous_device_list 表示该规则已经生成任务的检测器id列表
             previous_device_list = common.generate_device_ids_list_from_model_str(rule.device_id_list_run, id_device_dict.values())
 
-            # now_device_list表示该规则变更之后的检测器主键id列表
+            # now_device_list表示该规则变更之后的检测器id列表
             now_device_list = common.generate_device_ids_list_from_model_str(rule.device_id_list, id_device_dict.values())
 
             print 'previous_device_list:', previous_device_list
@@ -1310,10 +1310,10 @@ def generate_increment_plug_task(director_down_header={}):
         index = 0
         for plug in plug_data:
             # first_cmd = plug.cmd.split("#")[0]
-            # previous_device_list 表示该规则已经生成任务的检测器主键id列表
+            # previous_device_list 表示该规则已经生成任务的检测器id列表
             previous_device_list = common.generate_device_ids_list_from_model_str(plug.device_id_list_run, id_device_dict.values())
 
-            # now_device_list表示该规则变更之后的检测器主键id列表
+            # now_device_list表示该规则变更之后的检测器id列表
             now_device_list = common.generate_device_ids_list_from_model_str(plug.device_id_list, id_device_dict.values())
 
             print 'previous_device_list:', previous_device_list
@@ -1898,6 +1898,16 @@ def get_center_data():
     return register_data
 
 
+center_status = {
+    0: '未接入指挥中心',
+    1: '指挥模式',
+    2: '等待指挥审核',
+    3: '审核失败',
+    4: '审核成功',
+    5: '认证失败',
+    6: '待注册'
+}
+
 # 管理中心注册
 def center_register(request):
     try:
@@ -1926,7 +1936,6 @@ def center_register(request):
             'User-Agent': management_center[0].center_id + '/' + management_center[0].soft_version + '(' + management_center[0].organs + ')',
             'X-Forwarded-For': management_center[0].center_ip
         }
-
         r = requests.post(dc.send_director_A + 'reg', data=json.dumps(register_data), headers=headers)
         # pu.print_with_retract(r.status_code, 1)  # 响应码
         # pu.print_with_retract(r.headers, 1)  # 响应头

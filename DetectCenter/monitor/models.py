@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.db import models
 
 risk_choices = (
+    (-1, '未知'),
     (0, '无风险'),
     (1, '一般级'),
     (2, '关注级'),
@@ -44,8 +45,8 @@ xm_dir_choices = (
 
 class AlarmAll(models.Model):
     alarm_id          = models.CharField(max_length=20)
-    sip               = models.GenericIPAddressField()
-    dip               = models.GenericIPAddressField()
+    sip               = models.CharField(max_length=64, blank=True)
+    dip               = models.CharField(max_length=64, blank=True)
     risk              = models.IntegerField(choices=risk_choices)
     device_id         = models.CharField(max_length=12)
     time              = models.DateTimeField()
@@ -62,14 +63,36 @@ class AlarmAll(models.Model):
         return self.name
 
 
+class AlarmAllFile(models.Model):
+    time              = models.DateTimeField()
+    alarm_id          = models.CharField(max_length=20)
+    num               = models.SmallIntegerField(default=1)
+    filename          = models.CharField(max_length=64)
+    is_upload         = models.BooleanField(default=False)
+    checksum          = models.CharField(max_length=128)
+    filetype          = models.CharField(max_length=32)
+
+    trojan_id         = models.IntegerField(blank=True)
+
+    report_time       = models.DateTimeField()
+    device_id         = models.CharField(max_length=12)
+    save_path         = models.CharField(max_length=128, blank=True)
+
+    class Meta:
+        db_table      = 'alarm_all_file'
+
+    def __unicode__(self):
+        return self.name
+
+
 class AlarmTrojan(models.Model):
     id                = models.IntegerField(primary_key=True)
     alarm_id          = models.CharField(max_length=20)
     rule_id           = models.BigIntegerField()
-    sip               = models.GenericIPAddressField()
+    sip               = models.CharField(max_length=64, blank=True)
     sport             = models.IntegerField()
     smac              = models.CharField(max_length=18)
-    dip               = models.GenericIPAddressField()
+    dip               = models.CharField(max_length=64, blank=True)
     dport             = models.IntegerField()
     dmac              = models.CharField(max_length=18)
     time              = models.DateTimeField()
@@ -92,36 +115,14 @@ class AlarmTrojan(models.Model):
         return self.name
 
 
-class AlarmTrojanFile(models.Model):
-    time              = models.DateTimeField()
-    alarm_id          = models.CharField(max_length=20)
-    num               = models.IntegerField()
-    filename          = models.CharField(max_length=64)
-    is_upload         = models.BooleanField(default=False)
-    checksum          = models.CharField(max_length=128)
-    filetype          = models.CharField(max_length=32)
-
-    trojan_id         = models.IntegerField()
-
-    report_time       = models.DateTimeField()
-    device_id         = models.CharField(max_length=12)
-    save_path         = models.CharField(max_length=128, blank=True)
-
-    class Meta:
-        db_table      = 'alarm_trojan_file'
-
-    def __unicode__(self):
-        return self.name
-
-
 class AlarmAttack(models.Model):
     id                = models.IntegerField(primary_key=True)
     alarm_id          = models.CharField(max_length=20)
     rule_id = models.BigIntegerField()
-    sip               = models.GenericIPAddressField()
+    sip               = models.CharField(max_length=64, blank=True)
     sport             = models.IntegerField()
     smac              = models.CharField(max_length=18)
-    dip               = models.GenericIPAddressField()
+    dip               = models.CharField(max_length=64, blank=True)
     dport             = models.IntegerField()
     dmac              = models.CharField(max_length=18)
     time              = models.DateTimeField()
@@ -142,34 +143,14 @@ class AlarmAttack(models.Model):
         return self.name
 
 
-class AlarmAttackFile(models.Model):
-    time              = models.DateTimeField()
-    alarm_id          = models.CharField(max_length=20)
-    num               = models.IntegerField()
-    filename          = models.CharField(max_length=64)
-    is_upload         = models.BooleanField(default=False)
-    checksum          = models.CharField(max_length=128)
-    filetype          = models.CharField(max_length=32)
-
-    report_time       = models.DateTimeField()
-    device_id         = models.CharField(max_length=12)
-    save_path         = models.CharField(max_length=128, blank=True)
-
-    class Meta:
-        db_table      = 'alarm_attack_file'
-
-    def __unicode__(self):
-        return self.name
-
-
 class AlarmMalware(models.Model):
     id                = models.IntegerField(primary_key=True)
     alarm_id          = models.CharField(max_length=20)
     rule_id = models.BigIntegerField()
-    sip               = models.GenericIPAddressField()
+    sip               = models.CharField(max_length=64, blank=True)
     sport             = models.IntegerField()
     smac              = models.CharField(max_length=18)
-    dip               = models.GenericIPAddressField()
+    dip               = models.CharField(max_length=64, blank=True)
     dport             = models.IntegerField()
     dmac              = models.CharField(max_length=18)
     time              = models.DateTimeField()
@@ -199,35 +180,14 @@ class AlarmMalware(models.Model):
         return self.name
 
 
-class AlarmMalwareFile(models.Model):
-    time              = models.DateTimeField()
-    alarm_id          = models.CharField(max_length=20)
-    num               = models.IntegerField()
-    filename          = models.CharField(max_length=64)
-    is_upload         = models.BooleanField(default=False)
-    checksum          = models.CharField(max_length=128)
-    filetype          = models.CharField(max_length=32)
-
-    report_time       = models.DateTimeField()
-
-    device_id         = models.CharField(max_length=12)
-    save_path         = models.CharField(max_length=128, blank=True)
-
-    class Meta:
-        db_table      = 'alarm_malware_file'
-
-    def __unicode__(self):
-        return self.name
-
-
 class AlarmOther(models.Model):
     id                = models.IntegerField(primary_key=True)
     alarm_id          = models.CharField(max_length=20)
     rule_id = models.BigIntegerField()
-    sip               = models.GenericIPAddressField()
+    sip               = models.CharField(max_length=64, blank=True)
     sport             = models.IntegerField()
     smac              = models.CharField(max_length=18)
-    dip               = models.GenericIPAddressField()
+    dip               = models.CharField(max_length=64, blank=True)
     dport             = models.IntegerField()
     dmac              = models.CharField(max_length=18)
     time              = models.DateTimeField()
@@ -245,27 +205,6 @@ class AlarmOther(models.Model):
         return self.name
 
 
-class AlarmOtherFile(models.Model):
-    time              = models.DateTimeField()
-    alarm_id          = models.CharField(max_length=20)
-    num               = models.IntegerField()
-    filename          = models.CharField(max_length=64)
-    is_upload         = models.BooleanField(default=False)
-    checksum          = models.CharField(max_length=128)
-    filetype          = models.CharField(max_length=32)
-
-    report_time       = models.DateTimeField()
-
-    device_id         = models.CharField(max_length=12)
-    save_path         = models.CharField(max_length=128, blank=True)
-
-    class Meta:
-        db_table      = 'alarm_other_file'
-
-    def __unicode__(self):
-        return self.name
-
-
 class AlarmAbnormal(models.Model):
 
     abnormal_type_choices = (
@@ -277,10 +216,10 @@ class AlarmAbnormal(models.Model):
 
     id                = models.IntegerField(primary_key=True)
     alarm_id          = models.CharField(max_length=20)
-    sip               = models.GenericIPAddressField()
+    sip               = models.CharField(max_length=64, blank=True)
     sport             = models.IntegerField()
     smac              = models.CharField(max_length=18)
-    dip               = models.GenericIPAddressField()
+    dip               = models.CharField(max_length=64, blank=True)
     dport             = models.IntegerField()
     dmac              = models.CharField(max_length=18)
     alert_type        = models.IntegerField(choices=abnormal_type_choices)
@@ -299,26 +238,6 @@ class AlarmAbnormal(models.Model):
         return self.name
 
 
-class AlarmAbnormalFile(models.Model):
-    time              = models.DateTimeField()
-    alarm_id          = models.CharField(max_length=20)
-    num               = models.IntegerField()
-    filename          = models.CharField(max_length=64)
-    checksum          = models.CharField(max_length=128)
-    filetype          = models.CharField(max_length=32)
-
-    report_time       = models.DateTimeField()
-
-    device_id         = models.CharField(max_length=12)
-    save_path         = models.CharField(max_length=128, blank=True)
-
-    class Meta:
-        db_table      = 'alarm_abnormal_file'
-
-    def __unicode__(self):
-        return self.name
-
-
 class SensitiveEmail(models.Model):
     id                = models.IntegerField(primary_key=True)
     alarm_id          = models.CharField(max_length=20)
@@ -328,11 +247,11 @@ class SensitiveEmail(models.Model):
     time              = models.DateTimeField()
     sm_inpath         = models.CharField(max_length=512, blank=True)
     sm_summary        = models.CharField(max_length=512, blank=True)
-    sm_desc           = models.CharField(max_length=128, blank=True)
-    dip               = models.GenericIPAddressField()
+    sm_desc           = models.CharField(max_length=512, blank=True)
+    dip               = models.CharField(max_length=64, blank=True)
     dport             = models.IntegerField()
     dmac              = models.CharField(max_length=18)
-    sip               = models.GenericIPAddressField()
+    sip               = models.CharField(max_length=64, blank=True)
     sport             = models.IntegerField()
     smac              = models.CharField(max_length=18)
     xm_dir            = models.IntegerField(choices=xm_dir_choices)
@@ -369,11 +288,11 @@ class SensitiveIm(models.Model):
     time               = models.DateTimeField()
     sm_inpath          = models.CharField(max_length=512, blank=True)
     sm_summary         = models.CharField(max_length=512, blank=True)
-    sm_desc            = models.CharField(max_length=128, blank=True)
-    dip                = models.GenericIPAddressField()
+    sm_desc            = models.CharField(max_length=512, blank=True)
+    dip                = models.CharField(max_length=64, blank=True)
     dport              = models.IntegerField()
     dmac               = models.CharField(max_length=18)
-    sip                = models.GenericIPAddressField()
+    sip                = models.CharField(max_length=64, blank=True)
     sport              = models.IntegerField()
     smac               = models.CharField(max_length=18)
     xm_dir             = models.IntegerField(choices=xm_dir_choices)
@@ -405,11 +324,11 @@ class SensitiveFileTransfer(models.Model):
     time              = models.DateTimeField()
     sm_inpath         = models.CharField(max_length=512, blank=True)
     sm_summary        = models.CharField(max_length=512, blank=True)
-    sm_desc           = models.CharField(max_length=128, blank=True)
-    dip               = models.GenericIPAddressField()
+    sm_desc           = models.CharField(max_length=512, blank=True)
+    dip               = models.CharField(max_length=64, blank=True)
     dport             = models.IntegerField()
     dmac              = models.CharField(max_length=18)
-    sip               = models.GenericIPAddressField()
+    sip               = models.CharField(max_length=64, blank=True)
     sport             = models.IntegerField()
     smac              = models.CharField(max_length=18)
     xm_dir            = models.IntegerField(choices=xm_dir_choices)
@@ -440,11 +359,11 @@ class SensitiveHttp(models.Model):
     time              = models.DateTimeField()
     sm_inpath         = models.CharField(max_length=512, blank=True)
     sm_summary        = models.CharField(max_length=512, blank=True)
-    sm_desc           = models.CharField(max_length=128, blank=True)
-    dip               = models.GenericIPAddressField()
+    sm_desc           = models.CharField(max_length=512, blank=True)
+    dip               = models.CharField(max_length=64, blank=True)
     dport             = models.IntegerField()
     dmac              = models.CharField(max_length=18)
-    sip               = models.GenericIPAddressField()
+    sip               = models.CharField(max_length=64, blank=True)
     sport             = models.IntegerField()
     smac              = models.CharField(max_length=18)
     xm_dir            = models.IntegerField(choices=xm_dir_choices)
@@ -480,11 +399,11 @@ class SensitiveNetdisk(models.Model):
     time              = models.DateTimeField()
     sm_inpath         = models.CharField(max_length=512, blank=True)
     sm_summary        = models.CharField(max_length=512, blank=True)
-    sm_desc           = models.CharField(max_length=128, blank=True)
-    dip               = models.GenericIPAddressField()
+    sm_desc           = models.CharField(max_length=512, blank=True)
+    dip               = models.CharField(max_length=64, blank=True)
     dport             = models.IntegerField()
     dmac              = models.CharField(max_length=18)
-    sip               = models.GenericIPAddressField()
+    sip               = models.CharField(max_length=64, blank=True)
     sport             = models.IntegerField()
     smac              = models.CharField(max_length=18)
     xm_dir            = models.IntegerField(choices=xm_dir_choices)
@@ -514,11 +433,11 @@ class SensitiveOther(models.Model):
     time              = models.DateTimeField()
     sm_inpath         = models.CharField(max_length=512, blank=True)
     sm_summary        = models.CharField(max_length=512, blank=True)
-    sm_desc           = models.CharField(max_length=128, blank=True)
-    dip               = models.GenericIPAddressField()
+    sm_desc           = models.CharField(max_length=512, blank=True)
+    dip               = models.CharField(max_length=64, blank=True)
     dport             = models.IntegerField()
     dmac              = models.CharField(max_length=18)
-    sip               = models.GenericIPAddressField()
+    sip               = models.CharField(max_length=64, blank=True)
     sport             = models.IntegerField()
     smac              = models.CharField(max_length=18)
     xm_dir            = models.IntegerField(choices=xm_dir_choices)
@@ -536,34 +455,14 @@ class SensitiveOther(models.Model):
         return self.name
 
 
-class SensitiveAllFile(models.Model):
-    time              = models.DateTimeField()
-    alarm_id          = models.CharField(max_length=20)
-    filename          = models.CharField(max_length=64)
-    checksum          = models.CharField(max_length=128)
-    is_upload         = models.BooleanField(default=False)
-    filetype          = models.CharField(max_length=32, blank=True)
-
-    report_time       = models.DateTimeField()
-
-    device_id         = models.CharField(max_length=12)
-    save_path         = models.CharField(max_length=128, blank=True)
-
-    class Meta:
-        db_table      = 'sensitive_all_file'
-
-    def __unicode__(self):
-        return self.name
-
-
 class TargetInterceptIP(models.Model):
     id                = models.IntegerField(primary_key=True)
     alarm_id          = models.CharField(max_length=20)
     rule_id = models.BigIntegerField()
-    sip               = models.GenericIPAddressField()
+    sip               = models.CharField(max_length=64, blank=True)
     sport             = models.IntegerField()
     smac              = models.CharField(max_length=18)
-    dip               = models.GenericIPAddressField()
+    dip               = models.CharField(max_length=64, blank=True)
     dport             = models.IntegerField()
     dmac              = models.CharField(max_length=18)
     time              = models.DateTimeField()
@@ -580,34 +479,14 @@ class TargetInterceptIP(models.Model):
         return self.name
 
 
-class TargetInterceptIPFile(models.Model):
-    time              = models.DateTimeField()
-    alarm_id          = models.CharField(max_length=20)
-    num               = models.IntegerField()
-    filename          = models.CharField(max_length=64)
-    checksum          = models.CharField(max_length=128)
-    filetype          = models.CharField(max_length=32, default='pcap')
-
-    report_time       = models.DateTimeField()
-
-    device_id         = models.CharField(max_length=12)
-    save_path         = models.CharField(max_length=128, blank=True)
-
-    class Meta:
-        db_table      = 'intercept_ip_file'
-
-    def __unicode__(self):
-        return self.name
-
-
 class TargetInterceptDNS(models.Model):
     id                = models.IntegerField(primary_key=True)
     alarm_id          = models.CharField(max_length=20)
     rule_id = models.BigIntegerField()
-    sip               = models.GenericIPAddressField()
+    sip               = models.CharField(max_length=64, blank=True)
     sport             = models.IntegerField()
     smac              = models.CharField(max_length=18)
-    dip               = models.GenericIPAddressField()
+    dip               = models.CharField(max_length=64, blank=True)
     dport             = models.IntegerField()
     dmac              = models.CharField(max_length=18)
     time              = models.DateTimeField()
@@ -626,34 +505,14 @@ class TargetInterceptDNS(models.Model):
         return self.name
 
 
-class TargetInterceptDNSFile(models.Model):
-    time              = models.DateTimeField()
-    alarm_id          = models.CharField(max_length=20)
-    num               = models.IntegerField()
-    filename          = models.CharField(max_length=64)
-    checksum          = models.CharField(max_length=128)
-    filetype          = models.CharField(max_length=32, default='pcap')
-
-    report_time       = models.DateTimeField()
-
-    device_id         = models.CharField(max_length=12)
-    save_path         = models.CharField(max_length=128, blank=True)
-
-    class Meta:
-        db_table      = 'intercept_dns_file'
-
-    def __unicode__(self):
-        return self.name
-
-
 class TargetInterceptURL(models.Model):
     id                = models.IntegerField(primary_key=True)
     alarm_id          = models.CharField(max_length=20)
     rule_id = models.BigIntegerField()
-    sip               = models.GenericIPAddressField()
+    sip               = models.CharField(max_length=64, blank=True)
     sport             = models.IntegerField()
     smac              = models.CharField(max_length=18)
-    dip               = models.GenericIPAddressField()
+    dip               = models.CharField(max_length=64, blank=True)
     dport             = models.IntegerField()
     dmac              = models.CharField(max_length=18)
     time              = models.DateTimeField()
@@ -677,34 +536,14 @@ class TargetInterceptURL(models.Model):
         return self.name
 
 
-class TargetInterceptURLFile(models.Model):
-    time              = models.DateTimeField()
-    alarm_id          = models.CharField(max_length=20)
-    num               = models.IntegerField()
-    filename          = models.CharField(max_length=64)
-    checksum          = models.CharField(max_length=128)
-    filetype          = models.CharField(max_length=32, default='pcap')
-
-    report_time       = models.DateTimeField()
-
-    device_id         = models.CharField(max_length=12)
-    save_path         = models.CharField(max_length=128, blank=True)
-
-    class Meta:
-        db_table      = 'intercept_url_file'
-
-    def __unicode__(self):
-        return self.name
-
-
 class TargetInterceptAccount(models.Model):
     id                = models.IntegerField(primary_key=True)
     alarm_id          = models.CharField(max_length=20)
     rule_id = models.BigIntegerField()
-    sip               = models.GenericIPAddressField()
+    sip               = models.CharField(max_length=64, blank=True)
     sport             = models.IntegerField()
     smac              = models.CharField(max_length=18)
-    dip               = models.GenericIPAddressField()
+    dip               = models.CharField(max_length=64, blank=True)
     dport             = models.IntegerField()
     dmac              = models.CharField(max_length=18)
     time              = models.DateTimeField()
@@ -728,34 +567,14 @@ class TargetInterceptAccount(models.Model):
         return self.name
 
 
-class TargetInterceptAccountFile(models.Model):
-    time              = models.DateTimeField()
-    alarm_id          = models.CharField(max_length=20)
-    num               = models.IntegerField()
-    filename          = models.CharField(max_length=64)
-    checksum          = models.CharField(max_length=128)
-    filetype          = models.CharField(max_length=32, default='pcap')
-
-    report_time       = models.DateTimeField()
-
-    device_id         = models.CharField(max_length=12)
-    save_path         = models.CharField(max_length=128, blank=True)
-
-    class Meta:
-        db_table      = 'intercept_account_file'
-
-    def __unicode__(self):
-        return self.name
-
-
 class Block(models.Model):
     id                = models.IntegerField(primary_key=True)
     alarm_id          = models.CharField(max_length=20)
     rule_id = models.BigIntegerField()
-    sip               = models.GenericIPAddressField()
+    sip               = models.CharField(max_length=64, blank=True)
     sport             = models.IntegerField()
     smac              = models.CharField(max_length=18)
-    dip               = models.GenericIPAddressField()
+    dip               = models.CharField(max_length=64, blank=True)
     dport             = models.IntegerField()
     dmac              = models.CharField(max_length=18)
     time              = models.DateTimeField()

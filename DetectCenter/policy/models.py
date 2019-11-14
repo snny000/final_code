@@ -5,6 +5,7 @@ from django.db import models
 
 
 risk_choices = (
+    (-1, '未知'),
     (0, '无风险'),
     (1, '一般级'),
     (2, '关注级'),
@@ -338,7 +339,7 @@ class PictureRule(models.Model):
     map_rule_id_list = models.TextField(blank=True)
 
     class Meta:
-        db_table = 'rule_picture_filter'
+        db_table = 'rule_picture_file'
 
     def __unicode__(self):
         return self.name

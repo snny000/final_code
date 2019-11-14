@@ -30,7 +30,7 @@ class TrojanAlarmFile(APIView):
     """
     def post(self, request, format=None):
         relative_path = 'alarm_trojan/' + sub_dir
-        return process_post_file(request, AlarmTrojanFileSerializer, relative_path,
+        return process_post_file(request, relative_path,
                                  'JCQ_GJQM', 'JCQ_GJQM_TROJAN_FILE', 'JCQ_GJQM_TROJAN')
 
 
@@ -49,7 +49,7 @@ class ExploitAlarmFile(APIView):
     """
     def post(self, request, format=None):
         relative_path = 'alarm_attack/' + sub_dir
-        return process_post_file(request, AlarmAttackFileSerializer, relative_path,
+        return process_post_file(request, relative_path,
                                  'JCQ_GJQM', 'JCQ_GJQM_ATTACK_FILE', 'JCQ_GJQM_ATTACK')
 
 
@@ -68,7 +68,7 @@ class MalwareAlarmFile(APIView):
     """
     def post(self, request, format=None):
         relative_path = 'alarm_malware/' + sub_dir
-        return process_post_file(request, AlarmMalwareFileSerializer, relative_path,
+        return process_post_file(request, relative_path,
                                  'JCQ_GJQM', 'JCQ_GJQM_MALWARE_FILE', 'JCQ_GJQM_MALWARE')
 
 
@@ -87,7 +87,7 @@ class OtherAlarmFile(APIView):
     """
     def post(self, request, format=None):
         relative_path = 'alarm_other/' + sub_dir
-        return process_post_file(request, AlarmOtherFileSerializer, relative_path,
+        return process_post_file(request, relative_path,
                                  'JCQ_GJQM', 'JCQ_GJQM_OTHER_FILE', 'JCQ_GJQM_OTHER')
 
 
@@ -106,7 +106,7 @@ class AbnormalAlarmFile(APIView):
     """
     def post(self, request, format=None):
         relative_path = 'abnormal/' + sub_dir
-        return process_post_file(request, AlarmAbnormalFileSerializer, relative_path,
+        return process_post_file(request, relative_path,
                                  'JCQ_GJQM', 'JCQ_GJQM_ABNORMAL_FILE', 'JCQ_GJQM_ABNORMAL')
 
 
@@ -124,7 +124,7 @@ class FingerSensitiveFile(APIView):
     """
     def post(self, request, format=None):
         relative_path = 'finger_file/' + sub_dir
-        return process_post_file(request, SensitiveAllFileSerializer, relative_path,
+        return process_post_file(request, relative_path,
                                  'JCQ_CSSM', 'JCQ_CSSM_MB_FILE', 'JCQ_CSSM_MB')
 
 
@@ -142,7 +142,7 @@ class MarkSensitiveFile(APIView):
     """
     def post(self, request, format=None):
         relative_path = 'sensitive_file/' + sub_dir
-        return process_post_file(request, SensitiveAllFileSerializer, relative_path,
+        return process_post_file(request, relative_path,
                                  'JCQ_CSSM', 'JCQ_CSSM_SENSITIVE_FILE', 'JCQ_CSSM_SENSITIVE')
 
 
@@ -160,7 +160,7 @@ class KeywordSensitiveFile(APIView):
     """
     def post(self, request, format=None):
         relative_path = 'keyword_file/' + sub_dir
-        return process_post_file(request, SensitiveAllFileSerializer, relative_path,
+        return process_post_file(request, relative_path,
                                  'JCQ_CSSM', 'JCQ_CSSM_KEYWORD_FILE', 'JCQ_CSSM_KEYWORD')
 
 
@@ -178,7 +178,7 @@ class EncryptionSensitiveFile(APIView):
     """
     def post(self, request, format=None):
         relative_path = 'encryption_file/' + sub_dir
-        return process_post_file(request, SensitiveAllFileSerializer, relative_path,
+        return process_post_file(request, relative_path,
                                  'JCQ_CSSM', 'JCQ_CSSM_FILTEREDENC_FILE', 'JCQ_CSSM_FILTEREDENC')
 
 
@@ -196,7 +196,7 @@ class CompressSensitiveFile(APIView):
     """
     def post(self, request, format=None):
         relative_path = 'compress_file/' + sub_dir
-        return process_post_file(request, SensitiveAllFileSerializer, relative_path,
+        return process_post_file(request, relative_path,
                                  'JCQ_CSSM', 'JCQ_CSSM_FILTEREDCOM_FILE', 'JCQ_CSSM_FILTEREDCOM')
 
 
@@ -214,7 +214,7 @@ class PictureSensitiveFile(APIView):
     """
     def post(self, request, format=None):
         relative_path = 'picture_file/' + sub_dir
-        return process_post_file(request, SensitiveAllFileSerializer, relative_path,
+        return process_post_file(request, relative_path,
                                  'JCQ_CSSM', 'JCQ_CSSM_FILTEREDPIC_FILE', 'JCQ_CSSM_FILTEREDPIC')
 
 
@@ -232,7 +232,7 @@ class StyleSensitiveFile(APIView):
     """
     def post(self, request, format=None):
         relative_path = 'style_file/' + sub_dir
-        return process_post_file(request, SensitiveAllFileSerializer, relative_path,
+        return process_post_file(request, relative_path,
                                  'JCQ_CSSM', 'JCQ_CSSM_LAYOUT_FILE', 'JCQ_CSSM_LAYOUT')
 
 
@@ -252,7 +252,7 @@ class IPInterceptFile(APIView):
     """
     def post(self, request, format=None):
         relative_path = 'intercept_ip/' + sub_dir
-        return process_post_file(request, TargetInterceptIPFileSerializer, relative_path,
+        return process_post_file(request, relative_path,
                                  'JCQ_MBSJ', 'JCQ_MBSJ_IP_FILE', 'JCQ_MBSJ_IP')
 
 
@@ -272,7 +272,7 @@ class DNSInterceptFile(APIView):
     """
     def post(self, request, format=None):
         relative_path = 'intercept_dns/' + sub_dir
-        return process_post_file(request, TargetInterceptDNSFileSerializer, relative_path,
+        return process_post_file(request, relative_path,
                                  'JCQ_MBSJ', 'JCQ_MBSJ_DOMAIN_FILE', 'JCQ_MBSJ_DOMAIN')
 
 
@@ -292,7 +292,7 @@ class URLInterceptFile(APIView):
     """
     def post(self, request, format=None):
         relative_path = 'intercept_url/' + sub_dir
-        return process_post_file(request, TargetInterceptURLFileSerializer, relative_path,
+        return process_post_file(request, relative_path,
                                  'JCQ_MBSJ', 'JCQ_MBSJ_URL_FILE', 'JCQ_MBSJ_URL')
 
 
@@ -312,7 +312,7 @@ class AccountInterceptFile(APIView):
     """
     def post(self, request, format=None):
         relative_path = 'intercept_account/' + sub_dir
-        return process_post_file(request, TargetInterceptAccountFileSerializer, relative_path,
+        return process_post_file(request, relative_path,
                                  'JCQ_MBSJ', 'JCQ_MBSJ_ACCOUNT_FILE', 'JCQ_MBSJ_ACCOUNT')
 
 

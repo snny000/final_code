@@ -181,8 +181,7 @@ $is_r= getRequest("is_r");
                                                 <li onclick="selectProtoFwd(this);" value="4">鼎普</li>
                                                 <li onclick="selectProtoFwd(this);" value="5">网安</li>
                                                 <li onclick="selectProtoFwd(this);" value="6">信工所</li>
-                                                <li onclick="selectProtoFwd(this);" value="7">网神360</li>
-                                                <li onclick="selectProtoFwd(this);" value="8">金城</li>
+                                                <li onclick="selectProtoFwd(this);" value="7">未知</li>
                                             </ul>
                                         </div>
                                         <div class="dropdown-inline">

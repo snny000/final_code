@@ -1074,11 +1074,10 @@ def show_detector_detail(request):
         total = 0
         for i in range(len(common.module_names)):
             count = rule_models[i].objects.filter(
-                Q(device_id_list_run='#') | Q(device_id_list_run__contains='#' + str(detector[0].device_id) + '#')).count()
+                Q(device_id_list_run='#') | Q(device_id_list_run__contains='#' + str(detector[0].id) + '#')).count()
             total += count
             rule_count[common.module_names[i]] = count
         rule_count['all'] = total
-        
         show_data['rule_count'] = rule_count
 
         # 统计下发插件
@@ -1482,7 +1481,7 @@ def download_template(request):
 
         file_name = 'detector_info.xlsx'
         relative_path = 'template/' + file_name
-        file_path = common.BASE_DIR + '/' + relative_path
+        file_path = common.MEDIA_ROOT + relative_path
         if not os.path.exists(file_path):
             return common.ui_message_response(400, '服务器上没有该文件:' + file_path.encode('utf-8'),
                                               '文件不存在')

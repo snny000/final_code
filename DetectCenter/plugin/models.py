@@ -7,7 +7,7 @@ from django.db import models
 class PluginAlarm(models.Model):
     time                    = models.DateTimeField(null=True, blank=True)
     alarm_id                = models.CharField(max_length=20, blank=True)
-    plug_id                 = models.IntegerField(null=True, blank=True)
+    plug_id                 = models.BigIntegerField(null=True, blank=True)
     num                     = models.IntegerField(null=True, blank=True)
     filename                = models.CharField(max_length=64)
     checksum                = models.CharField(max_length=128)
@@ -25,7 +25,7 @@ class PluginAlarm(models.Model):
 
 
 class PluginStatus(models.Model):
-    plug_id                 = models.IntegerField()
+    plug_id                 = models.BigIntegerField()
     status                  = models.CharField(max_length=20)
 
     device_id               = models.CharField(max_length=12)

@@ -534,7 +534,7 @@ require_once(dirname(__FILE__) . '/require_get_parameter_for_pick_plug_page.php'
 				var titlehtml = "<a target= _blank href = 'detector_detail.php?id="+msgListObj[i].id+"' style='color:#000000'>"+msgListObj[i].device_id+"</a>";
 				var switchhtml = "";
 				if(cacheCmd_type == 999){
-					var checked = cachePlug_on_device_status[msgListObj[i].id] == "1" ? "checked" : "";
+					var checked = cachePlug_on_device_status[msgListObj[i].device_id] == "1" ? "checked" : "";
 				    switchhtml = "<div><input name='my-checkbox' type='checkbox' id="+msgListObj[i].id+"  "+checked+" /></div>";
 				}
 				

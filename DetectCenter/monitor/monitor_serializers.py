@@ -10,6 +10,14 @@ class AlarmAllSerializer(serializers.ModelSerializer):
                   'time', 'warning_module', 'warning_type', 'rule_id', 'group_id')
 
 
+class AlarmAllFileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AlarmAllFile
+        fields = ('id', 'time', 'alarm_id', 'num', 'filename', 'is_upload',
+                  'checksum', 'filetype', 'trojan_id', 'report_time',
+                  'device_id', 'save_path')
+
+
 class AlarmTrojanSerializer(serializers.ModelSerializer):
     class Meta:
         model = AlarmTrojan
@@ -19,28 +27,12 @@ class AlarmTrojanSerializer(serializers.ModelSerializer):
                   'device_id')
 
 
-class AlarmTrojanFileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = AlarmTrojanFile
-        fields = ('id', 'time', 'alarm_id', 'num', 'filename', 'is_upload',
-                  'checksum', 'filetype', 'trojan_id', 'report_time',
-                  'device_id', 'save_path')
-
-
 class AlarmAttackSerializer(serializers.ModelSerializer):
     class Meta:
         model = AlarmAttack
         fields = ('id', 'alarm_id', 'rule_id', 'sip', 'sport', 'smac',
                   'dip', 'dport', 'dmac', 'time', 'risk', 'attack_type',
                   'application', 'os', 'report_time', 'device_id')
-
-
-class AlarmAttackFileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = AlarmAttackFile
-        fields = ('id', 'time', 'alarm_id', 'num', 'filename', 'is_upload',
-                  'checksum', 'filetype', 'report_time', 'device_id',
-                  'save_path')
 
 
 class AlarmMalwareSerializer(serializers.ModelSerializer):
@@ -53,28 +45,12 @@ class AlarmMalwareSerializer(serializers.ModelSerializer):
                   'report_time', 'device_id')
 
 
-class AlarmMalwareFileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = AlarmMalwareFile
-        fields = ('id', 'time', 'alarm_id', 'num', 'filename', 'is_upload',
-                  'checksum', 'filetype', 'report_time', 'device_id',
-                  'save_path')
-
-
 class AlarmOtherSerializer(serializers.ModelSerializer):
     class Meta:
         model = AlarmOther
         fields = ('id', 'alarm_id', 'rule_id', 'sip', 'sport', 'smac',
                   'dip', 'dport', 'dmac', 'time', 'risk', 'desc',
                   'report_time', 'device_id')
-
-
-class AlarmOtherFileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = AlarmOtherFile
-        fields = ('id', 'time', 'alarm_id', 'num', 'filename', 'is_upload',
-                  'checksum', 'filetype', 'report_time', 'device_id',
-                  'save_path')
 
 
 class AlarmAbnormalSerializer(serializers.ModelSerializer):
@@ -84,13 +60,6 @@ class AlarmAbnormalSerializer(serializers.ModelSerializer):
                   'dport', 'dmac', 'alert_type', 'alert_policy',
                   'alert_desc', 'time', 'risk', 'report_time',
                   'device_id')
-
-
-class AlarmAbnormalFileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = AlarmAbnormalFile
-        fields = ('id', 'time', 'alarm_id', 'num', 'filename', 'checksum',
-                  'filetype', 'report_time', 'device_id', 'save_path')
 
 
 class SensitiveEmailSerializer(serializers.ModelSerializer):
@@ -155,14 +124,6 @@ class SensitiveOtherSerializer(serializers.ModelSerializer):
                   'device_id')
 
 
-class SensitiveAllFileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = SensitiveAllFile
-        fields = ('id', 'time', 'alarm_id', 'filename', 'checksum',
-                  'is_upload', 'filetype', 'report_time', 'device_id',
-                  'save_path')
-
-
 class TargetInterceptIPSerializer(serializers.ModelSerializer):
     class Meta:
         model = TargetInterceptIP
@@ -171,27 +132,12 @@ class TargetInterceptIPSerializer(serializers.ModelSerializer):
                   'device_id')
 
 
-class TargetInterceptIPFileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = TargetInterceptIPFile
-        fields = ('id', 'time', 'alarm_id', 'num', 'filename','checksum',
-                  'filetype', 'report_time', 'device_id', 'save_path')
-
-
 class TargetInterceptDNSSerializer(serializers.ModelSerializer):
     class Meta:
         model = TargetInterceptDNS
         fields = ('id', 'alarm_id', 'rule_id', 'sip', 'sport', 'smac',
                   'dip', 'dport', 'dmac', 'time', 'risk', 'dns',
                   'domain_ip', 'report_time', 'device_id')
-
-
-class TargetInterceptDNSFileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = TargetInterceptDNSFile
-        fields = ('id', 'time', 'alarm_id', 'num', 'filename',
-                  'checksum', 'filetype', 'report_time',
-                  'device_id', 'save_path')
 
 
 class TargetInterceptURLSerializer(serializers.ModelSerializer):
@@ -203,14 +149,6 @@ class TargetInterceptURLSerializer(serializers.ModelSerializer):
                   'server', 'refer', 'report_time', 'device_id')
 
 
-class TargetInterceptURLFileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = TargetInterceptURLFile
-        fields = ('id', 'time', 'alarm_id', 'num', 'filename',
-                  'checksum', 'filetype', 'report_time',
-                  'device_id', 'save_path')
-
-
 class TargetInterceptAccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = TargetInterceptAccount
@@ -218,14 +156,6 @@ class TargetInterceptAccountSerializer(serializers.ModelSerializer):
                   'dip', 'dport', 'dmac', 'time', 'risk', 'sender',
                   'receiver', 'cc', 'bcc', 'subject', 'mail_content',
                   'attachment', 'report_time', 'device_id')
-
-
-class TargetInterceptAccountFileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = TargetInterceptAccountFile
-        fields = ('id', 'time', 'alarm_id', 'num', 'filename',
-                  'checksum', 'filetype', 'report_time',
-                  'device_id', 'save_path')
 
 
 class BlockSerializer(serializers.ModelSerializer):

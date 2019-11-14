@@ -8,8 +8,8 @@ import json
 def generate_plug_on_device_status_dict(stat=''):
     """
     将插件在生效检测器上的特定格式开启状态数据转为字典
-    #1:1#2:1#-> {'1': '1', '2': '1'}
-    :param stat:    数据库存储数据：#1:1#2:1#
+    #180306010001:1#180306010002:1#-> {'180306010001': '1', '180306010002': '1'}
+    :param stat:    数据库存储数据：#180306010001:1#180306010002:1#
     :return:        dict
     """
     result = dict()
@@ -20,14 +20,14 @@ def generate_plug_on_device_status_dict(stat=''):
         for ll in device_status_list:
             temp = ll.split(':')
             if temp and len(temp) == 2:
-                result[int(temp[0])] = temp[1]
+                result[temp[0]] = temp[1]
     return result
 
 
 def generate_plug_on_device_status_str(dict={}):
     """
     将字典转换为插件在生效检测器上的特定格式开启状态数据
-    {'1': '1', '2': '1'} -> #1:1#2:1#
+    {'180306010001': '1', '180306010002': '1'} -> #180306010001:1#180306010002:1#
     :param dict:    字典数据
     :return:        数据库存储数据
     """

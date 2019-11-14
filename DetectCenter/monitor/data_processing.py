@@ -49,13 +49,6 @@ warning_models = [
 ]   # 告警model列表
 
 
-warning_file_models = [
-    AlarmTrojanFile, AlarmAttackFile, AlarmMalwareFile, AlarmOtherFile, AlarmAbnormalFile,
-    SensitiveAllFile, SensitiveAllFile, SensitiveAllFile, SensitiveAllFile, SensitiveAllFile, SensitiveAllFile,
-    TargetInterceptIPFile, TargetInterceptDNSFile, TargetInterceptURLFile, TargetInterceptAccountFile, Block   # 目前没有Block文件
-]   # 告警文件对应的model列表
-
-
 # ************************************** 处理前端检测器请求 **************************************
 
 # logger_alarm = logging.getLogger('project.alarm')
@@ -126,8 +119,8 @@ def process_post_data_alarm(request, serializer_instance, warning_module, warnin
         if isinstance(data_list, Response):
             return data_list
         is_same = judge_same_alarm_id(data_list, detector_id)
-        if isinstance(is_same, Response):  # 返回告警ID重复的响应信息
-            return is_same
+        # if isinstance(is_same, Response):  # 返回告警ID重复的响应信息
+        #     return is_same
 
         alarm_type = {v: k for k, v in common.WARN_TYPE.iteritems()}[warning_type]
         # logger_record.info('%s %s %s %d' % (request.META.get('REMOTE_ADDR'), detector_id, alarm_type, len(data_list)))
@@ -263,52 +256,52 @@ def process_post_data_alarm(request, serializer_instance, warning_module, warnin
                 handle_data_type = ''
                 if warning_type == common.WARN_TYPE['trojan']:
                     # business_type = 'alarm'
-                    handle_data_type = 'alarm(trojan)'
+                    handle_data_type = 'trojan_alarm'
                     file_dir = os.path.join(config.const.DISPOSAL_DIR, 'alarm')
                     file_name = 'alarm_alarm_' + str(int(time.time())) + '_' + str(1)
                 elif warning_type == common.WARN_TYPE['attack']:
                     # business_type = 'alarm'
-                    handle_data_type = 'alarm(attack)'
+                    handle_data_type = 'attack_alarm'
                     file_dir = os.path.join(config.const.DISPOSAL_DIR, 'alarm')
                     file_name = 'alarm_alarm_' + str(int(time.time())) + '_' + str(1)
                 elif warning_type == common.WARN_TYPE['malware']:
                     # business_type = 'alarm'
-                    handle_data_type = 'alarm(malware)'
+                    handle_data_type = 'malware_alarm'
                     file_dir = os.path.join(config.const.DISPOSAL_DIR, 'alarm')
                     file_name = 'alarm_alarm_' + str(int(time.time())) + '_' + str(1)
                 elif warning_type == common.WARN_TYPE['other']:
                     # business_type = 'alarm'
-                    handle_data_type = 'alarm(other)'
+                    handle_data_type = 'other_alarm'
                     file_dir = os.path.join(config.const.DISPOSAL_DIR, 'alarm')
                     file_name = 'alarm_alarm_' + str(int(time.time())) + '_' + str(1)
                 elif warning_type == common.WARN_TYPE['abnormal']:
                     # business_type = 'alarm'
-                    handle_data_type = 'alarm(abnormal)'
-                    file_dir = os.path.join(config.const.DISPOSAL_DIR, 'alarm')
-                    file_name = 'alarm_alarm_' + str(int(time.time())) + '_' + str(1)
+                    handle_data_type = 'abnormal_alarm'
+                    file_dir = os.path.join(config.const.DISPOSAL_DIR, 'abnormal')
+                    file_name = 'abnormal_alarm_' + str(int(time.time())) + '_' + str(1)
                 elif warning_type == common.WARN_TYPE['intercept_ip']:
                     # business_type = 'object_listen'
-                    handle_data_type = 'object_listen(ip)'
+                    handle_data_type = 'ip_listen'
                     file_dir = os.path.join(config.const.DISPOSAL_DIR, 'object_listen')
                     file_name = 'object_listen_alarm_' + str(int(time.time())) + '_' + str(1)
                 elif warning_type == common.WARN_TYPE['intercept_dns']:
                     # business_type = 'object_listen'
-                    handle_data_type = 'object_listen(dns)'
+                    handle_data_type = 'domain_listen'
                     file_dir = os.path.join(config.const.DISPOSAL_DIR, 'object_listen')
                     file_name = 'object_listen_alarm_' + str(int(time.time())) + '_' + str(1)
                 elif warning_type == common.WARN_TYPE['intercept_url']:
                     # business_type = 'object_listen'
-                    handle_data_type = 'object_listen(url)'
+                    handle_data_type = 'url_listen'
                     file_dir = os.path.join(config.const.DISPOSAL_DIR, 'object_listen')
                     file_name = 'object_listen_alarm_' + str(int(time.time())) + '_' + str(1)
                 elif warning_type == common.WARN_TYPE['intercept_account']:
                     # business_type = 'object_listen'
-                    handle_data_type = 'object_listen(account)'
+                    handle_data_type = 'account_listen'
                     file_dir = os.path.join(config.const.DISPOSAL_DIR, 'object_listen')
                     file_name = 'object_listen_alarm_' + str(int(time.time())) + '_' + str(1)
                 elif warning_type == common.WARN_TYPE['block']:
                     # business_type = 'block'
-                    handle_data_type = 'block(block)'
+                    handle_data_type = 'block'
                     file_dir = os.path.join(config.const.DISPOSAL_DIR, 'block')
                     file_name = 'block_' + str(int(time.time())) + '_' + str(1)
                 sender.send_business_disposal(file_dir, file_name, request.META.get('HTTP_USER_AGENT'), handle_data_type, handle_data)
@@ -328,6 +321,8 @@ def process_post_data_alarm(request, serializer_instance, warning_module, warnin
 
         else:
             # transaction.savepoint_rollback(sid)   # 回滚
+            alarm_ids = [item['id'] for item in alarm_data_list]
+            AlarmAll.objects.filter(id__in=alarm_ids).delete()
             return common.detector_message_response(400, json.dumps(serializer.errors),
                                                     '数据缺失或字段不符合规定，序列化出错')
     except Exception:
@@ -351,8 +346,8 @@ def process_post_data_sensitive(request, source_type, business_type, from_type='
             return data_list
 
         is_same = judge_same_alarm_id(data_list, detector_id)
-        if isinstance(is_same, Response):  # 返回告警ID重复的响应信息
-            return is_same
+        # if isinstance(is_same, Response):  # 返回告警ID重复的响应信息
+        #     return is_same
 
         # 记录日志
         alarm_type = ''
@@ -460,10 +455,13 @@ def process_post_data_sensitive(request, source_type, business_type, from_type='
 
             serializer_all = AlarmAllSerializer(data=show_data)
             if serializer_all.is_valid():
+                # print "alarm_all: valid", data['id']
                 serializer_all.save()  # 存储数据库alarm_all
             elif common.is_serial_id_overflow_errer(serializer_all.errors):
+                # print "alarm_all: overflow", data['id']
                 AlarmAll.objects.create(**show_data)
             else:
+                # print "alarm_all: serializer.errors", json.dumps(serializer_all.errors), data['id']
                 return common.detector_message_response(400, json.dumps(serializer_all.errors),
                                                         '数据缺失或字段不符合规定，序列化出错')
 
@@ -475,11 +473,14 @@ def process_post_data_sensitive(request, source_type, business_type, from_type='
             #     if v is None:
             #         data[k] = ''
 
+            # print "data_detail: ", data
             serializer = protocol_dict[app_pro](data=data)  # 数据序列化
             if serializer.is_valid() or common.is_serial_id_overflow_errer(serializer.errors):
                 if serializer.is_valid():
+                    # print "alarm_detail: valid app_pro: " + app_pro, data['alarm_id']
                     serializer.save()  # 存储数据库
                 else:
+                    # print "alarm_detail: overflow app_pro: " + app_pro, data['alarm_id']
                     data = filter_unnecessary_field(show_data['warning_type'], data)
                     warning_models[show_data['warning_type']-1].objects.create(**data)
 
@@ -514,7 +515,9 @@ def process_post_data_sensitive(request, source_type, business_type, from_type='
                 send_alarm_file_to_director(show_data['warning_type'], show_data, source_type, business_type, request)  # 发送先到的告警文件
 
             else:
+                # print "alarm_detail: serializer.errors", json.dumps(serializer_all.errors), "app_pro: " + app_pro, data['alarm_id']
                 # transaction.savepoint_rollback(sid)  # 回滚事务
+                AlarmAll.objects.filter(id=data['id']).delete()
                 return common.detector_message_response(400, json.dumps(serializer.errors),
                                                         '数据缺失或字段不符合规定，序列化出错')
 
@@ -527,10 +530,10 @@ def process_post_data_sensitive(request, source_type, business_type, from_type='
             file_dir = os.path.join(config.const.DISPOSAL_DIR, 'sensitive')
             file_name = 'sensitive_alarm_' + str(int(time.time())) + '_' + str(1)
             handle_data_type = handle_data[0]['alert_type']
-            handle_data_type = 'sensitive(' + ['finger_file', 'sensitive_file', 'keyword_file', 'encryption_file', 'compress_file', 'picture_file', 'picture_file', 'style_file'][handle_data_type - 1] + ')'
+            handle_data_type = ['finger_file', 'sensitive_file', 'keyword_file', 'encryption_file', 'compress_file', 'picture_file', 'picture_file', 'style_file'][handle_data_type - 1]
             sender.send_business_disposal(file_dir, file_name, request.META.get('HTTP_USER_AGENT'), handle_data_type, handle_data)
 
-        return common.detector_message_response(200, '数据存储成功', {}, status.HTTP_200_OK)
+        return common.detector_message_response(200, '数据存储成功' + data['alarm_id'], {}, status.HTTP_200_OK)
     except Exception:
         traceback.print_exc()
         return common.detector_message_response(500, '服务器内部错误', '服务器内部错误',
@@ -556,7 +559,8 @@ def send_alarm_file_to_director(warn_type, alarm_data, source_type, business_typ
     if warn_type == 16:  # 通信阻断
         return
     print '############发送先到的告警文件到指挥中心'
-    alarm_file_info = warning_file_models[warn_type-1].objects.filter(alarm_id=alarm_data['alarm_id'])
+    # alarm_file_info = warning_file_models[warn_type-1].objects.filter(alarm_id=alarm_data['alarm_id'])
+    alarm_file_info = AlarmAllFile.objects.filter(alarm_id=alarm_data['alarm_id'])
     if alarm_file_info.exists() and config.const.UPLOAD_DIRECTOR and check_global_director_connection():
         alarm_type = file_log_str[common.BUSINESS_TYPE.index(business_type) - 1]
         alarm_file_data = json.loads(serialize('json', alarm_file_info))[0]['fields']
@@ -582,7 +586,10 @@ def process_null_field(data):
             elif field == 'ret_code':
                 data[field] = -1
             else:                                  # 字符字段
-                data[field] = ''
+                data[field] = 'null'
+        elif data[field] == '' and field in ('sip', 'dip'):  #########临时处理  sip dip
+            print '@@@空串字段sip, dip', field
+            data[field] = '0.0.0.0'
         elif isinstance(data[field], dict):
             for key in data[field]:
                 if data[field][key] is None:
@@ -592,7 +599,10 @@ def process_null_field(data):
                     elif key == 'ret_code':      # MBSJ: alarm_intercept_url  CSSM: sensitive_http
                         data[field][key] = -1
                     else:                          # 字符字段
-                        data[field][key] = ''
+                        data[field][key] = 'null'
+                elif data[field][key] == '' and key in ('sip', 'dip'):
+                    print '@@@空串字段sip, dip', key
+                    data[field][key] = '0.0.0.0'
 
     # print '去除Null字段后告警数据：', pu.pretty_print_format(data)
     return data
@@ -696,7 +706,7 @@ def filter_unnecessary_field(warning_type, data):
 
 # 原始报文上传（一次处理一个文件）处理接口：根据serializer_instance实例对请求数据进行序列化，
 # 存入相应的数据库，上传的文件存储到服务器
-def process_post_file(request, serializer_instance, file_relative_path,
+def process_post_file(request, file_relative_path,
                       source_type, business_type, from_type=''):
     try:
         send_file = request.body
@@ -707,11 +717,11 @@ def process_post_file(request, serializer_instance, file_relative_path,
         if isinstance(detector_id, Response):
             return detector_id
         # 含有is_upload的告警
-        serial_class = [AlarmTrojanFileSerializer, AlarmAttackFileSerializer, AlarmMalwareFileSerializer,
-                        AlarmOtherFileSerializer, AlarmAbnormalFileSerializer, SensitiveAllFileSerializer,
-                        TargetInterceptIPFileSerializer, TargetInterceptDNSFileSerializer, TargetInterceptDNSFileSerializer, TargetInterceptAccountFileSerializer]
-        model_class = [AlarmTrojanFile, AlarmAttackFile, AlarmMalwareFile, AlarmOtherFile, AlarmAbnormalFile, SensitiveAllFile,
-                       TargetInterceptIPFile, TargetInterceptDNSFile, TargetInterceptURLFile, TargetInterceptAccount]
+        # serial_class = [AlarmTrojanFileSerializer, AlarmAttackFileSerializer, AlarmMalwareFileSerializer,
+        #                 AlarmOtherFileSerializer, AlarmAbnormalFileSerializer, SensitiveAllFileSerializer,
+        #                 TargetInterceptIPFileSerializer, TargetInterceptDNSFileSerializer, TargetInterceptDNSFileSerializer, TargetInterceptAccountFileSerializer]
+        # model_class = [AlarmTrojanFile, AlarmAttackFile, AlarmMalwareFile, AlarmOtherFile, AlarmAbnormalFile, SensitiveAllFile,
+        #                TargetInterceptIPFile, TargetInterceptDNSFile, TargetInterceptURLFile, TargetInterceptAccount]
 
         data = request.META.get('HTTP_CONTENT_FILEDESC')    # 数据字段
         data = common.check_detector_upload_header_filedesc_field(data)  # 校验Content-Filedesc字段
@@ -756,8 +766,9 @@ def process_post_file(request, serializer_instance, file_relative_path,
                 return common.detector_message_response(400, '服务器上存在相同的文件', '文件已经上传或者文件命名重复')
             data['save_path'] = os.path.join(file_relative_path, save_file_name)   # 文件存储的相对路径
         elif len(request.FILES) == 0 and is_upload is True:     # 文件已经上传
-            file_info = model_class[serial_class.index(serializer_instance)].objects.filter(
-                device_id=detector_id, checksum=data['checksum'])
+            # file_info = model_class[serial_class.index(serializer_instance)].objects.filter(
+            #     device_id=detector_id, checksum=data['checksum'])
+            file_info = AlarmAllFile.objects.filter(device_id=detector_id, checksum=data['checksum'])
             if not file_info.exists():
                 return common.detector_message_response(400, '数据库没有同名的文件记录', '该文件以前没有上传过')
             data['save_path'] = file_info.last().save_path   # 文件存储的相对路径
@@ -779,14 +790,18 @@ def process_post_file(request, serializer_instance, file_relative_path,
         if config.const.UPLOAD_BUSINESS_DISPOSAL:
             # 告警数据文件描述
             if 'GJQM' in business_type:
-                file_dir = os.path.join(config.const.DISPOSAL_DIR, 'alarm')
-                file_name = 'alarm_filedesc' + str(int(time.time())) + '_' + str(1)
+                if 'ABNORMAL' in business_type:
+                    file_dir = os.path.join(config.const.DISPOSAL_DIR, 'abnormal')
+                    file_name = 'abnormal_filedesc_' + str(int(time.time())) + '_' + str(1)
+                else:
+                    file_dir = os.path.join(config.const.DISPOSAL_DIR, 'alarm')
+                    file_name = 'alarm_filedesc_' + str(int(time.time())) + '_' + str(1)
             elif 'CSSM' in business_type:
                 file_dir = os.path.join(config.const.DISPOSAL_DIR, 'sensitive')
-                file_name = 'sensitive_filedesc' + str(int(time.time())) + '_' + str(1)
+                file_name = 'sensitive_filedesc_' + str(int(time.time())) + '_' + str(1)
             elif 'MBSJ' in business_type:
                 file_dir = os.path.join(config.const.DISPOSAL_DIR, 'object_listen')
-                file_name = 'object_listen_filedesc' + str(int(time.time())) + '_' + str(1)
+                file_name = 'object_listen_filedesc_' + str(int(time.time())) + '_' + str(1)
             
             if not os.path.exists(file_dir):
                 os.makedirs(file_dir)
@@ -807,7 +822,8 @@ def process_post_file(request, serializer_instance, file_relative_path,
         risk = -1
         if alarm.exists():
             risk = alarm[0].risk
-        serializer = serializer_instance(data=data)  # 数据序列化
+        # serializer = serializer_instance(data=data)  # 数据序列化
+        serializer = AlarmAllFileSerializer(data=data)  # 数据序列化
         if serializer.is_valid():
             serializer.save()  # 存储数据库
 
@@ -894,8 +910,10 @@ def get_alarm_query_terms(request_data):
         alarm_query_terms['time__gte'] = datetime.datetime.strptime(time_min, '%Y-%m-%d')
     if time_max is not None:
         alarm_query_terms['time__lt'] = datetime.datetime.strptime(time_max, '%Y-%m-%d') + datetime.timedelta(1)
-    if detector_query_terms:
-        alarm_query_terms['device_id__in'] = list(Detector.objects.filter(**detector_query_terms).values_list('device_id', flat=True))
+    # if detector_query_terms:
+    #     alarm_query_terms['device_id__in'] = list(Detector.objects.filter(**detector_query_terms).values_list('device_id', flat=True))
+    # 即使没有设置detector_query_terms，也只查库里包含的检测器的告警
+    alarm_query_terms['device_id__in'] = list(Detector.objects.filter(**detector_query_terms).values_list('device_id', flat=True))
 
     if rule_id is not None:
         alarm_query_terms['rule_id__contains'] = rule_id
@@ -930,7 +948,7 @@ def show_all_alarm(request):
         for data in list_data:
             fields = data['fields']
             fields['id'] = data['pk']  # 加入主键id
-            fields['contractor'] = detector_dict[fields['device_id']][0] if fields['device_id'] in detector_dict else '00'
+            fields['contractor'] = detector_dict[fields['device_id']][0] if fields['device_id'] in detector_dict else '未知'
             fields['organs'] = detector_dict[fields['device_id']][1] if fields['device_id'] in detector_dict else '未知'
             fields['time'] = fields['time'].replace('T', ' ')
             task_group = TaskGroup.objects.filter(group_id=fields['group_id'])
@@ -942,7 +960,8 @@ def show_all_alarm(request):
             fields['group_id'] = str(fields['group_id'])
             show_type = fields['warning_type']
             if show_type != 16:   # 阻断告警没有对应文件
-                query_data = warning_file_models[show_type - 1].objects.filter(alarm_id=fields['alarm_id'])
+                # query_data = warning_file_models[show_type - 1].objects.filter(alarm_id=fields['alarm_id'])
+                query_data = AlarmAllFile.objects.filter(alarm_id=fields['alarm_id'])
                 if query_data.exists():
                     # fields['file_path'] = common.MEDIA_ROOT + query_data[0].save_path
                     fields['file_path'] = query_data[0].save_path

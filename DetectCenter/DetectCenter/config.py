@@ -49,15 +49,14 @@ try:
     const.DISPOSAL_BOUNDARY = cf.get('url', 'disposal_boundary')
     const.DISPOSAL_DIR = cf.get('url', 'disposal_dir')
 
-    print 'const.UPLOAD_BUSINESS=False?', True if not const.UPLOAD_BUSINESS else False
-    print 'const.UPLOAD_BUSINESS:', const.UPLOAD_BUSINESS
-    print type(const.UPLOAD_BUSINESS)
+#    print 'const.UPLOAD_BUSINESS=False?', True if not const.UPLOAD_BUSINESS else False
+#    print 'const.UPLOAD_BUSINESS:', const.UPLOAD_BUSINESS
+#    print type(const.UPLOAD_BUSINESS)
 
 except:
     traceback.print_exc()
-finally:
     # 数据库连接配置
-    const.HOST = '127.0.0.1'
+    const.HOST = 'dmc1011$&#'
     const.PORT = '3306'
     const.USER = 'root'
     const.PASSWORD = '123456'
